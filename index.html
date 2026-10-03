@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F6F2;color:#14243A;font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:#2F55C8}
+a:hover{color:#14243A}
+input,select,textarea,button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #4169E1;outline-offset:2px}
+.ph{line-height:1}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <a href="#main" style="position:absolute;left:12px;top:-60px;background:#14243A;color:#F7F6F2;padding:10px 14px;border-radius:6px;z-index:80" style-focus="top:12px">Skip to content</a>
+
+  <header style="position:sticky;top:0;z-index:40;background:#F7F6F2;border-bottom:1px solid #D9D5CA">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,32px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <button type="button" onClick="{{ goHome }}" style="background:none;border:0;padding:8px 0;cursor:pointer;display:flex;align-items:center;gap:10px;color:#14243A">
+        <i class="ph ph-compass-rose" aria-hidden="true" style="font-size:26px"></i>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:23px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">Design Atlas</span>
+      </button>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Primary" style="display:flex;align-items:center;gap:2px">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+            <button type="button" onClick="{{ n.go }}" aria-current="{{ n.aria }}" style="background:none;border:0;cursor:pointer;height:64px;padding:0 13px;font-size:16px;font-weight:600;color:#14243A;white-space:nowrap;border-bottom:2px solid {{ n.line }};border-radius:0;transition:color .15s ease" style-hover="color:#2F55C8">{{ n.label }}</button>
+          </sc-for>
+          <button type="button" onClick="{{ goShortlist }}" aria-label="{{ slAria }}" style="margin-left:10px;min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s ease" style-hover="background:#22385A"><i class="ph ph-bookmarks-simple" aria-hidden="true" style="font-size:18px"></i>Shortlist<sc-if value="{{ slHasCount }}"><span style="min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:#DCE5F2;color:#14243A;font-size:13px;display:flex;align-items:center;justify-content:center">{{ slCount }}</span></sc-if></button>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ narrow }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuAria }}" aria-controls="mobile-nav" aria-label="{{ menuLabel }}" style="height:44px;min-width:44px;padding:0 12px;border-radius:8px;border:1.5px solid #14243A;background:{{ menuBtnBg }};color:{{ menuBtnFg }};font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s ease"><i class="ph {{ menuIcon }}" aria-hidden="true" style="font-size:20px"></i><span>{{ menuText }}</span></button>
+      </sc-if>
+    </div>
+  </header>
+
+  <sc-if value="{{ narrow }}">
+    <div onClick="{{ closeMenu }}" aria-hidden="true" style="position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(20,36,58,.45);opacity:{{ menuFade }};pointer-events:{{ menuPE }};transition:opacity .22s ease;z-index:35"></div>
+    <nav id="mobile-nav" aria-label="Primary" style="position:fixed;top:64px;left:0;right:0;max-height:calc(100dvh - 64px);overflow-y:auto;background:#F7F6F2;border-bottom:1px solid #D9D5CA;box-shadow:0 12px 24px rgba(20,36,58,.12);padding:8px clamp(16px,4vw,32px) 20px;display:flex;flex-direction:column;transform:translateY({{ menuY }});opacity:{{ menuFade }};visibility:{{ menuVis }};transition:transform .22s ease, opacity .22s ease, visibility .22s;z-index:36">
+      <sc-for list="{{ mobileNav }}" as="n">
+        <button type="button" onClick="{{ n.go }}" aria-current="{{ n.aria }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #E6E2D8;min-height:56px;font-size:18px;font-weight:600;cursor:pointer;color:#14243A;display:flex;align-items:center;gap:14px"><i class="ph {{ n.icon }}" aria-hidden="true" style="font-size:22px;color:#2F55C8"></i><span style="flex:1">{{ n.label }}</span><sc-if value="{{ n.current }}"><span style="font-size:13px;color:#565D6B;font-weight:600">Current</span></sc-if></button>
+      </sc-for>
+      <button type="button" onClick="{{ goShortlist }}" style="margin-top:16px;min-height:52px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><i class="ph ph-bookmarks-simple" aria-hidden="true" style="font-size:18px"></i>Shortlist<sc-if value="{{ slHasCount }}"><span style="min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:#DCE5F2;color:#14243A;font-size:13px;display:flex;align-items:center;justify-content:center">{{ slCount }}</span></sc-if></button>
+    </nav>
+  </sc-if>
+
+  <main id="main" tabindex="-1" style="flex:1;outline:none">
+    <sc-if value="{{ hasCrumbs }}">
+      <div style="border-bottom:1px solid #E6E2D8">
+        <div style="max-width:1240px;margin:0 auto;padding:6px clamp(16px,4vw,32px);min-height:56px;display:flex;align-items:center;gap:14px">
+          <span style="display:flex;gap:4px;flex:0 0 auto">
+            <button type="button" onClick="{{ navBack }}" disabled="{{ cantBack }}" aria-label="Go back" style="width:40px;height:40px;border-radius:8px;border:1.5px solid #C9C4B7;background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#14243A;opacity:{{ backOp }};transition:border-color .15s ease" style-hover="border-color:#14243A"><i class="ph ph-arrow-left" aria-hidden="true" style="font-size:18px"></i></button>
+          </span>
+          <nav aria-label="Breadcrumb" style="flex:1;min-width:0">
+            <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:15px">
+              <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="3">
+                <li style="display:flex;align-items:center;gap:8px;min-width:0">
+                  <sc-if value="{{ c.sep }}"><i class="ph ph-caret-right" aria-hidden="true" style="font-size:12px;color:#565D6B"></i></sc-if>
+                  <sc-if value="{{ c.link }}"><button type="button" onClick="{{ c.go }}" style="background:none;border:0;padding:0;min-height:36px;color:#2F55C8;cursor:pointer;text-decoration:underline;text-underline-offset:3px;white-space:nowrap" style-hover="color:#14243A">{{ c.label }}</button></sc-if>
+                  <sc-if value="{{ c.current }}"><span aria-current="page" style="font-weight:600;max-width:40ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.label }}</span></sc-if>
+                </li>
+              </sc-for>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Home" style="max-width:1240px;margin:0 auto;padding:clamp(48px,8vw,96px) clamp(16px,4vw,32px) clamp(40px,6vw,72px);display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+        <div style="flex:1.3 1 520px;min-width:0">
+          <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(40px,6vw,76px);line-height:1.02;letter-spacing:-.02em;max-width:14ch;text-wrap:balance">Design resources, indexed with their licences.</h1>
+          <p style="margin:24px 0 0;max-width:56ch;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#3A4352;text-wrap:pretty">UI kits, design systems, icons, fonts and learning material. Each entry names its creator, the tools it works with and its terms of use, then links straight to the original source.</p>
+          <form role="search" onSubmit="{{ heroSubmit }}" style="margin-top:32px;max-width:720px;display:flex;flex-wrap:wrap;gap:10px">
+            <label for="hero-q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search resources</label>
+            <div style="flex:1 1 300px;min-width:0;position:relative">
+              <i class="ph ph-magnifying-glass" aria-hidden="true" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:22px;color:#565D6B"></i>
+              <input id="hero-q" type="search" value="{{ heroQ }}" onChange="{{ onHeroQ }}" placeholder="Search kits, icons, fonts, guides" autocomplete="off" style="width:100%;height:58px;padding:0 18px 0 50px;font-size:18px;background:#FFFFFF;border:1.5px solid #14243A;border-radius:8px">
+            </div>
+            <button type="submit" style="flex:0 0 auto;height:58px;padding:0 26px;border:0;border-radius:8px;background:#4169E1;color:#FFFFFF;font-size:17px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .15s ease" style-hover="background:#3457C4">Search the index</button>
+          </form>
+          <div style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:15px;color:#565D6B">
+            <span>Try</span>
+            <sc-for list="{{ quickSearches }}" as="s" hint-placeholder-count="5">
+              <button type="button" onClick="{{ s.go }}" style="min-height:44px;padding:0 10px;background:none;border:0;border-bottom:1px solid #9AA1AE;border-radius:0;cursor:pointer;color:#14243A;font-size:15px" style-hover="border-bottom-color:#14243A">{{ s.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;min-width:0;max-width:410px;margin:0 auto;width:100%">
+          <nav aria-label="Browse by category" onMouseEnter="{{ heroPause }}" onMouseLeave="{{ heroResume }}" onFocus="{{ heroPause }}" onBlur="{{ heroResume }}" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1.2vw,12px);padding:44px 0 8px">
+            <sc-for list="{{ heroTiles }}" as="t" hint-placeholder-count="10">
+              <button type="button" onClick="{{ t.go }}" onMouseEnter="{{ t.hover }}" onFocus="{{ t.hover }}" aria-label="{{ t.aria }}" style="grid-column:{{ t.col }};position:relative;aspect-ratio:1;border-radius:14px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transform:translateY({{ t.lift }}) scale({{ t.scale }});box-shadow:{{ t.shadow }};transition:background .35s ease, color .35s ease, border-color .35s ease, transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;z-index:{{ t.z }}">
+                <i class="ph {{ t.icon }}" aria-hidden="true" style="font-size:clamp(30px,3.4vw,46px)"></i>
+                <span aria-hidden="true" style="position:absolute;bottom:calc(100% + 10px);left:{{ t.tipLeft }};transform:translate({{ t.tipX }},{{ t.tipY }});opacity:{{ t.tipOp }};pointer-events:none;white-space:nowrap;background:#14243A;color:#F7F6F2;font-size:13px;font-weight:600;padding:6px 10px;border-radius:6px;transition:opacity .25s ease, transform .25s ease">{{ t.label }}</span>
+              </button>
+            </sc-for>
+          </nav>
+        </div>
+      </section>
+
+      <sc-if value="{{ homeLoading }}">
+        <p role="status" style="max-width:1240px;margin:0 auto 40px;padding:0 clamp(16px,4vw,32px);color:#3A4352;display:flex;align-items:center;gap:10px"><i class="ph ph-circle-notch" aria-hidden="true" style="font-size:20px"></i>Loading the catalog…</p>
+      </sc-if>
+      <sc-if value="{{ homeError }}">
+        <div role="alert" style="max-width:1240px;margin:0 auto 40px;padding:0 clamp(16px,4vw,32px)">
+          <div style="border:1.5px solid #B42318;background:#FFFFFF;border-radius:10px;padding:20px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between">
+            <span style="display:flex;align-items:center;gap:10px"><i class="ph ph-warning" aria-hidden="true" style="font-size:22px;color:#B42318"></i>The catalog file couldn't be loaded.</span>
+            <button type="button" onClick="{{ retry }}" style="min-height:44px;padding:0 18px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;white-space:nowrap;cursor:pointer">Try again</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <section aria-labelledby="idx-h" style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(56px,7vw,96px)">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1.5px solid #14243A;padding-bottom:14px">
+          <h2 id="idx-h" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">The index</h2>
+          <span style="font-size:15px;color:#565D6B">{{ indexSummary }}</span>
+        </div>
+        <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));column-gap:40px">
+          <sc-for list="{{ categoryIndex }}" as="c" hint-placeholder-count="10">
+            <li style="border-bottom:1px solid #DDD8CC">
+              <button type="button" onClick="{{ c.go }}" style="width:100%;display:grid;grid-template-columns:44px 1fr auto;gap:2px 14px;align-items:center;text-align:left;background:none;border:0;padding:16px 0;cursor:pointer;color:#14243A;transition:color .15s ease" style-hover="color:#2F55C8">
+                <span style="grid-row:1 / 3;width:44px;height:44px;border-radius:8px;background:#DCE5F2;color:#14243A;display:flex;align-items:center;justify-content:center"><i class="ph {{ c.icon }}" aria-hidden="true" style="font-size:22px"></i></span>
+                <span style="font-size:19px;font-weight:600">{{ c.label }}</span>
+                <span style="font-size:14px;color:#565D6B;white-space:nowrap">{{ c.countLabel }}</span>
+                <span style="grid-column:2 / 4;font-size:15px;color:#3A4352">{{ c.blurb }}</span>
+              </button>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+
+      <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ true }}">
+        <section aria-labelledby="feat-h" style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(64px,8vw,112px)">
+          <h2 id="feat-h" style="margin:0 0 24px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">Worth starting with</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:20px">
+            <sc-for list="{{ featured }}" as="item" hint-placeholder-count="3">
+              <dc-import name="ResourceCard" r="{{ item }}" hint-size="100%,360px"></dc-import>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+
+      <section id="collections" aria-labelledby="coll-h" style="background:#14243A;color:#F7F6F2;scroll-margin-top:64px">
+        <div style="max-width:1240px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(16px,4vw,32px)">
+          <h2 id="coll-h" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(32px,4vw,48px);letter-spacing:-.01em">Start a project</h2>
+          <p style="margin:10px 0 36px;max-width:56ch;color:#D3D9E3">Pick what you're building. Each set covers the main needs with one resource each.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,500px),1fr));gap:20px">
+            <sc-for list="{{ collections }}" as="c" hint-placeholder-count="4">
+              <article style="border:1px solid #3A4C68;border-radius:12px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:14px">
+                <div>
+                  <h3 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">{{ c.title }}</h3>
+                  <p style="margin:6px 0 0;color:#D3D9E3;max-width:52ch">{{ c.desc }}</p>
+                </div>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #3A4C68">
+                  <sc-for list="{{ c.picks }}" as="p">
+                    <li style="border-bottom:1px solid #3A4C68">
+                      <button type="button" onClick="{{ p.open }}" style="width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:none;border:0;padding:10px 0;min-height:52px;color:#F7F6F2;cursor:pointer;transition:color .15s ease" style-hover="color:#DCE5F2">
+                        <span style="flex:0 0 auto;width:36px;height:36px;border-radius:8px;background:#22385A;display:flex;align-items:center;justify-content:center"><i class="ph {{ p.icon }}" aria-hidden="true" style="font-size:18px"></i></span>
+                        <span style="flex:0 0 110px;font-size:14px;color:#C5CEDC">{{ p.need }}</span>
+                        <span style="flex:1;min-width:0;font-weight:600">{{ p.name }}</span>
+                        <span style="flex:0 0 auto;font-size:14px;color:#C5CEDC">{{ p.price }}</span>
+                      </button>
+                    </li>
+                  </sc-for>
+                </ul>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+                  <button type="button" onClick="{{ c.compare }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#DCE5F2;color:#14243A;font-weight:600;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px;transition:background .15s ease" style-hover="background:#FFFFFF"><i class="ph ph-columns" aria-hidden="true" style="font-size:18px"></i>Compare this set</button>
+                  <button type="button" onClick="{{ c.go }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #DCE5F2;background:transparent;color:#F7F6F2;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s ease, color .15s ease" style-hover="background:#DCE5F2;color:#14243A">Open as a list</button>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="new-h" style="max-width:1240px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(16px,4vw,32px)">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px">
+          <h2 id="new-h" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">Recently added</h2>
+          <button type="button" onClick="{{ goExplore }}" style="min-height:44px;background:none;border:0;padding:0;color:#2F55C8;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Browse all {{ total }} entries</button>
+        </div>
+        <ul style="list-style:none;margin:0;padding:0;border-top:1.5px solid #14243A">
+          <sc-for list="{{ latest }}" as="r" hint-placeholder-count="5">
+            <li style="border-bottom:1px solid #DDD8CC">
+              <button type="button" onClick="{{ r.open }}" style="width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;text-align:left;background:none;border:0;padding:16px 0;cursor:pointer;color:#14243A;transition:color .15s ease" style-hover="color:#2F55C8">
+                <span style="flex:1 1 240px;font-size:19px;font-weight:600;display:flex;align-items:center;gap:12px"><i class="ph {{ r.icon }}" aria-hidden="true" style="font-size:20px;color:#565D6B"></i>{{ r.name }}</span>
+                <span style="flex:1 1 200px;font-size:15px;color:#3A4352">{{ r.catLabel }}</span>
+                <span style="flex:0 0 90px;font-size:15px;color:#3A4352">{{ r.price }}</span>
+                <span style="flex:1 1 160px;font-size:15px;color:#565D6B">{{ r.dateOrCreator }}</span>
+              </button>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isExplore }}">
+      <div data-screen-label="Explore">
+        <section style="border-bottom:1px solid #D9D5CA">
+          <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,4vw,32px) 28px">
+            <div style="display:flex;align-items:center;gap:16px">
+              <sc-if value="{{ exHasIcon }}">
+                <span style="flex:0 0 auto;width:56px;height:56px;border-radius:10px;background:#14243A;color:#F7F6F2;display:flex;align-items:center;justify-content:center"><i class="ph {{ exIcon }}" aria-hidden="true" style="font-size:28px"></i></span>
+              </sc-if>
+              <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.015em">{{ exTitle }}</h1>
+            </div>
+            <p style="margin:12px 0 0;max-width:62ch;color:#3A4352;font-size:18px">{{ exIntro }}</p>
+            <form role="search" onSubmit="{{ noSubmit }}" style="margin-top:24px;max-width:640px">
+              <label for="ex-q" style="display:block;font-size:15px;font-weight:600;margin-bottom:6px">Search within {{ exScopeLabel }}</label>
+              <div style="position:relative">
+                <i class="ph ph-magnifying-glass" aria-hidden="true" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:20px;color:#565D6B"></i>
+                <input id="ex-q" type="search" value="{{ q }}" onChange="{{ onQ }}" placeholder="Name, tag, creator or tool" autocomplete="off" style="width:100%;height:52px;padding:0 16px 0 46px;font-size:17px;background:#FFFFFF;border:1.5px solid #14243A;border-radius:8px">
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <div style="max-width:1240px;margin:0 auto;padding:28px clamp(16px,4vw,32px) 96px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+          <sc-if value="{{ narrow }}">
+            <button type="button" onClick="{{ toggleFilters }}" aria-expanded="{{ filtersAria }}" aria-controls="filters" style="flex:1 1 100%;min-height:48px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><i class="ph ph-funnel" aria-hidden="true" style="font-size:18px"></i>{{ filtersLabel }}</button>
+          </sc-if>
+          <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ true }}">
+            <aside id="filters" aria-label="Filters" style="flex:1 1 240px;max-width:100%;display:flex;flex-direction:column;gap:28px">
+              <fieldset style="border:0;margin:0;padding:0">
+                <legend style="font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:8px">Category</legend>
+                <sc-for list="{{ catOptions }}" as="o" hint-placeholder-count="11">
+                  <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.aria }}" style="width:100%;display:flex;align-items:center;gap:10px;text-align:left;min-height:40px;padding:8px 10px;border:0;border-radius:6px;background:{{ o.bg }};font-weight:{{ o.weight }};cursor:pointer;color:#14243A;font-size:15px;transition:background .15s ease" style-hover="background:#E9EEF7">
+                    <i class="ph {{ o.icon }}" aria-hidden="true" style="font-size:18px;color:#3A4352"></i><span style="flex:1">{{ o.label }}</span><span style="color:#565D6B;font-variant-numeric:tabular-nums">{{ o.count }}</span>
+                  </button>
+                </sc-for>
+              </fieldset>
+              <fieldset style="border:0;margin:0;padding:0">
+                <legend style="font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:10px">Pricing</legend>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ priceOptions }}" as="o" hint-placeholder-count="3">
+                    <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.aria }}" style="min-height:44px;padding:0 14px;border-radius:6px;border:1.5px solid #14243A;background:{{ o.bg }};color:{{ o.fg }};font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer;transition:background .15s ease, color .15s ease">{{ o.label }}</button>
+                  </sc-for>
+                </div>
+              </fieldset>
+              <fieldset style="border:0;margin:0;padding:0">
+                <legend style="font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:10px">Commercial use</legend>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ comOptions }}" as="o" hint-placeholder-count="3">
+                    <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.aria }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:{{ o.bg }};color:{{ o.fg }};font-weight:600;font-size:15px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:background .15s ease, color .15s ease"><i class="ph {{ o.icon }}" aria-hidden="true" style="font-size:16px"></i>{{ o.label }}</button>
+                  </sc-for>
+                </div>
+              </fieldset>
+              <fieldset style="border:0;margin:0;padding:0">
+                <legend style="font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:10px">Works with</legend>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ platOptions }}" as="o" hint-placeholder-count="6">
+                    <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.aria }}" style="min-height:44px;padding:0 14px;border-radius:6px;border:1.5px solid #14243A;background:{{ o.bg }};color:{{ o.fg }};font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer;transition:background .15s ease, color .15s ease">{{ o.label }}</button>
+                  </sc-for>
+                </div>
+              </fieldset>
+              <p style="margin:0;font-size:14px;line-height:1.5;color:#565D6B">Pricing and licences are listed as each source published them. Confirm on the source before commercial use.</p>
+            </aside>
+          </sc-if>
+
+          <section aria-labelledby="res-h" aria-busy="{{ busyAria }}" style="flex:999 1 520px;min-width:0">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+              <h2 id="res-h" aria-live="polite" style="margin:0;font-size:17px;font-weight:600">{{ resultLabel }}</h2>
+              <div style="display:flex;align-items:center;gap:8px">
+                <label for="sort" style="font-size:15px;color:#3A4352">Sort</label>
+                <select id="sort" value="{{ sort }}" onChange="{{ onSort }}" style="min-height:44px;padding:0 12px;border:1.5px solid #14243A;border-radius:6px;background:#FFFFFF;font-size:15px">
+                  <option value="relevance">Relevance</option>
+                  <option value="name">Name, A to Z</option>
+                  <option value="free">Free first</option>
+                </select>
+              </div>
+            </div>
+            <sc-if value="{{ hasChips }}">
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+                <sc-for list="{{ chips }}" as="c">
+                  <button type="button" onClick="{{ c.remove }}" aria-label="{{ c.aria }}" style="min-height:36px;padding:0 10px 0 12px;display:flex;align-items:center;gap:8px;border-radius:6px;border:0;background:#DCE5F2;color:#14243A;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#C9D6EA">{{ c.label }}<i class="ph ph-x" aria-hidden="true" style="font-size:14px"></i></button>
+                </sc-for>
+                <button type="button" onClick="{{ clearAll }}" style="min-height:36px;padding:0 8px;border:0;background:none;color:#2F55C8;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Clear all</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isLoading }}">
+              <p style="margin:0 0 16px;color:#3A4352">Loading the catalog…</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px">
+                <sc-for list="{{ loadingSlots }}" as="s">
+                  <div style="height:340px;border-radius:10px;border:1px solid #DDD8CC;background:#EFECE4"></div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isError }}">
+              <div role="alert" style="border:1.5px solid #B42318;background:#FFFFFF;border-radius:10px;padding:28px;max-width:620px">
+                <h3 style="margin:0 0 8px;font-size:20px;display:flex;align-items:center;gap:10px"><i class="ph ph-warning" aria-hidden="true" style="color:#B42318"></i>The catalog didn't load</h3>
+                <p style="margin:0 0 18px;color:#3A4352">The resource list couldn't be fetched. Check your connection, then try again. Your search and filters are kept.</p>
+                <button type="button" onClick="{{ retry }}" style="min-height:44px;padding:0 18px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;white-space:nowrap;cursor:pointer">Try again</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isEmpty }}">
+              <div style="border:1px solid #DDD8CC;background:#FFFFFF;border-radius:10px;padding:clamp(24px,4vw,40px);max-width:680px">
+                <i class="ph ph-magnifying-glass" aria-hidden="true" style="font-size:32px;color:#565D6B"></i>
+                <h3 style="margin:10px 0 8px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">{{ emptyTitle }}</h3>
+                <p style="margin:0 0 20px;color:#3A4352">Try a broader word, remove a filter, or browse one of these categories.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+                  <sc-if value="{{ hasChips }}">
+                    <button type="button" onClick="{{ clearAll }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;white-space:nowrap;cursor:pointer">Clear filters</button>
+                  </sc-if>
+                  <sc-for list="{{ suggestCats }}" as="c">
+                    <button type="button" onClick="{{ c.go }}" style="min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A;display:flex;align-items:center;gap:8px"><i class="ph {{ c.icon }}" aria-hidden="true"></i>{{ c.label }}</button>
+                  </sc-for>
+                </div>
+                <p style="margin:0;font-size:15px;color:#3A4352">Know a resource that belongs here? <button type="button" onClick="{{ goSubmit }}" style="background:none;border:0;padding:0;color:#2F55C8;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Submit it for review</button>.</p>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px">
+                <sc-for list="{{ results }}" as="item" hint-placeholder-count="6">
+                  <dc-import name="ResourceCard" r="{{ item }}" hint-size="100%,360px"></dc-import>
+                </sc-for>
+              </div>
+            </sc-if>
+          </section>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDetail }}">
+      <article data-screen-label="Resource detail" style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(16px,4vw,32px) 96px">
+        <div style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+          <div style="flex:999 1 560px;min-width:0">
+            <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.02em">{{ d.name }}</h1>
+            <p style="margin:12px 0 0;font-size:17px;color:#3A4352">By {{ d.creator }}</p>
+            <p style="margin:24px 0 0;max-width:60ch;font-size:clamp(18px,1.8vw,21px);line-height:1.5;text-wrap:pretty">{{ d.desc }}</p>
+            <div style="margin-top:32px;aspect-ratio:16/9;border-radius:10px;border:1px solid #DDD8CC;background:repeating-linear-gradient(135deg,#ECE8DE 0 12px,#F3F0E8 12px 24px);display:flex;align-items:center;justify-content:center;padding:16px">
+              <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#454C59;background:#F7F6F2;padding:6px 10px;border-radius:4px;text-align:center">preview image · screenshot from {{ d.domain }}, cleared with the creator</span>
+            </div>
+            <h2 style="margin:44px 0 12px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:26px">What's included</h2>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;max-width:62ch">
+              <sc-for list="{{ d.features }}" as="f">
+                <li style="display:flex;gap:12px;align-items:flex-start"><i class="ph ph-check" aria-hidden="true" style="font-size:18px;margin-top:4px;color:#2F55C8"></i><span>{{ f }}</span></li>
+              </sc-for>
+            </ul>
+            <h2 style="margin:36px 0 12px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:26px">Useful for</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ d.tagBtns }}" as="t">
+                <button type="button" onClick="{{ t.go }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:0;background:#DCE5F2;color:#14243A;font-size:15px;font-weight:600;white-space:nowrap;cursor:pointer" style-hover="background:#C9D6EA">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <aside aria-label="Access and licence" style="flex:1 1 300px;position:sticky;top:88px;background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:24px">
+            <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:14px 16px;font-size:15px">
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-tag" aria-hidden="true"></i>Pricing</dt><dd style="margin:0;font-weight:600">{{ d.price }}</dd>
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-briefcase" aria-hidden="true"></i>Commercial use</dt><dd style="margin:0;font-weight:600;display:flex;align-items:center;gap:6px"><i class="ph {{ d.comIcon }}" aria-hidden="true"></i>{{ d.comLabel }}</dd>
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-scales" aria-hidden="true"></i>Licence</dt><dd style="margin:0">{{ d.license }}</dd>
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-file" aria-hidden="true"></i>Formats</dt><dd style="margin:0">{{ d.formats }}</dd>
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-plugs" aria-hidden="true"></i>Works with</dt><dd style="margin:0">{{ d.tools }}</dd>
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-globe" aria-hidden="true"></i>Source</dt><dd style="margin:0;overflow-wrap:anywhere">{{ d.domain }}</dd>
+              <dt style="color:#565D6B;display:flex;align-items:center;gap:8px"><i class="ph ph-calendar-check" aria-hidden="true"></i>Last checked</dt><dd style="margin:0;color:{{ d.checkColor }}">{{ d.checkLabel }}</dd>
+            </dl>
+            <a href="{{ d.url }}" target="_blank" rel="noopener noreferrer" style="position:relative;margin-top:24px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border-radius:8px;background:#4169E1;color:#FFFFFF;font-weight:600;text-decoration:none;text-align:center;padding:12px 16px;line-height:1.25;white-space:nowrap;transition:background .15s ease" style-hover="background:#3457C4;color:#FFFFFF">Visit the source<i class="ph ph-arrow-square-out" aria-hidden="true" style="font-size:18px"></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (opens in a new tab)</span></a>
+            <button type="button" onClick="{{ d.toggleSave }}" aria-pressed="{{ d.savedAria }}" style="margin-top:10px;width:100%;min-height:48px;border-radius:8px;border:1.5px solid #14243A;background:{{ d.saveBg }};color:{{ d.saveFg }};font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s ease, color .2s ease"><i class="ph {{ d.saveIcon }}" aria-hidden="true" style="font-size:18px"></i>{{ d.saveText }}</button>
+            <p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:#565D6B">Licence as published by the creator. Terms can change, so check the source before using it commercially.</p>
+            <button type="button" onClick="{{ reportLink }}" style="margin-top:12px;min-height:44px;background:none;border:0;padding:0;color:#2F55C8;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Report a broken or outdated link</button>
+          </aside>
+        </div>
+        <sc-if value="{{ d.hasRelated }}">
+          <section aria-labelledby="rel-h" style="margin-top:72px;border-top:1.5px solid #14243A;padding-top:24px">
+            <h2 id="rel-h" style="margin:0 0 20px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:26px">More in {{ d.catLabel }}</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px">
+              <sc-for list="{{ d.related }}" as="item">
+                <dc-import name="ResourceCard" r="{{ item }}" hint-size="100%,360px"></dc-import>
+              </sc-for>
+            </div>
+          </section>
+        </sc-if>
+      </article>
+    </sc-if>
+
+    <sc-if value="{{ isSubmit }}">
+      <div data-screen-label="Submit" style="max-width:1240px;margin:0 auto;padding:clamp(36px,5vw,64px) clamp(16px,4vw,32px) 96px;display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start">
+        <div style="flex:1 1 300px">
+          <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.05;letter-spacing:-.015em">Submit a resource</h1>
+          <p style="margin:16px 0 28px;color:#3A4352;font-size:18px;max-width:44ch">Every submission is reviewed by hand before it's listed. An entry is accepted when it has:</p>
+          <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid #DDD8CC">
+            <li style="padding:14px 0;border-bottom:1px solid #DDD8CC;display:flex;gap:14px"><i class="ph ph-globe" aria-hidden="true" style="font-size:22px;color:#2F55C8;margin-top:2px"></i><span><strong>A public source page.</strong> Nothing behind a login just to read what it is.</span></li>
+            <li style="padding:14px 0;border-bottom:1px solid #DDD8CC;display:flex;gap:14px"><i class="ph ph-user" aria-hidden="true" style="font-size:22px;color:#2F55C8;margin-top:2px"></i><span><strong>A named creator.</strong> A person, studio or organisation we can credit.</span></li>
+            <li style="padding:14px 0;border-bottom:1px solid #DDD8CC;display:flex;gap:14px"><i class="ph ph-scales" aria-hidden="true" style="font-size:22px;color:#2F55C8;margin-top:2px"></i><span><strong>Stated terms of use.</strong> A licence or pricing page that says what's allowed.</span></li>
+            <li style="padding:14px 0;border-bottom:1px solid #DDD8CC;display:flex;gap:14px"><i class="ph ph-copy" aria-hidden="true" style="font-size:22px;color:#2F55C8;margin-top:2px"></i><span><strong>Something new.</strong> Not already in the index under another name.</span></li>
+          </ol>
+        </div>
+        <div style="flex:1.4 1 420px;min-width:0;background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:clamp(20px,3.5vw,36px)">
+          <sc-if value="{{ subSent }}">
+            <div role="status" style="display:flex;flex-direction:column;gap:12px">
+              <i class="ph ph-check-circle" aria-hidden="true" style="font-size:40px;color:#2F55C8"></i>
+              <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">It's in the review queue</h2>
+              <p style="margin:0;color:#3A4352">{{ subSentMsg }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+                <button type="button" onClick="{{ subReset }}" style="min-height:48px;padding:0 18px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;white-space:nowrap;cursor:pointer">Submit another</button>
+                <button type="button" onClick="{{ goExplore }}" style="min-height:48px;padding:0 18px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Back to the index</button>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ subShowForm }}" hint-placeholder-val="{{ true }}">
+            <form novalidate="" onSubmit="{{ subSubmit }}" style="display:flex;flex-direction:column;gap:20px">
+              <sc-if value="{{ subFailed }}">
+                <div role="alert" style="border:1.5px solid #B42318;border-radius:8px;padding:14px 16px;color:#14243A"><strong style="color:#B42318">Your submission wasn't sent.</strong> The server didn't respond. Everything you entered is still here, so you can try again.</div>
+              </sc-if>
+              <sc-if value="{{ subInvalid }}">
+                <div role="alert" style="border:1.5px solid #B42318;border-radius:8px;padding:14px 16px"><strong style="color:#B42318">{{ subErrCount }}</strong> Fix the highlighted fields below.</div>
+              </sc-if>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="sub-name" style="font-weight:600">Resource name</label>
+                <input id="sub-name" value="{{ sub.name }}" onChange="{{ subOn.name }}" aria-invalid="{{ subAria.name }}" aria-describedby="sub-name-err" style="min-height:48px;padding:0 14px;border-radius:6px;border:1.5px solid {{ subBorder.name }};background:#FFFFFF">
+                <span id="sub-name-err" style="font-size:14px;color:#B42318">{{ subErr.name }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="sub-url" style="font-weight:600">Link to the original source</label>
+                <input id="sub-url" type="url" inputmode="url" value="{{ sub.url }}" onChange="{{ subOn.url }}" placeholder="https://" aria-invalid="{{ subAria.url }}" aria-describedby="sub-url-err" style="min-height:48px;padding:0 14px;border-radius:6px;border:1.5px solid {{ subBorder.url }};background:#FFFFFF">
+                <span id="sub-url-err" style="font-size:14px;color:#B42318">{{ subErr.url }}</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:20px">
+                <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:6px">
+                  <label for="sub-cat" style="font-weight:600">Category</label>
+                  <select id="sub-cat" value="{{ sub.cat }}" onChange="{{ subOn.cat }}" aria-invalid="{{ subAria.cat }}" aria-describedby="sub-cat-err" style="min-height:48px;padding:0 12px;border-radius:6px;border:1.5px solid {{ subBorder.cat }};background:#FFFFFF">
+                    <option value="">Choose one</option>
+                    <sc-for list="{{ catSelect }}" as="c">
+                      <option value="{{ c.id }}">{{ c.label }}</option>
+                    </sc-for>
+                  </select>
+                  <span id="sub-cat-err" style="font-size:14px;color:#B42318">{{ subErr.cat }}</span>
+                </div>
+                <div style="flex:1 1 180px;display:flex;flex-direction:column;gap:6px">
+                  <label for="sub-price" style="font-weight:600">Pricing <span style="font-weight:400;color:#565D6B">(optional)</span></label>
+                  <select id="sub-price" value="{{ sub.price }}" onChange="{{ subOn.price }}" style="min-height:48px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF">
+                    <option value="">Not sure</option>
+                    <option value="Free">Free</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Paid">Paid</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="sub-desc" style="font-weight:600">What is it, and who is it for?</label>
+                <textarea id="sub-desc" rows="4" value="{{ sub.desc }}" onChange="{{ subOn.desc }}" aria-invalid="{{ subAria.desc }}" aria-describedby="sub-desc-hint sub-desc-err" style="padding:12px 14px;border-radius:6px;border:1.5px solid {{ subBorder.desc }};background:#FFFFFF;resize:vertical"></textarea>
+                <span id="sub-desc-hint" style="font-size:14px;color:#565D6B">{{ subDescCount }}</span>
+                <span id="sub-desc-err" style="font-size:14px;color:#B42318">{{ subErr.desc }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="sub-email" style="font-weight:600">Your email <span style="font-weight:400;color:#565D6B">(optional, only to tell you the outcome)</span></label>
+                <input id="sub-email" type="email" autocomplete="email" value="{{ sub.email }}" onChange="{{ subOn.email }}" placeholder="email@example.com" aria-invalid="{{ subAria.email }}" aria-describedby="sub-email-err" style="min-height:48px;padding:0 14px;border-radius:6px;border:1.5px solid {{ subBorder.email }};background:#FFFFFF">
+                <span id="sub-email-err" style="font-size:14px;color:#B42318">{{ subErr.email }}</span>
+              </div>
+              <button type="submit" disabled="{{ subSending }}" style="align-self:flex-start;min-height:52px;padding:0 24px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;font-size:17px;cursor:pointer;transition:background .15s ease" style-hover="background:#3457C4">{{ subBtn }}</button>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isAbout }}">
+      <div data-screen-label="About">
+        <section style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(16px,4vw,32px) 48px;display:flex;flex-wrap:wrap;gap:48px">
+          <h1 style="flex:1 1 320px;margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(36px,4.8vw,60px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance">An index for people who make interfaces.</h1>
+          <div style="flex:1.2 1 380px;display:flex;flex-direction:column;gap:16px;font-size:18px;color:#3A4352;max-width:62ch">
+            <p style="margin:0">Design Atlas collects UI kits, design systems, icons, typefaces, tools and learning material in one place, for designers, students and the developers who build what they draw.</p>
+            <p style="margin:0">It doesn't host files or take a cut. Each entry is a short, checked description that points to the creator's own page, with the licence stated up front so you know what you can do before you click.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="faq-h" style="max-width:1240px;margin:0 auto;padding:24px clamp(16px,4vw,32px) 64px">
+          <h2 id="faq-h" style="margin:0 0 8px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">Questions</h2>
+          <div style="border-top:1.5px solid #14243A;max-width:860px">
+            <sc-for list="{{ faq }}" as="f" hint-placeholder-count="5">
+              <div style="border-bottom:1px solid #DDD8CC">
+                <h3 style="margin:0">
+                  <button type="button" onClick="{{ f.toggle }}" aria-expanded="{{ f.aria }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;background:none;border:0;padding:18px 0;min-height:56px;font-size:19px;font-weight:600;cursor:pointer;color:#14243A" style-hover="color:#2F55C8">{{ f.q }}<i class="ph ph-caret-down" aria-hidden="true" style="font-size:20px;flex:0 0 auto;transform:rotate({{ f.rot }});transition:transform .2s ease"></i></button>
+                </h3>
+                <sc-if value="{{ f.open }}">
+                  <p style="margin:0 0 20px;max-width:64ch;color:#3A4352">{{ f.a }}</p>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section id="contact" aria-labelledby="con-h" style="max-width:1240px;margin:0 auto;padding:24px clamp(16px,4vw,32px) 96px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;scroll-margin-top:80px">
+          <div style="flex:1 1 300px">
+            <h2 id="con-h" style="margin:0 0 10px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">Contact</h2>
+            <p style="margin:0;color:#3A4352;max-width:44ch">For broken links, licence corrections, or a creator asking to update their entry. To suggest something new, use <button type="button" onClick="{{ goSubmit }}" style="background:none;border:0;padding:0;color:#2F55C8;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">the submission form</button> instead.</p>
+          </div>
+          <div style="flex:1.4 1 420px;min-width:0;background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:clamp(20px,3.5vw,32px)">
+            <sc-if value="{{ conSent }}">
+              <div role="status" style="display:flex;flex-direction:column;gap:12px">
+                <h3 style="margin:0;font-size:22px">Message sent</h3>
+                <p style="margin:0;color:#3A4352">Thanks, {{ con.name }}. A reply goes to {{ con.email }}.</p>
+                <button type="button" onClick="{{ conReset }}" style="align-self:flex-start;min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Write another</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ conShowForm }}" hint-placeholder-val="{{ true }}">
+              <form novalidate="" onSubmit="{{ conSubmit }}" style="display:flex;flex-direction:column;gap:18px">
+                <sc-if value="{{ conFailed }}">
+                  <div role="alert" style="border:1.5px solid #B42318;border-radius:8px;padding:14px 16px"><strong style="color:#B42318">Not sent.</strong> The server didn't respond. Your message is still here, so try again.</div>
+                </sc-if>
+                <div style="display:flex;flex-wrap:wrap;gap:18px">
+                  <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                    <label for="con-name" style="font-weight:600">Your name</label>
+                    <input id="con-name" autocomplete="name" value="{{ con.name }}" onChange="{{ conOn.name }}" aria-invalid="{{ conAria.name }}" aria-describedby="con-name-err" style="min-height:48px;padding:0 14px;border-radius:6px;border:1.5px solid {{ conBorder.name }};background:#FFFFFF">
+                    <span id="con-name-err" style="font-size:14px;color:#B42318">{{ conErr.name }}</span>
+                  </div>
+                  <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                    <label for="con-email" style="font-weight:600">Email</label>
+                    <input id="con-email" type="email" autocomplete="email" value="{{ con.email }}" onChange="{{ conOn.email }}" placeholder="email@example.com" aria-invalid="{{ conAria.email }}" aria-describedby="con-email-err" style="min-height:48px;padding:0 14px;border-radius:6px;border:1.5px solid {{ conBorder.email }};background:#FFFFFF">
+                    <span id="con-email-err" style="font-size:14px;color:#B42318">{{ conErr.email }}</span>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="con-msg" style="font-weight:600">Message</label>
+                  <textarea id="con-msg" rows="5" value="{{ con.msg }}" onChange="{{ conOn.msg }}" aria-invalid="{{ conAria.msg }}" aria-describedby="con-msg-err" placeholder="Which resource, and what's wrong?" style="padding:12px 14px;border-radius:6px;border:1.5px solid {{ conBorder.msg }};background:#FFFFFF;resize:vertical"></textarea>
+                  <span id="con-msg-err" style="font-size:14px;color:#B42318">{{ conErr.msg }}</span>
+                </div>
+                <button type="submit" disabled="{{ conSending }}" style="align-self:flex-start;min-height:48px;padding:0 22px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;cursor:pointer" style-hover="background:#22385A">{{ conBtn }}</button>
+              </form>
+            </sc-if>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isManage }}">
+      <div data-screen-label="Manage" style="max-width:1240px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(16px,4vw,32px) 96px">
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px">
+          <div style="flex:1 1 320px">
+            <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-.015em">Manage the hub</h1>
+            <p style="margin:8px 0 0;color:#3A4352">{{ mgSummary }}</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <button type="button" onClick="{{ exportJson }}" style="min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid #14243A;background:#14243A;color:#F7F6F2;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-download-simple" aria-hidden="true" style="font-size:18px"></i>Export JSON</button>
+            <button type="button" onClick="{{ pickImport }}" style="min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px;color:#14243A"><i class="ph ph-upload-simple" aria-hidden="true" style="font-size:18px"></i>Import JSON</button>
+            <input id="import-file" type="file" accept="application/json,.json" onChange="{{ importJson }}" tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none">
+            <button type="button" onClick="{{ askReset }}" style="min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px;color:#14243A"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true" style="font-size:18px"></i>Reset to file</button>
+            <button type="button" onClick="{{ goHome }}" style="min-height:44px;padding:0 14px;border-radius:8px;border:0;background:none;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px;color:#2F55C8"><i class="ph ph-eye" aria-hidden="true" style="font-size:18px"></i>View site</button>
+          </div>
+        </div>
+        <p style="margin:16px 0 0;padding:12px 16px;border-radius:8px;background:#DCE5F2;font-size:15px;display:flex;gap:10px;align-items:flex-start"><i class="ph ph-info" aria-hidden="true" style="font-size:20px;margin-top:1px"></i><span>No database yet. Edits save in this browser and update the site right away, including other open tabs. Export the JSON to back it up, or replace atlas-data.json in the project to make it the default.</span></p>
+        <sc-if value="{{ confirmReset }}">
+          <div role="alertdialog" aria-labelledby="reset-h" style="margin-top:12px;padding:16px;border-radius:8px;border:1.5px solid #B42318;background:#FFFFFF;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+            <span id="reset-h">Discard every change saved in this browser and reload atlas-data.json?</span>
+            <span style="display:flex;gap:8px">
+              <button type="button" onClick="{{ doReset }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#B42318;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer">Discard and reload</button>
+              <button type="button" onClick="{{ cancelReset }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Cancel</button>
+            </span>
+          </div>
+        </sc-if>
+
+        <div role="tablist" aria-label="Manage sections" style="margin-top:28px;display:flex;gap:4px;border-bottom:1.5px solid #14243A;overflow-x:auto">
+          <sc-for list="{{ mgTabs }}" as="t" hint-placeholder-count="4">
+            <button type="button" role="tab" id="{{ t.tabId }}" aria-selected="{{ t.aria }}" aria-controls="mg-panel" onClick="{{ t.go }}" style="flex:0 0 auto;min-height:48px;padding:0 16px;border:0;border-radius:8px 8px 0 0;background:{{ t.bg }};color:{{ t.fg }};font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:background .15s ease"><i class="ph {{ t.icon }}" aria-hidden="true" style="font-size:18px"></i>{{ t.label }}<span style="font-size:13px;opacity:.85">{{ t.count }}</span></button>
+          </sc-for>
+        </div>
+
+        <div id="mg-panel" role="tabpanel" aria-labelledby="{{ mgTabId }}" style="padding-top:24px">
+
+          <sc-if value="{{ tabRes }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+              <div style="flex:1 1 440px;min-width:0">
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+                  <div style="flex:1 1 200px;position:relative">
+                    <label for="mg-q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Filter resources</label>
+                    <i class="ph ph-magnifying-glass" aria-hidden="true" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#565D6B"></i>
+                    <input id="mg-q" type="search" value="{{ mgQ }}" onChange="{{ onMgQ }}" placeholder="Filter by name" style="width:100%;min-height:44px;padding:0 12px 0 36px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF">
+                  </div>
+                  <label for="mg-cat" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Category</label>
+                  <select id="mg-cat" value="{{ mgCat }}" onChange="{{ onMgCat }}" style="flex:1 1 160px;min-height:44px;padding:0 10px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF">
+                    <option value="">All categories</option>
+                    <sc-for list="{{ catSelect }}" as="c">
+                      <option value="{{ c.id }}">{{ c.label }}</option>
+                    </sc-for>
+                  </select>
+                  <label for="mg-check" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Check status</label>
+                  <select id="mg-check" value="{{ mgCheck }}" onChange="{{ onMgCheck }}" style="flex:1 1 150px;min-height:44px;padding:0 10px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF">
+                    <option value="">Any check status</option>
+                    <option value="due">{{ mgDueLabel }}</option>
+                  </select>
+                  <button type="button" onClick="{{ newRes }}" style="flex:0 0 auto;min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-plus" aria-hidden="true"></i>Add resource</button>
+                </div>
+                <p style="margin:0 0 8px;font-size:14px;color:#565D6B">{{ mgCountLabel }}</p>
+                <sc-if value="{{ mgEmpty }}">
+                  <p style="margin:0;padding:24px;border:1px dashed #9AA1AE;border-radius:8px;color:#3A4352">No resources match this filter. Clear the search or pick another category.</p>
+                </sc-if>
+                <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #DDD8CC;max-height:720px;overflow-y:auto">
+                  <sc-for list="{{ mgRows }}" as="r" hint-placeholder-count="8">
+                    <li style="border-bottom:1px solid #DDD8CC;padding:12px 8px;background:{{ r.bg }};display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+                      <i class="ph {{ r.icon }}" aria-hidden="true" style="font-size:20px;color:#565D6B"></i>
+                      <span style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column"><span style="font-weight:600">{{ r.name }}</span><span style="font-size:14px;color:#565D6B">{{ r.meta }}</span></span>
+                      <sc-if value="{{ r.confirming }}">
+                        <span style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px">
+                          <span>Delete?</span>
+                          <button type="button" onClick="{{ r.del }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:0;background:#B42318;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer">Delete</button>
+                          <button type="button" onClick="{{ r.cancelDel }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Keep</button>
+                        </span>
+                      </sc-if>
+                      <sc-if value="{{ r.idle }}" hint-placeholder-val="{{ true }}">
+                        <span style="display:flex;gap:4px">
+                          <button type="button" onClick="{{ r.edit }}" aria-label="{{ r.editAria }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;color:#14243A"><i class="ph ph-pencil-simple" aria-hidden="true"></i>Edit</button>
+                          <button type="button" onClick="{{ r.askDel }}" aria-label="{{ r.delAria }}" style="min-height:40px;min-width:40px;padding:0 10px;border-radius:6px;border:1.5px solid #B42318;background:#FFFFFF;cursor:pointer;color:#B42318;display:flex;align-items:center;justify-content:center"><i class="ph ph-trash" aria-hidden="true" style="font-size:18px"></i></button>
+                        </span>
+                      </sc-if>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
+
+              <div style="flex:1 1 420px;min-width:0;position:sticky;top:84px">
+                <sc-if value="{{ noEditor }}" hint-placeholder-val="{{ true }}">
+                  <div style="border:1px dashed #9AA1AE;border-radius:10px;padding:32px;text-align:center;color:#3A4352;display:flex;flex-direction:column;align-items:center;gap:12px">
+                    <i class="ph ph-note-pencil" aria-hidden="true" style="font-size:36px;color:#565D6B"></i>
+                    <p style="margin:0;max-width:34ch">Choose Edit on any resource, or add a new one. A live card preview appears here as you type.</p>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ hasEditor }}">
+                  <form novalidate="" onSubmit="{{ saveRes }}" aria-labelledby="ed-h" style="background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:16px;max-height:calc(100vh - 110px);overflow-y:auto">
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                      <h2 id="ed-h" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">{{ edTitle }}</h2>
+                      <button type="button" onClick="{{ closeEditor }}" aria-label="Close editor" style="min-height:40px;min-width:40px;border-radius:6px;border:0;background:#F1EEE6;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#14243A"><i class="ph ph-x" aria-hidden="true" style="font-size:18px"></i></button>
+                    </div>
+                    <sc-if value="{{ edFromSub }}">
+                      <p style="margin:0;padding:10px 12px;border-radius:6px;background:#DCE5F2;font-size:14px">Filled from a submission. Check the licence and creator on the source, then save to publish it.</p>
+                    </sc-if>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ed-name" style="font-weight:600">Name</label>
+                      <input id="ed-name" value="{{ ed.name }}" onChange="{{ edOn.name }}" aria-invalid="{{ edAria.name }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid {{ edBorder.name }}">
+                      <span style="font-size:14px;color:#B42318">{{ edErr.name }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ed-url" style="font-weight:600">Source URL</label>
+                      <input id="ed-url" type="url" value="{{ ed.url }}" onChange="{{ edOn.url }}" placeholder="https://" aria-invalid="{{ edAria.url }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid {{ edBorder.url }}">
+                      <span style="font-size:14px;color:#B42318">{{ edErr.url }}</span>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:14px">
+                      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                        <label for="ed-cat" style="font-weight:600">Category</label>
+                        <select id="ed-cat" value="{{ ed.cat }}" onChange="{{ edOn.cat }}" aria-invalid="{{ edAria.cat }}" style="min-height:44px;padding:0 10px;border-radius:6px;border:1.5px solid {{ edBorder.cat }};background:#FFFFFF">
+                          <option value="">Choose one</option>
+                          <sc-for list="{{ catSelect }}" as="c">
+                            <option value="{{ c.id }}">{{ c.label }}</option>
+                          </sc-for>
+                        </select>
+                        <span style="font-size:14px;color:#B42318">{{ edErr.cat }}</span>
+                      </div>
+                      <div style="flex:1 1 140px;display:flex;flex-direction:column;gap:6px">
+                        <label for="ed-price" style="font-weight:600">Pricing</label>
+                        <select id="ed-price" value="{{ ed.price }}" onChange="{{ edOn.price }}" style="min-height:44px;padding:0 10px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF">
+                          <option value="Free">Free</option>
+                          <option value="Premium">Premium</option>
+                          <option value="Paid">Paid</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:14px">
+                      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                        <label for="ed-creator" style="font-weight:600">Creator</label>
+                        <input id="ed-creator" value="{{ ed.creator }}" onChange="{{ edOn.creator }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE">
+                      </div>
+                      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                        <label for="ed-license" style="font-weight:600">Licence</label>
+                        <input id="ed-license" value="{{ ed.license }}" onChange="{{ edOn.license }}" placeholder="As stated on the source" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE">
+                      </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end">
+                      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                        <label for="ed-commercial" style="font-weight:600">Commercial use</label>
+                        <select id="ed-commercial" value="{{ ed.commercial }}" onChange="{{ edOn.commercial }}" style="min-height:44px;padding:0 10px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF">
+                          <option value="yes">Allowed</option>
+                          <option value="check">Check the source</option>
+                          <option value="no">Reference only</option>
+                        </select>
+                      </div>
+                      <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px">
+                        <span style="font-weight:600">Last checked</span>
+                        <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="color:{{ edCheckColor }}">{{ edCheckLabel }}</span><button type="button" onClick="{{ edMarkChecked }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;cursor:pointer;white-space:nowrap;color:#14243A;display:flex;align-items:center;gap:6px"><i class="ph ph-calendar-check" aria-hidden="true"></i>Checked today</button></span>
+                      </div>
+                    </div>
+                    <fieldset style="border:0;margin:0;padding:0">
+                      <legend style="font-weight:600;margin-bottom:8px">Works with</legend>
+                      <div style="display:flex;flex-wrap:wrap;gap:6px">
+                        <sc-for list="{{ edTools }}" as="o">
+                          <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.aria }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:{{ o.bg }};color:{{ o.fg }};font-weight:600;font-size:14px;white-space:nowrap;cursor:pointer">{{ o.label }}</button>
+                        </sc-for>
+                      </div>
+                    </fieldset>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ed-desc" style="font-weight:600">Short description</label>
+                      <textarea id="ed-desc" rows="3" value="{{ ed.desc }}" onChange="{{ edOn.desc }}" aria-invalid="{{ edAria.desc }}" style="padding:10px 12px;border-radius:6px;border:1.5px solid {{ edBorder.desc }};resize:vertical"></textarea>
+                      <span style="font-size:14px;color:#B42318">{{ edErr.desc }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ed-tags" style="font-weight:600">Tags <span style="font-weight:400;color:#565D6B">(comma separated)</span></label>
+                      <input id="ed-tags" value="{{ ed.tags }}" onChange="{{ edOn.tags }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE">
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ed-features" style="font-weight:600">What's included <span style="font-weight:400;color:#565D6B">(one per line)</span></label>
+                      <textarea id="ed-features" rows="3" value="{{ ed.features }}" onChange="{{ edOn.features }}" style="padding:10px 12px;border-radius:6px;border:1.5px solid #9AA1AE;resize:vertical"></textarea>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ed-formats" style="font-weight:600">Formats</label>
+                      <input id="ed-formats" value="{{ ed.formats }}" onChange="{{ edOn.formats }}" placeholder="Figma, SVG, React" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE">
+                    </div>
+                    <label style="display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer"><input type="checkbox" checked="{{ ed.featured }}" onChange="{{ edToggleFeatured }}" style="width:20px;height:20px;accent-color:#4169E1"><span>Show in "Worth starting with" on the home page</span></label>
+                    <div>
+                      <p style="margin:0 0 8px;font-size:14px;font-weight:700;letter-spacing:.04em">Live card preview</p>
+                      <div style="max-width:300px">
+                        <dc-import name="ResourceCard" r="{{ edPreview }}" hint-size="100%,360px"></dc-import>
+                      </div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;position:sticky;bottom:-28px;background:#FFFFFF;padding:12px 0">
+                      <button type="submit" style="min-height:48px;padding:0 20px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-check" aria-hidden="true"></i>{{ edSaveLabel }}</button>
+                      <button type="button" onClick="{{ closeEditor }}" style="min-height:48px;padding:0 18px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Cancel</button>
+                    </div>
+                  </form>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ tabCats }}">
+            <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+              <div style="flex:1 1 440px;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px">
+                  <p style="margin:0;font-size:14px;color:#565D6B">Categories appear in this order across the site.</p>
+                  <button type="button" onClick="{{ newCat }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-plus" aria-hidden="true"></i>Add category</button>
+                </div>
+                <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #DDD8CC">
+                  <sc-for list="{{ catRows }}" as="c" hint-placeholder-count="10">
+                    <li style="border-bottom:1px solid #DDD8CC;padding:12px 8px;background:{{ c.bg }};display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+                      <span style="width:40px;height:40px;border-radius:8px;background:#DCE5F2;display:flex;align-items:center;justify-content:center"><i class="ph {{ c.icon }}" aria-hidden="true" style="font-size:20px"></i></span>
+                      <span style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column"><span style="font-weight:600">{{ c.label }}</span><span style="font-size:14px;color:#565D6B">{{ c.countLabel }}</span></span>
+                      <span style="display:flex;gap:4px">
+                        <button type="button" onClick="{{ c.up }}" disabled="{{ c.first }}" aria-label="{{ c.upAria }}" style="min-height:40px;min-width:40px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#14243A;opacity:{{ c.upOp }}"><i class="ph ph-arrow-up" aria-hidden="true"></i></button>
+                        <button type="button" onClick="{{ c.down }}" disabled="{{ c.last }}" aria-label="{{ c.downAria }}" style="min-height:40px;min-width:40px;border-radius:6px;border:1.5px solid #9AA1AE;background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#14243A;opacity:{{ c.downOp }}"><i class="ph ph-arrow-down" aria-hidden="true"></i></button>
+                        <button type="button" onClick="{{ c.edit }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;color:#14243A"><i class="ph ph-pencil-simple" aria-hidden="true"></i>Edit</button>
+                        <button type="button" onClick="{{ c.del }}" aria-label="{{ c.delAria }}" style="min-height:40px;min-width:40px;border-radius:6px;border:1.5px solid #B42318;background:#FFFFFF;cursor:pointer;color:#B42318;display:flex;align-items:center;justify-content:center"><i class="ph ph-trash" aria-hidden="true" style="font-size:18px"></i></button>
+                      </span>
+                      <sc-if value="{{ c.hasMsg }}">
+                        <p role="alert" style="flex:1 1 100%;margin:0;font-size:14px;color:#9A1C12">{{ c.msg }}</p>
+                      </sc-if>
+                      <sc-if value="{{ c.confirming }}">
+                        <span style="flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px">Delete this empty category?
+                          <button type="button" onClick="{{ c.confirmDel }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:0;background:#B42318;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer">Delete</button>
+                          <button type="button" onClick="{{ c.cancelDel }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Keep</button>
+                        </span>
+                      </sc-if>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
+              <div style="flex:1 1 380px;min-width:0;position:sticky;top:84px">
+                <sc-if value="{{ noCatEditor }}" hint-placeholder-val="{{ true }}">
+                  <div style="border:1px dashed #9AA1AE;border-radius:10px;padding:32px;text-align:center;color:#3A4352;display:flex;flex-direction:column;align-items:center;gap:12px">
+                    <i class="ph ph-folder-simple-plus" aria-hidden="true" style="font-size:36px;color:#565D6B"></i>
+                    <p style="margin:0;max-width:34ch">Edit a category's name, description and icon, or add a new one. Categories with resources can't be deleted until those resources are moved.</p>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ hasCatEditor }}">
+                  <form novalidate="" onSubmit="{{ saveCat }}" style="background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:16px">
+                    <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">{{ ceTitle }}</h2>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ce-label" style="font-weight:600">Name</label>
+                      <input id="ce-label" value="{{ ce.label }}" onChange="{{ ceOn.label }}" aria-invalid="{{ ceAria.label }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid {{ ceBorder.label }}">
+                      <span style="font-size:14px;color:#B42318">{{ ceErr.label }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ce-short" style="font-weight:600">Short name <span style="font-weight:400;color:#565D6B">(used in project sets, e.g. "Icons")</span></label>
+                      <input id="ce-short" value="{{ ce.short }}" onChange="{{ ceOn.short }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE">
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ce-blurb" style="font-weight:600">One-line description</label>
+                      <textarea id="ce-blurb" rows="2" value="{{ ce.blurb }}" onChange="{{ ceOn.blurb }}" style="padding:10px 12px;border-radius:6px;border:1.5px solid #9AA1AE;resize:vertical"></textarea>
+                    </div>
+                    <fieldset style="border:0;margin:0;padding:0">
+                      <legend style="font-weight:600;margin-bottom:8px">Icon</legend>
+                      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:6px">
+                        <sc-for list="{{ iconChoices }}" as="ic">
+                          <button type="button" onClick="{{ ic.pick }}" aria-pressed="{{ ic.aria }}" aria-label="{{ ic.name }}" style="height:48px;border-radius:8px;border:1.5px solid {{ ic.border }};background:{{ ic.bg }};color:{{ ic.fg }};cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="ph {{ ic.name }}" aria-hidden="true" style="font-size:22px"></i></button>
+                        </sc-for>
+                      </div>
+                    </fieldset>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;background:#F7F6F2">
+                      <span style="width:44px;height:44px;border-radius:8px;background:#DCE5F2;display:flex;align-items:center;justify-content:center"><i class="ph {{ ce.icon }}" aria-hidden="true" style="font-size:22px"></i></span>
+                      <span style="display:flex;flex-direction:column"><span style="font-weight:600">{{ cePreviewLabel }}</span><span style="font-size:14px;color:#3A4352">{{ ce.blurb }}</span></span>
+                    </div>
+                    <div style="display:flex;gap:8px">
+                      <button type="submit" style="min-height:48px;padding:0 20px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-check" aria-hidden="true"></i>Save category</button>
+                      <button type="button" onClick="{{ closeCat }}" style="min-height:48px;padding:0 18px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Cancel</button>
+                    </div>
+                  </form>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ tabSubs }}">
+            <sc-if value="{{ subsEmpty }}">
+              <div style="border:1px dashed #9AA1AE;border-radius:10px;padding:32px;max-width:640px;color:#3A4352;display:flex;gap:16px;align-items:flex-start">
+                <i class="ph ph-tray" aria-hidden="true" style="font-size:32px;color:#565D6B"></i>
+                <p style="margin:0">No submissions waiting. Anything sent through the Submit page lands here for review.</p>
+              </div>
+            </sc-if>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:860px">
+              <sc-for list="{{ subRows }}" as="x">
+                <li style="background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px">
+                  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px"><strong style="font-size:18px">{{ x.name }}</strong><span style="font-size:14px;color:#565D6B">{{ x.meta }}</span></div>
+                  <a href="{{ x.url }}" target="_blank" rel="noopener noreferrer" style="font-size:15px;overflow-wrap:anywhere">{{ x.url }}</a>
+                  <p style="margin:0;color:#3A4352">{{ x.desc }}</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+                    <button type="button" onClick="{{ x.review }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-note-pencil" aria-hidden="true"></i>Review in editor</button>
+                    <button type="button" onClick="{{ x.dismiss }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Dismiss</button>
+                  </div>
+                </li>
+              </sc-for>
+            </ul>
+          </sc-if>
+
+          <sc-if value="{{ tabSite }}">
+            <form novalidate="" onSubmit="{{ saveSite }}" style="max-width:760px;background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:18px">
+              <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">Footer and site details</h2>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="st-copy" style="font-weight:600">Copyright holder</label>
+                <input id="st-copy" value="{{ st.copy }}" onChange="{{ stOn.copy }}" style="min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid #9AA1AE">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="st-address" style="font-weight:600">Address <span style="font-weight:400;color:#565D6B">(shown in the footer)</span></label>
+                <textarea id="st-address" rows="2" value="{{ st.address }}" onChange="{{ stOn.address }}" style="padding:10px 12px;border-radius:6px;border:1.5px solid #9AA1AE;resize:vertical"></textarea>
+              </div>
+              <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+                <legend style="font-weight:600;margin-bottom:4px">Social links <span style="font-weight:400;color:#565D6B">(leave empty to hide)</span></legend>
+                <sc-for list="{{ siteSocials }}" as="so">
+                  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+                    <label for="{{ so.id }}" style="flex:0 0 130px;display:flex;align-items:center;gap:8px"><i class="ph {{ so.icon }}" aria-hidden="true" style="font-size:20px"></i>{{ so.label }}</label>
+                    <input id="{{ so.id }}" type="url" value="{{ so.value }}" onChange="{{ so.on }}" placeholder="https://" style="flex:1 1 260px;min-width:0;min-height:44px;padding:0 12px;border-radius:6px;border:1.5px solid {{ so.border }}">
+                    <sc-if value="{{ so.hasErr }}"><span style="flex:1 1 100%;font-size:14px;color:#B42318">{{ so.err }}</span></sc-if>
+                  </div>
+                </sc-for>
+              </fieldset>
+              <button type="submit" style="align-self:flex-start;min-height:48px;padding:0 20px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:8px"><i class="ph ph-check" aria-hidden="true"></i>Save site details</button>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ tabJson }}">
+            <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+              <div style="flex:1.3 1 500px;min-width:0;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px">
+                  <label style="flex:1 1 220px;display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;font-weight:600"><input type="checkbox" checked="{{ jsonLive }}" onChange="{{ toggleJsonLive }}" style="width:20px;height:20px;accent-color:#4169E1">Apply valid changes as I type</label>
+                  <span style="display:flex;flex-wrap:wrap;gap:6px">
+                    <button type="button" onClick="{{ formatJson }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Format</button>
+                    <button type="button" onClick="{{ revertJson }}" style="min-height:40px;padding:0 12px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;color:#14243A">Revert</button>
+                    <sc-if value="{{ jsonManual }}">
+                      <button type="button" onClick="{{ applyJson }}" disabled="{{ jsonInvalid }}" style="min-height:40px;padding:0 14px;border-radius:6px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;opacity:{{ applyOp }}">Apply to site</button>
+                    </sc-if>
+                  </span>
+                </div>
+                <label for="json-ed" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Catalog JSON</label>
+                <textarea id="json-ed" spellcheck="false" value="{{ jsonDraft }}" onChange="{{ onJson }}" aria-describedby="json-status" style="width:100%;height:clamp(360px,64vh,680px);padding:14px 16px;border-radius:8px;border:1.5px solid {{ jsonBorder }};background:#FFFFFF;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:13.5px;line-height:1.55;resize:vertical;tab-size:2;white-space:pre;overflow:auto"></textarea>
+                <p id="json-status" role="status" style="margin:0;font-size:14px;display:flex;align-items:flex-start;gap:8px;color:{{ jsonStatusColor }}"><i class="ph {{ jsonStatusIcon }}" aria-hidden="true" style="font-size:18px;margin-top:1px"></i><span>{{ jsonStatus }}</span></p>
+                <p style="margin:0;font-size:14px;color:#565D6B">Shape: categories, resources, collections, featured and submissions. Each resource needs id, name, cat (a category id) and url. Collections are edited here.</p>
+              </div>
+              <div style="flex:1 1 360px;min-width:0;position:sticky;top:84px">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px">
+                  <h2 style="margin:0;font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px"><i class="ph ph-eye" aria-hidden="true"></i>Preview of the draft</h2>
+                  <span style="font-size:14px;color:#565D6B">{{ pvSummary }}</span>
+                </div>
+                <div style="border:1px solid #DDD8CC;border-radius:10px;background:#F7F6F2;padding:16px;max-height:clamp(360px,68vh,720px);overflow-y:auto;display:flex;flex-direction:column;gap:16px">
+                  <sc-if value="{{ pvInvalid }}">
+                    <p style="margin:0;color:#3A4352">The preview holds the last valid version until the JSON parses again.</p>
+                  </sc-if>
+                  <ol style="list-style:none;margin:0;padding:0;border-top:1px solid #DDD8CC">
+                    <sc-for list="{{ pvCats }}" as="c">
+                      <li style="border-bottom:1px solid #DDD8CC;padding:8px 0;display:flex;align-items:center;gap:10px;font-size:15px"><i class="ph {{ c.icon }}" aria-hidden="true" style="font-size:18px"></i><span style="flex:1;font-weight:600">{{ c.label }}</span><span style="color:#565D6B">{{ c.count }}</span></li>
+                    </sc-for>
+                  </ol>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:12px">
+                    <sc-for list="{{ pvCards }}" as="item">
+                      <dc-import name="ResourceCard" r="{{ item }}" hint-size="100%,320px"></dc-import>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isShortlist }}">
+      <div data-screen-label="Shortlist" style="max-width:1240px;margin:0 auto;padding:clamp(32px,5vw,56px) clamp(16px,4vw,32px) 96px">
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px">
+          <div style="flex:1 1 320px">
+            <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.015em">Shortlist</h1>
+            <p style="margin:10px 0 0;color:#3A4352;max-width:58ch">Compare pricing, commercial use and tools side by side before you leave for a source. Saved in this browser.</p>
+          </div>
+          <sc-if value="{{ slHas }}">
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <button type="button" onClick="{{ goExplore }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;cursor:pointer;white-space:nowrap;color:#14243A;display:flex;align-items:center;gap:8px"><i class="ph ph-plus" aria-hidden="true"></i>Add more</button>
+              <button type="button" onClick="{{ slAskClear }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #B42318;background:#FFFFFF;font-weight:600;cursor:pointer;white-space:nowrap;color:#B42318;display:flex;align-items:center;gap:8px"><i class="ph ph-trash" aria-hidden="true"></i>Clear shortlist</button>
+            </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ slConfirm }}">
+          <div role="alert" style="margin-top:16px;padding:14px 16px;border-radius:8px;border:1.5px solid #B42318;background:#FFFFFF;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+            <span>Remove all {{ slCount }} resources from your shortlist?</span>
+            <span style="display:flex;gap:8px"><button type="button" onClick="{{ slClear }}" style="min-height:40px;padding:0 14px;border-radius:6px;border:0;background:#B42318;color:#FFFFFF;font-weight:600;cursor:pointer;white-space:nowrap">Clear all</button><button type="button" onClick="{{ slCancelClear }}" style="min-height:40px;padding:0 14px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;cursor:pointer;color:#14243A">Keep</button></span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ slEmpty }}">
+          <div style="margin-top:32px;border:1px dashed #9AA1AE;border-radius:12px;padding:clamp(28px,5vw,48px);max-width:640px;display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+            <i class="ph ph-bookmarks-simple" aria-hidden="true" style="font-size:40px;color:#565D6B"></i>
+            <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">Nothing saved yet</h2>
+            <p style="margin:0;color:#3A4352">Use the bookmark on any resource card, or "Compare this set" on a project, to line resources up here.</p>
+            <button type="button" onClick="{{ goExplore }}" style="min-height:48px;padding:0 20px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;cursor:pointer;white-space:nowrap">Browse resources</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ slHas }}">
+          <div style="margin-top:28px;overflow-x:auto;border:1px solid #DDD8CC;border-radius:12px;background:#FFFFFF">
+            <table style="border-collapse:separate;border-spacing:0;width:100%;min-width:{{ slMinW }};font-size:15px">
+              <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Shortlisted resources compared</caption>
+              <thead>
+                <tr>
+                  <th scope="col" style="position:sticky;left:0;z-index:1;background:#FFFFFF;width:150px;padding:16px;text-align:left;vertical-align:bottom;font-size:14px;color:#565D6B;border-right:1px solid #EEEAE1">{{ slCountLabel }}</th>
+                  <sc-for list="{{ slCols }}" as="c">
+                    <th scope="col" style="min-width:220px;padding:16px;text-align:left;vertical-align:top;font-weight:400">
+                      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+                        <span style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                          <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:#565D6B"><i class="ph {{ c.icon }}" aria-hidden="true"></i>{{ c.catLabel }}</span>
+                          <button type="button" onClick="{{ c.open }}" style="background:none;border:0;padding:0;text-align:left;font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;color:#14243A;cursor:pointer;line-height:1.15" style-hover="color:#2F55C8;text-decoration:underline">{{ c.name }}</button>
+                          <span style="font-size:14px;color:#565D6B">{{ c.creator }}</span>
+                        </span>
+                        <button type="button" onClick="{{ c.remove }}" aria-label="{{ c.removeAria }}" style="flex:0 0 auto;width:36px;height:36px;border-radius:6px;border:1px solid #DDD8CC;background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3A4352" style-hover="border-color:#B42318;color:#B42318"><i class="ph ph-x" aria-hidden="true"></i></button>
+                      </div>
+                    </th>
+                  </sc-for>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ slRows }}" as="row">
+                  <tr>
+                    <th scope="row" style="position:sticky;left:0;z-index:1;background:{{ row.bg }};padding:14px 16px;text-align:left;vertical-align:top;font-weight:600;border-top:1px solid #EEEAE1;border-right:1px solid #EEEAE1;white-space:nowrap"><span style="display:flex;align-items:center;gap:8px"><i class="ph {{ row.icon }}" aria-hidden="true" style="color:#565D6B"></i>{{ row.label }}</span></th>
+                    <sc-for list="{{ row.cells }}" as="cell">
+                      <td style="padding:14px 16px;vertical-align:top;border-top:1px solid #EEEAE1;background:{{ row.bg }};color:{{ cell.color }};font-weight:{{ cell.weight }}">
+                        <sc-if value="{{ cell.isText }}"><span style="display:flex;align-items:flex-start;gap:6px"><sc-if value="{{ cell.hasIcon }}"><i class="ph {{ cell.icon }}" aria-hidden="true" style="margin-top:3px"></i></sc-if><span>{{ cell.text }}</span></span></sc-if>
+                        <sc-if value="{{ cell.isLink }}"><a href="{{ cell.url }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-weight:600;overflow-wrap:anywhere">{{ cell.text }}<i class="ph ph-arrow-square-out" aria-hidden="true"></i><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (opens in a new tab)</span></a></sc-if>
+                      </td>
+                    </sc-for>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin:12px 0 0;font-size:14px;color:#565D6B">Licence details are summaries of what each source published. Confirm on the source before commercial use.</p>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isLegal }}">
+      <article data-screen-label="Legal" style="max-width:860px;margin:0 auto;padding:clamp(36px,5vw,64px) clamp(16px,4vw,32px) 96px">
+        <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(36px,4.6vw,56px);line-height:1.05;letter-spacing:-.015em">{{ legal.title }}</h1>
+        <p style="margin:10px 0 0;color:#565D6B">{{ legal.updated }}</p>
+        <p style="margin:24px 0 8px;padding:12px 16px;border-radius:8px;background:#DCE5F2;font-size:15px;display:flex;gap:10px;align-items:flex-start"><i class="ph ph-info" aria-hidden="true" style="font-size:20px;margin-top:1px"></i><span>Draft for review. This describes how the site works today. Have it checked by a qualified person before launch.</span></p>
+        <sc-for list="{{ legal.sections }}" as="x">
+          <section style="margin-top:32px">
+            <h2 style="margin:0 0 8px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px">{{ x.h }}</h2>
+            <p style="margin:0;color:#3A4352;max-width:66ch">{{ x.p }}</p>
+          </section>
+        </sc-for>
+        <p style="margin:40px 0 0;color:#3A4352">Questions about this page? <button type="button" onClick="{{ goContact }}" style="background:none;border:0;padding:0;color:#2F55C8;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Use the contact form</button>.</p>
+      </article>
+    </sc-if>
+  </main>
+
+  <footer id="site-footer" style="background:#14243A;color:#F7F6F2">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,72px) clamp(16px,4vw,32px) 0">
+      <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between;padding-bottom:40px;border-bottom:1px solid #3A4C68">
+        <div style="flex:1 1 340px">
+          <h2 style="margin:0 0 6px;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(28px,3.2vw,38px);letter-spacing:-.01em">New entries, once a month</h2>
+          <p style="margin:0;color:#C5CEDC;max-width:48ch">A short email listing what was added to the index, with licences.</p>
+        </div>
+        <div style="flex:1 1 380px;max-width:540px">
+          <sc-if value="{{ nlSent }}">
+            <p role="status" style="margin:0;padding:14px 16px;border-radius:8px;background:#DCE5F2;color:#14243A;font-weight:600;display:flex;align-items:center;gap:10px"><i class="ph ph-check-circle" aria-hidden="true" style="font-size:20px"></i>Subscribed. Check {{ nl }} for a confirmation link.</p>
+          </sc-if>
+          <sc-if value="{{ nlShowForm }}" hint-placeholder-val="{{ true }}">
+            <form novalidate="" onSubmit="{{ nlSubmit }}">
+              <label for="nl-email" style="display:block;font-weight:600;margin-bottom:6px">Email address</label>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <input id="nl-email" type="email" autocomplete="email" value="{{ nl }}" onChange="{{ onNl }}" placeholder="email@example.com" aria-invalid="{{ nlAria }}" aria-describedby="nl-err" style="flex:1 1 220px;min-width:0;min-height:48px;padding:0 14px;border-radius:8px;border:2px solid {{ nlBorder }};background:#FFFFFF;color:#14243A">
+                <button type="submit" disabled="{{ nlSending }}" style="min-height:48px;padding:0 20px;border-radius:8px;border:0;background:#4169E1;color:#FFFFFF;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .15s ease" style-hover="background:#3457C4">{{ nlBtn }}</button>
+              </div>
+              <p id="nl-err" role="alert" style="margin:8px 0 0;font-size:14px;color:#FFC9C2;font-weight:600">{{ nlErr }}</p>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:40px 48px;padding:40px 0">
+        <div style="flex:2 1 280px;display:flex;flex-direction:column;gap:14px">
+          <span style="display:flex;align-items:center;gap:10px"><i class="ph ph-compass-rose" aria-hidden="true" style="font-size:28px"></i><span style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:600">Design Atlas</span></span>
+          <p style="margin:0;color:#C5CEDC;max-width:36ch">An index of design resources, each listed with its creator and licence.</p>
+          <sc-if value="{{ hasSocials }}">
+            <ul aria-label="Social links" style="list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ socials }}" as="so">
+                <li><a href="{{ so.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ so.aria }}" style="width:44px;height:44px;border-radius:8px;border:1px solid #3A4C68;color:#F7F6F2;display:flex;align-items:center;justify-content:center;transition:background .15s ease, color .15s ease" style-hover="background:#DCE5F2;color:#14243A"><i class="ph {{ so.icon }}" aria-hidden="true" style="font-size:20px"></i></a></li>
+              </sc-for>
+            </ul>
+          </sc-if>
+        </div>
+        <sc-for list="{{ footerGroups }}" as="g" hint-placeholder-count="3">
+          <nav aria-label="{{ g.title }}" style="flex:1 1 150px;display:flex;flex-direction:column;gap:2px">
+            <h3 style="margin:0 0 8px;font-size:15px;font-weight:700;color:#C5CEDC">{{ g.title }}</h3>
+            <sc-for list="{{ g.links }}" as="n">
+              <button type="button" onClick="{{ n.go }}" style="text-align:left;background:none;border:0;padding:0;min-height:40px;font-size:16px;color:#F7F6F2;cursor:pointer;white-space:nowrap;transition:color .15s ease" style-hover="color:#DCE5F2;text-decoration:underline;text-underline-offset:3px">{{ n.label }}</button>
+            </sc-for>
+          </nav>
+        </sc-for>
+      </div>
+
+      <div style="border-top:1px solid #3A4C68;padding:20px 0 28px;display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center;font-size:14px;color:#C5CEDC">
+        <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:2px">
+          <span>© {{ year }} {{ copyName }}. All rights reserved.</span>
+          <sc-if value="{{ hasAddress }}"><span>{{ addressText }}</span></sc-if>
+          <span style="font-size:13px;color:#AEB9CB">Design Atlas lists resources by other creators. Names and trademarks belong to their owners. Icons by Phosphor (MIT).</span>
+        </div>
+        <nav aria-label="Legal" style="display:flex;flex-wrap:wrap;gap:4px 20px">
+          <button type="button" onClick="{{ goPrivacy }}" style="background:none;border:0;padding:0;min-height:40px;color:#F7F6F2;font-size:14px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px" style-hover="text-decoration:underline"><i class="ph ph-shield-check" aria-hidden="true" style="font-size:16px"></i>Privacy policy</button>
+          <button type="button" onClick="{{ goTerms }}" style="background:none;border:0;padding:0;min-height:40px;color:#F7F6F2;font-size:14px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px" style-hover="text-decoration:underline"><i class="ph ph-file-text" aria-hidden="true" style="font-size:16px"></i>Terms and conditions</button>
+          <button type="button" onClick="{{ openCookies }}" style="background:none;border:0;padding:0;min-height:40px;color:#F7F6F2;font-size:14px;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px" style-hover="text-decoration:underline"><i class="ph ph-cookie" aria-hidden="true" style="font-size:16px"></i>Cookie settings</button>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" onClick="{{ toTop }}" aria-label="Back to top" tabindex="{{ toTopTab }}" style="position:fixed;right:clamp(14px,3vw,28px);bottom:{{ toTopBottom }};width:clamp(46px,5vw,52px);height:clamp(46px,5vw,52px);border-radius:10px;border:1.5px solid #F7F6F2;background:#14243A;color:#F7F6F2;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,36,58,.25);opacity:{{ toTopOp }};transform:translateY({{ toTopY }});visibility:{{ toTopVis }};transition:opacity .2s ease, transform .2s ease, visibility .2s, bottom .08s linear;z-index:30" style-hover="background:#22385A"><i class="ph ph-arrow-up" aria-hidden="true" style="font-size:22px"></i></button>
+
+  <sc-if value="{{ cookieOpen }}">
+    <div onClick="{{ closeCookies }}" aria-hidden="true" style="position:fixed;inset:0;background:rgba(20,36,58,.5);z-index:90"></div>
+    <div role="dialog" aria-modal="true" aria-labelledby="ck-h" id="cookie-dialog" style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow-y:auto;background:#F7F6F2;color:#14243A;border-radius:12px;padding:clamp(20px,4vw,32px);z-index:91;box-shadow:0 20px 48px rgba(20,36,58,.3);display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <h2 id="ck-h" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:26px;display:flex;align-items:center;gap:10px"><i class="ph ph-cookie" aria-hidden="true"></i>Cookie settings</h2>
+        <button type="button" onClick="{{ closeCookies }}" aria-label="Close cookie settings" style="width:44px;height:44px;border-radius:8px;border:0;background:#E9E5DA;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#14243A"><i class="ph ph-x" aria-hidden="true" style="font-size:20px"></i></button>
+      </div>
+      <p style="margin:0;color:#3A4352">Design Atlas uses your browser's storage only for things you ask it to do. Nothing here is used for advertising.</p>
+      <div style="background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:16px;display:flex;gap:16px;align-items:flex-start;justify-content:space-between">
+        <div><strong>Necessary storage</strong><p style="margin:4px 0 0;font-size:15px;color:#3A4352">Keeps your shortlist, catalog edits made in Manage, the submissions queue and this choice.</p></div>
+        <span style="flex:0 0 auto;font-size:14px;font-weight:600;color:#3A4352;padding-top:2px">Always on</span>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:16px;display:flex;gap:16px;align-items:flex-start;justify-content:space-between">
+        <div><strong id="ck-an">Analytics</strong><p style="margin:4px 0 0;font-size:15px;color:#3A4352">No analytics are installed yet. Your choice is saved and applied if they're added later.</p></div>
+        <button type="button" role="switch" aria-checked="{{ ckAria }}" aria-labelledby="ck-an" onClick="{{ toggleAnalytics }}" style="flex:0 0 auto;width:52px;height:30px;border-radius:15px;border:0;background:{{ ckTrack }};cursor:pointer;position:relative;transition:background .2s ease"><span style="position:absolute;top:3px;left:{{ ckKnob }};width:24px;height:24px;border-radius:12px;background:#FFFFFF;transition:left .2s ease"></span></button>
+      </div>
+      <sc-if value="{{ clearConfirm }}">
+        <div role="alert" style="border:1.5px solid #B42318;border-radius:8px;padding:12px 14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:#FFFFFF">
+          <span style="font-size:15px">This removes your shortlist, local catalog edits and submissions. Export them first if you need them.</span>
+          <span style="display:flex;gap:8px"><button type="button" onClick="{{ doClear }}" style="min-height:40px;padding:0 14px;border-radius:6px;border:0;background:#B42318;color:#FFFFFF;font-weight:600;cursor:pointer;white-space:nowrap">Clear data</button><button type="button" onClick="{{ cancelClear }}" style="min-height:40px;padding:0 14px;border-radius:6px;border:1.5px solid #14243A;background:#FFFFFF;font-weight:600;cursor:pointer;color:#14243A">Keep</button></span>
+        </div>
+      </sc-if>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between">
+        <button type="button" onClick="{{ askClear }}" style="min-height:48px;padding:0 16px;border-radius:8px;border:1.5px solid #B42318;background:#FFFFFF;color:#B42318;font-weight:600;cursor:pointer;white-space:nowrap">Clear data on this device</button>
+        <button type="button" onClick="{{ saveCookies }}" style="min-height:48px;padding:0 22px;border-radius:8px;border:0;background:#14243A;color:#F7F6F2;font-weight:600;cursor:pointer;white-space:nowrap">Save choices</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <div role="status" aria-live="polite" style="position:fixed;left:50%;bottom:24px;transform:translate(-50%,{{ toastY }});opacity:{{ toastOp }};visibility:{{ toastVis }};transition:opacity .2s ease, transform .2s ease, visibility .2s;z-index:70;max-width:calc(100vw - 32px);padding:12px 18px;border-radius:8px;background:{{ toastBg }};color:#FFFFFF;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(20,36,58,.25)"><i class="ph {{ toastIcon }}" aria-hidden="true" style="font-size:20px"></i><span>{{ toastMsg }}</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;catalogState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;live&quot;,&quot;loading&quot;,&quot;error&quot;],&quot;default&quot;:&quot;live&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype states&quot;},&quot;formOutcome&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;success&quot;,&quot;failure&quot;],&quot;default&quot;:&quot;success&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype states&quot;},&quot;coverStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;typographic&quot;,&quot;placeholder&quot;],&quot;default&quot;:&quot;typographic&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Cards&quot;}}">
+class Component extends DCLogic {
+  KEY = 'designAtlas.db.v1';
+  TOOLS = ['Figma', 'Sketch', 'Web', 'React', 'iOS', 'Android', 'Desktop'];
+  ICONS = ['ph-layout', 'ph-stack', 'ph-pencil-simple-line', 'ph-shapes', 'ph-text-aa', 'ph-palette', 'ph-wrench', 'ph-users-three', 'ph-compass', 'ph-book-open', 'ph-cube', 'ph-paint-brush', 'ph-video-camera', 'ph-code', 'ph-device-mobile', 'ph-chart-bar', 'ph-browser', 'ph-image', 'ph-folder', 'ph-puzzle-piece', 'ph-graduation-cap', 'ph-film-strip', 'ph-cursor-click', 'ph-grid-four'];
+  faqs = [
+    ['Does Design Atlas host or sell files?', 'No. Every entry links to the creator\u2019s own site. Downloads, purchases and accounts all happen there.'],
+    ['How are resources chosen?', 'Each entry needs a public source page, a named creator and stated terms of use. Anything without a clear licence isn\u2019t listed.'],
+    ['Are the pricing and licence labels guaranteed?', 'They reflect what the source published when the entry was added. Terms change, so confirm on the source before using a resource commercially.'],
+    ['Can I submit my own work?', 'Yes. Use the submission form. It goes through the same review as any other entry.'],
+    ['What happens when a link breaks?', 'Report it from the resource page or the contact form. The entry is rechecked, then updated or removed.']
+  ];
+  emptyEd = { name: '', url: '', cat: '', price: 'Free', creator: '', license: '', tools: [], desc: '', tags: '', features: '', formats: '', featured: false, commercial: 'check', checked: '' };
+  COM = { yes: ['Commercial use OK', 'ph-check-circle', 'Allowed'], check: ['Check licence', 'ph-question', 'Check the source'], no: ['Reference only', 'ph-eye', 'Reference only'] };
+  SLKEY = 'designAtlas.shortlist';
+  today() { return new Date().toISOString().slice(0, 10); }
+  checkInfo(r) {
+    if (!r || !r.checked) return { label: 'Not checked yet', color: '#8A4B00', due: true };
+    const days = (Date.now() - new Date(r.checked).getTime()) / 864e5;
+    return days > 180 ? { label: 'Checked ' + r.checked + ', due for a recheck', color: '#8A4B00', due: true } : { label: 'Checked ' + r.checked, color: '#1F5133', due: false };
+  }
+  setShortlist(ids) { this.setState({ shortlist: ids }); try { localStorage.setItem(this.SLKEY, JSON.stringify(ids)); } catch (e) {} }
+  toggleSave(id, name) {
+    const on = this.state.shortlist.includes(id);
+    this.setShortlist(on ? this.state.shortlist.filter(x => x !== id) : [...this.state.shortlist, id]);
+    this.toast(on ? '\u201c' + name + '\u201d removed from your shortlist' : '\u201c' + name + '\u201d added to your shortlist');
+  }
+
+  state = {
+    db: null, loadState: 'loading', source: 'file', savedAt: null, forceClear: false,
+    page: 'home', id: null, q: '', heroQ: '', cat: null, coll: null, prices: [], plats: [], sort: 'relevance',
+    menuOpen: false, filtersOpen: false, wide: true, faqOpen: 0,
+    showTop: false, topBottom: 28, toast: null,
+    sub: { name: '', url: '', cat: '', price: '', desc: '', email: '' }, subErr: {}, subStatus: 'idle',
+    con: { name: '', email: '', msg: '' }, conErr: {}, conStatus: 'idle',
+    nl: '', nlErr: '', nlStatus: 'idle',
+    tab: 'res', mgQ: '', mgCat: '', edit: null, ed: null, edErr: {}, edSubId: null, confirmDel: null, confirmReset: false,
+    ce: null, ceId: null, ceErr: {}, catMsg: null, catConfirm: null,
+    jsonDraft: '', jsonErr: '', jsonLive: true, draftDb: null,
+    heroActive: 0, heroPaused: false, shortlist: [], slConfirm: false, comms: [], mgCheck: '', cookieOpen: false, clearConfirm: false, consent: { analytics: false }, ckDraft: false, st: null, stErr: {}
+  };
+  SOCIALS = [['instagram', 'Instagram', 'ph-instagram-logo'], ['linkedin', 'LinkedIn', 'ph-linkedin-logo'], ['x', 'X', 'ph-x-logo'], ['dribbble', 'Dribbble', 'ph-dribbble-logo'], ['behance', 'Behance', 'ph-behance-logo'], ['youtube', 'YouTube', 'ph-youtube-logo'], ['github', 'GitHub', 'ph-github-logo']];
+  TABNAMES = { res: 'Resources', cats: 'Categories', subs: 'Submissions', site: 'Site settings', json: 'JSON editor' };
+  PAGES = ['home', 'explore', 'detail', 'submit', 'about', 'manage', 'privacy', 'terms', 'shortlist'];
+  hist = []; pos = 0;
+
+  routeFromHash() {
+    const raw = (window.location.hash || '').replace(/^#\/?/, '');
+    const [path, qs] = raw.split('?');
+    const parts = (path || '').split('/').filter(Boolean);
+    const p = new URLSearchParams(qs || '');
+    let page = parts[0] || 'home';
+    const out = { page, id: null, cat: null, coll: null, q: '' };
+    if (page === 'resource') { out.page = 'detail'; out.id = decodeURIComponent(parts[1] || ''); }
+    if (page === 'explore') { out.cat = p.get('cat') || null; out.coll = p.get('coll') || null; out.q = p.get('q') || ''; }
+    if (page === 'manage' && parts[1] && this.TABNAMES[parts[1]]) out.tab = parts[1];
+    if (!this.PAGES.includes(out.page)) out.page = 'home';
+    return out;
+  }
+  hashFor(page, x) {
+    x = x || {};
+    if (page === 'detail') return '#/resource/' + encodeURIComponent(x.id || '');
+    if (page === 'explore') { const p = new URLSearchParams(); if (x.cat) p.set('cat', x.cat); if (x.coll) p.set('coll', x.coll); if (x.q) p.set('q', x.q); const s = p.toString(); return '#/explore' + (s ? '?' + s : ''); }
+    if (page === 'manage') return '#/manage' + (x.tab ? '/' + x.tab : '');
+    if (page === 'home') return '#/';
+    return '#/' + page;
+  }
+  replaceHash(hash) { try { history.replaceState(null, '', hash); this.hist[this.pos] = hash; } catch (e) {} }
+  applyRoute() {
+    const r = this.routeFromHash();
+    const hs = window.location.hash || '#/';
+    if (this.hist[this.pos - 1] === hs) this.pos--;
+    else if (this.hist[this.pos + 1] === hs) this.pos++;
+    else if (this.hist[this.pos] !== hs) { this.hist = this.hist.slice(0, this.pos + 1); this.hist.push(hs); this.pos = this.hist.length - 1; }
+    const s = this.state;
+    const resetFilters = r.page === 'explore' && (s.page !== 'explore' || s.cat !== r.cat || s.coll !== r.coll);
+    this.setState({ ...r, menuOpen: false, cookieOpen: false, slConfirm: false, ...(resetFilters ? { prices: [], plats: [], comms: [] } : {}), ...(r.page === 'manage' && !r.tab ? {} : {}) });
+    const anchor = this.pendingAnchor; this.pendingAnchor = null;
+    setTimeout(() => {
+      const el = anchor && document.getElementById(anchor);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+      else window.scrollTo({ top: 0, behavior: 'auto' });
+      if (!anchor) { const m = document.getElementById('main'); if (m) m.focus({ preventScroll: true }); }
+    }, 40);
+  }
+
+  componentDidMount() {
+    this.timers = [];
+    this.onResize = () => { const wide = window.innerWidth >= 960; this.setState(s => ({ wide, menuOpen: wide ? false : s.menuOpen })); this.onScroll(); };
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = null;
+        const base = window.innerWidth < 600 ? 16 : 28;
+        const f = document.getElementById('site-footer');
+        const overlap = f ? Math.max(0, window.innerHeight - f.getBoundingClientRect().top) : 0;
+        const showTop = window.scrollY > 480;
+        const topBottom = Math.round(base + overlap);
+        if (showTop !== this.state.showTop || topBottom !== this.state.topBottom) this.setState({ showTop, topBottom });
+      });
+    };
+    this.onKey = e => { if (e.key === 'Escape' && this.state.cookieOpen) { this.setState({ cookieOpen: false }); return; } if (e.key === 'Escape' && this.state.menuOpen) { this.setState({ menuOpen: false }); const b = document.querySelector('[aria-controls="mobile-nav"]'); if (b) b.focus(); } };
+    this.onStorage = e => {
+      if (e.key !== this.KEY || !e.newValue) return;
+      const r = this.normalize(this.tryParse(e.newValue));
+      if (r.db) this.setState({ db: r.db, draftDb: r.db, jsonDraft: JSON.stringify(r.db, null, 2), jsonErr: '', source: 'browser', savedAt: new Date() });
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    window.addEventListener('storage', this.onStorage);
+    this.onResize();
+    this.onHash = () => this.applyRoute();
+    window.addEventListener('hashchange', this.onHash);
+    this.hist = [window.location.hash || '#/']; this.pos = 0;
+    this.setState(this.routeFromHash());
+    try { const c = JSON.parse(localStorage.getItem('designAtlas.consent') || 'null'); if (c) this.setState({ consent: c }); } catch (e) {}
+    this.heroT = setInterval(() => {
+      const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (this.state.page === 'home' && !this.state.heroPaused && !rm && document.visibilityState === 'visible') this.setState(s => ({ heroActive: (s.heroActive + 1) % Math.max(1, s.db ? s.db.categories.length : 10) }));
+    }, 2600);
+    let saved = null;
+    try { saved = localStorage.getItem(this.KEY); } catch (e) {}
+    try { const sl = JSON.parse(localStorage.getItem(this.SLKEY) || '[]'); if (Array.isArray(sl)) this.setState({ shortlist: sl }); } catch (e) {}
+    const raw = saved ? this.tryParse(saved) : null;
+    const r = raw ? this.normalize(raw) : {};
+    if (r.db && (raw.version || 1) < 2) {
+      fetch('./atlas-data.json', { cache: 'no-store' }).then(x => x.json()).then(file => {
+        const fr = {}; (file.resources || []).forEach(x => { fr[x.id] = x; });
+        const fc = {}; (file.categories || []).forEach(x => { fc[x.id] = x; });
+        (raw.resources || []).forEach(x => { if (!x.commercial && fr[x.id]) x.commercial = fr[x.id].commercial; if (x.checked === undefined) x.checked = ''; });
+        (raw.categories || []).forEach(x => { if (!x.short && fc[x.id]) x.short = fc[x.id].short; });
+        (raw.collections || []).forEach(x => { const f = (file.collections || []).find(y => y.id === x.id); if (f) { x.title = f.title; x.desc = f.desc; } });
+        raw.version = 2;
+        const m = this.normalize(raw); if (m.db) this.useDb(m.db, 'browser', true);
+      }).catch(() => this.useDb(r.db, 'browser', false));
+    } else if (r.db) this.useDb(r.db, 'browser', false); else this.loadFile();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey); window.removeEventListener('storage', this.onStorage);
+    window.removeEventListener('hashchange', this.onHash); clearInterval(this.heroT);
+    this.timers.forEach(clearTimeout); document.body.style.overflow = '';
+  }
+  componentDidUpdate(prev) {
+    const prevState = this.prevSnap || {};
+    this.prevSnap = { menuOpen: this.state.menuOpen, page: this.state.page };
+    if (prev && prev.catalogState !== this.props.catalogState && this.state.forceClear) this.setState({ forceClear: false });
+    if (prevState.menuOpen !== undefined && prevState.menuOpen !== this.state.menuOpen) {
+      document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
+      if (this.state.menuOpen) setTimeout(() => { const b = document.querySelector('#mobile-nav button'); if (b) b.focus(); }, 60);
+    }
+    if (prevState.page !== this.state.page) this.onScroll();
+  }
+  later(fn, ms) { this.timers.push(setTimeout(fn, ms)); }
+  toast(msg, kind) { this.setState({ toast: { msg, kind: kind || 'ok', at: Date.now() } }); clearTimeout(this.toastT); this.toastT = setTimeout(() => this.setState({ toast: null }), 3200); }
+  tryParse(t) { try { return JSON.parse(t); } catch (e) { return { __err: e.message }; } }
+
+  loadFile() {
+    this.setState({ loadState: 'loading' });
+    fetch('./atlas-data.json', { cache: 'no-store' })
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(j => { const n = this.normalize(j); if (!n.db) throw new Error(n.error); this.useDb(n.db, 'file', false); })
+      .catch(() => this.setState({ loadState: 'error' }));
+  }
+  useDb(db, source, persist) {
+    this.setState({ db, draftDb: db, loadState: 'live', source, jsonDraft: JSON.stringify(db, null, 2), jsonErr: '' });
+    if (persist) this.persist(db);
+  }
+  persist(db) {
+    try { localStorage.setItem(this.KEY, JSON.stringify(db)); this.setState({ savedAt: new Date(), source: 'browser' }); }
+    catch (e) { this.toast('Couldn\u2019t save in this browser. Export the JSON to keep your changes.', 'err'); }
+  }
+  commit(fn, msg) {
+    const db = fn(JSON.parse(JSON.stringify(this.state.db)));
+    this.setState({ db, draftDb: db, jsonDraft: JSON.stringify(db, null, 2), jsonErr: '' });
+    this.persist(db);
+    if (msg) this.toast(msg);
+  }
+
+  normalize(j) {
+    if (!j || typeof j !== 'object' || Array.isArray(j)) return { error: j && j.__err ? 'Not valid JSON: ' + j.__err : 'The top level must be an object.' };
+    if (!Array.isArray(j.categories)) return { error: '"categories" must be a list.' };
+    if (!Array.isArray(j.resources)) return { error: '"resources" must be a list.' };
+    const catIds = new Set();
+    for (const [i, c] of j.categories.entries()) {
+      if (!c || !c.id || !c.label) return { error: 'Category ' + (i + 1) + ' needs an "id" and a "label".' };
+      if (catIds.has(c.id)) return { error: 'Category id "' + c.id + '" is used twice.' };
+      catIds.add(c.id);
+    }
+    const ids = new Set(), warnings = [];
+    for (const [i, r] of j.resources.entries()) {
+      if (!r || !r.id || !r.name || !r.cat || !r.url) return { error: 'Resource ' + (i + 1) + (r && r.name ? ' (' + r.name + ')' : '') + ' needs id, name, cat and url.' };
+      if (ids.has(r.id)) return { error: 'Resource id "' + r.id + '" is used twice.' };
+      if (!catIds.has(r.cat)) return { error: '"' + r.name + '" uses category "' + r.cat + '", which doesn\u2019t exist.' };
+      ids.add(r.id);
+    }
+    const arr = v => Array.isArray(v) ? v.map(String) : (typeof v === 'string' && v ? v.split(',').map(x => x.trim()).filter(Boolean) : []);
+    const db = {
+      version: Math.max(2, j.version || 1),
+      featured: arr(j.featured).filter(id => ids.has(id)),
+      categories: j.categories.map(c => ({ id: String(c.id), label: String(c.label), short: String(c.short || c.label), blurb: String(c.blurb || ''), icon: String(c.icon || 'ph-folder') })),
+      collections: (Array.isArray(j.collections) ? j.collections : []).filter(c => c && c.id && c.title).map(c => ({ id: String(c.id), title: String(c.title), desc: String(c.desc || ''), ids: arr(c.ids).filter(id => ids.has(id)) })),
+      resources: j.resources.map(r => {
+        const o = { id: String(r.id), name: String(r.name), cat: String(r.cat), creator: String(r.creator || ''), url: String(r.url), price: r.price === 'Freemium' ? 'Premium' : ['Free', 'Premium', 'Paid'].includes(r.price) ? r.price : 'Free', commercial: ['yes', 'check', 'no'].includes(r.commercial) ? r.commercial : 'check', checked: /^\d{4}-\d{2}-\d{2}$/.test(r.checked || '') ? r.checked : '', license: String(r.license || ''), tools: arr(r.tools), tags: arr(r.tags), desc: String(r.desc || ''), features: arr(r.features), formats: String(r.formats || '') };
+        if (r.added) o.added = String(r.added);
+        return o;
+      }),
+      submissions: Array.isArray(j.submissions) ? j.submissions.filter(x => x && x.name) : [],
+      site: { copy: String((j.site && j.site.copy) || 'Design Atlas'), address: String((j.site && j.site.address) || ''), socials: Object.fromEntries(this.SOCIALS.map(([k]) => [k, String((j.site && j.site.socials && j.site.socials[k]) || '')])) }
+    };
+    return { db, warnings };
+  }
+
+  go(page, extra) {
+    const hash = this.hashFor(page, extra);
+    if ((window.location.hash || '#/') === hash) { this.setState({ menuOpen: false }); this.applyRoute(); }
+    else window.location.hash = hash;
+  }
+  goAnchor(page, id) { this.pendingAnchor = id; this.go(page); }
+  explore(extra) { this.go('explore', extra || {}); }
+
+  domain(url) { return String(url).replace(/^https?:\/\/(www\.)?/, '').split('/')[0]; }
+  slug(t) { return String(t).toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/[\s_]+/g, '-').replace(/-+/g, '-').slice(0, 40) || 'item'; }
+  uniqueId(base, list) { let id = base, n = 2; while (list.some(x => x.id === id)) id = base + '-' + n++; return id; }
+
+  card(r, cats) {
+    cats = cats || this.state.db.categories;
+    const covers = [['#14243A', '#F7F6F2'], ['#DCE5F2', '#14243A'], ['#E7E2D5', '#14243A']];
+    const ci = Math.max(0, cats.findIndex(c => c.id === r.cat));
+    const c = cats[ci] || {};
+    const ph = (this.props.coverStyle ?? 'typographic') === 'placeholder';
+    return {
+      name: r.name || 'Untitled resource', desc: r.desc, price: r.price, creator: r.creator, catLabel: c.label || 'No category', icon: c.icon || 'ph-folder',
+      tools: (r.tools || []).join(', '), domain: r.url ? this.domain(r.url) : 'source', coverBg: covers[ci % 3][0], coverFg: covers[ci % 3][1],
+      typographic: !ph, placeholder: ph, open: () => r.id && this.go('detail', { id: r.id }),
+      comLabel: (this.COM[r.commercial] || this.COM.check)[0], comIcon: (this.COM[r.commercial] || this.COM.check)[1],
+      ...(r.id ? (() => { const on = this.state.shortlist.includes(r.id); return { canSave: true, savedAria: on ? 'true' : 'false', saveLabel: on ? 'Remove ' + r.name + ' from shortlist' : 'Add ' + r.name + ' to shortlist', saveIcon: on ? 'ph-check' : 'ph-bookmark-simple', saveBg: on ? '#14243A' : '#FFFFFF', saveFg: on ? '#F7F6F2' : '#14243A', saveBorder: on ? '#F7F6F2' : '#14243A', toggleSave: () => this.toggleSave(r.id, r.name) }; })() : { canSave: false })
+    };
+  }
+
+  score(r, q, cats) {
+    const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    const cl = (cats.find(c => c.id === r.cat) || {}).label || '';
+    let s = 0;
+    for (const t of terms) {
+      let hit = 0;
+      if (r.name.toLowerCase().includes(t)) hit += 3;
+      if (r.tags.some(g => g.toLowerCase().includes(t))) hit += 2;
+      if ((r.desc + ' ' + r.creator + ' ' + cl + ' ' + r.tools.join(' ')).toLowerCase().includes(t)) hit += 1;
+      if (!hit) return 0;
+      s += hit;
+    }
+    return s;
+  }
+  toggleIn(key, v) { this.setState(s => ({ [key]: s[key].includes(v) ? s[key].filter(x => x !== v) : [...s[key], v] })); }
+
+  validate(kind) {
+    const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    const urlOk = v => /^https?:\/\/[^\s.]+\.[^\s]+$/i.test(v);
+    const e = {};
+    if (kind === 'sub') {
+      const f = this.state.sub;
+      if (!f.name.trim()) e.name = 'Enter the resource name.';
+      if (!f.url.trim()) e.url = 'Enter the link to the original source.'; else if (!urlOk(f.url.trim())) e.url = 'Use a full link starting with https://';
+      if (!f.cat) e.cat = 'Choose the closest category.';
+      const n = f.desc.trim().length;
+      if (n < 20) e.desc = 'Write at least 20 characters so reviewers know what it is.'; else if (n > 280) e.desc = 'Keep it to 280 characters or fewer.';
+      if (f.email.trim() && !emailOk(f.email.trim())) e.email = 'Enter an email like name@domain.com, or leave it empty.';
+    } else if (kind === 'con') {
+      const f = this.state.con;
+      if (!f.name.trim()) e.name = 'Enter your name.';
+      if (!emailOk(f.email.trim())) e.email = 'Enter an email like name@domain.com so we can reply.';
+      if (f.msg.trim().length < 10) e.msg = 'Add a little more detail, at least 10 characters.';
+    } else if (kind === 'ed') {
+      const f = this.state.ed;
+      if (!f.name.trim()) e.name = 'Enter a name.';
+      if (!urlOk(f.url.trim())) e.url = 'Use a full link starting with https://';
+      if (!f.cat) e.cat = 'Choose a category.';
+      if (f.desc.trim().length < 10) e.desc = 'Write at least 10 characters.';
+    } else if (kind === 'ce') {
+      const f = this.state.ce;
+      if (!f.label.trim()) e.label = 'Enter a category name.';
+      else if (this.state.db.categories.some(c => c.label.toLowerCase() === f.label.trim().toLowerCase() && c.id !== this.state.ceId)) e.label = 'Another category already has this name.';
+    }
+    return e;
+  }
+
+  send(kind) {
+    const errs = this.validate(kind), keys = Object.keys(errs);
+    if (keys.length) {
+      this.setState({ [kind + 'Err']: errs, [kind + 'Status']: 'invalid' });
+      setTimeout(() => { const el = document.getElementById(kind + '-' + keys[0]); if (el) el.focus(); }, 0);
+      return;
+    }
+    this.setState({ [kind + 'Err']: {}, [kind + 'Status']: 'sending' });
+    this.later(() => {
+      const ok = (this.props.formOutcome ?? 'success') !== 'failure';
+      if (ok && kind === 'sub' && this.state.db) {
+        const f = this.state.sub;
+        this.commit(db => { db.submissions.push({ id: 'sub-' + Date.now(), name: f.name.trim(), url: f.url.trim(), cat: f.cat, price: f.price, desc: f.desc.trim(), email: f.email.trim(), at: new Date().toISOString().slice(0, 10) }); return db; });
+      }
+      this.setState({ [kind + 'Status']: ok ? 'sent' : 'failed' });
+    }, 900);
+  }
+
+  fieldKit(kind, fields) {
+    const vals = this.state[kind] || {}, errs = this.state[kind + 'Err'] || {};
+    const on = {}, aria = {}, border = {};
+    for (const k of fields) {
+      on[k] = e => { const v = e.target.value; this.setState(s => ({ [kind]: { ...s[kind], [k]: v }, [kind + 'Err']: { ...s[kind + 'Err'], [k]: undefined } })); };
+      aria[k] = errs[k] ? 'true' : 'false';
+      border[k] = errs[k] ? '#B42318' : '#9AA1AE';
+    }
+    return { vals, errs, on, aria, border };
+  }
+
+  openEditor(r, subId) {
+    const db = this.state.db;
+    const ed = r ? { name: r.name, url: r.url, cat: r.cat, price: r.price || 'Free', creator: r.creator || '', license: r.license || '', tools: [...(r.tools || [])], desc: r.desc || '', tags: (r.tags || []).join(', '), features: (r.features || []).join('\n'), formats: r.formats || '', featured: !!(r.id && db.featured.includes(r.id)), commercial: r.commercial || 'check', checked: r.checked || '' } : { ...this.emptyEd };
+    this.setState({ edit: r && r.id ? r.id : 'new', ed, edErr: {}, edSubId: subId || null, tab: 'res', confirmDel: null }); this.replaceHash(this.hashFor('manage', { tab: 'res' }));
+    setTimeout(() => { const el = document.getElementById('ed-name'); if (el) el.focus(); }, 50);
+  }
+  saveRes() {
+    const errs = this.validate('ed'), keys = Object.keys(errs);
+    if (keys.length) { this.setState({ edErr: errs }); const el = document.getElementById('ed-' + keys[0]); if (el) el.focus(); return; }
+    const f = this.state.ed, editId = this.state.edit, subId = this.state.edSubId;
+    const split = (v, sep) => v.split(sep).map(x => x.trim()).filter(Boolean);
+    let savedId;
+    this.commit(db => {
+      const rec = { name: f.name.trim(), cat: f.cat, creator: f.creator.trim(), url: f.url.trim(), price: f.price, license: f.license.trim(), tools: f.tools, tags: split(f.tags, ','), desc: f.desc.trim(), features: split(f.features, '\n'), formats: f.formats.trim(), commercial: f.commercial || 'check', checked: f.checked || '' };
+      if (editId === 'new') { savedId = this.uniqueId(this.slug(rec.name), db.resources); db.resources.push({ id: savedId, ...rec, added: new Date().toISOString().slice(0, 10) }); }
+      else { savedId = editId; const i = db.resources.findIndex(r => r.id === editId); db.resources[i] = { ...db.resources[i], ...rec }; }
+      db.featured = db.featured.filter(id => id !== savedId); if (f.featured) db.featured.push(savedId);
+      if (subId) db.submissions = db.submissions.filter(x => x.id !== subId);
+      return db;
+    }, editId === 'new' ? '\u201c' + f.name.trim() + '\u201d added to the hub' : 'Changes to \u201c' + f.name.trim() + '\u201d saved');
+    this.setState({ edit: null, ed: null, edSubId: null });
+  }
+  saveCat() {
+    const errs = this.validate('ce');
+    if (Object.keys(errs).length) { this.setState({ ceErr: errs }); const el = document.getElementById('ce-label'); if (el) el.focus(); return; }
+    const f = this.state.ce, id = this.state.ceId;
+    this.commit(db => {
+      const rec = { label: f.label.trim(), short: (f.short || '').trim() || f.label.trim(), blurb: f.blurb.trim(), icon: f.icon };
+      if (id === 'new') db.categories.push({ id: this.uniqueId(this.slug(rec.label), db.categories), ...rec });
+      else { const i = db.categories.findIndex(c => c.id === id); db.categories[i] = { ...db.categories[i], ...rec }; }
+      return db;
+    }, 'Category \u201c' + f.label.trim() + '\u201d saved');
+    this.setState({ ce: null, ceId: null });
+  }
+  moveCat(i, d) { this.commit(db => { const a = db.categories; const [x] = a.splice(i, 1); a.splice(i + d, 0, x); return db; }); }
+
+  onJson(text) {
+    const r = this.normalize(this.tryParse(text));
+    if (!r.db) { this.setState({ jsonDraft: text, jsonErr: r.error }); return; }
+    this.setState({ jsonDraft: text, jsonErr: '', draftDb: r.db });
+    if (this.state.jsonLive) { this.setState({ db: r.db }); clearTimeout(this.jsonT); this.jsonT = setTimeout(() => this.persist(r.db), 300); }
+  }
+  importFile(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const r = this.normalize(this.tryParse(String(reader.result)));
+      if (!r.db) { this.toast('Import failed. ' + r.error, 'err'); return; }
+      this.useDb(r.db, 'browser', true);
+      this.toast('Imported ' + r.db.resources.length + ' resources from ' + file.name);
+    };
+    reader.onerror = () => this.toast('That file couldn\u2019t be read.', 'err');
+    reader.readAsText(file);
+  }
+  exportFile() {
+    const blob = new Blob([JSON.stringify(this.state.db, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'atlas-data.json';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    this.toast('Exported atlas-data.json');
+  }
+
+  renderVals() {
+    const s = this.state, wide = s.wide;
+    const db = s.db || { categories: [], resources: [], collections: [], featured: [], submissions: [], site: { copy: 'Design Atlas', address: '', socials: {} } };
+    const site = db.site || { copy: 'Design Atlas', address: '', socials: {} };
+    const cats = db.categories, res = db.resources;
+    const byId = id => res.find(r => r.id === id);
+    const catOf = id => cats.find(c => c.id === id) || {};
+    const countIn = id => res.filter(r => r.cat === id).length;
+    const entries = n => n + (n === 1 ? ' entry' : ' entries');
+    const onPage = (...p) => p.includes(s.page);
+
+    const nav = [
+      { label: 'Explore', icon: 'ph-squares-four', go: () => this.explore(), on: onPage('explore', 'detail') },
+      { label: 'Start a project', icon: 'ph-rocket-launch', go: () => this.goAnchor('home', 'collections'), on: false },
+      { label: 'About and FAQ', icon: 'ph-info', go: () => this.go('about'), on: onPage('about') },
+      { label: 'Manage', icon: 'ph-sliders-horizontal', go: () => this.go('manage'), on: onPage('manage') }
+    ];
+    const navItems = nav.map(n => ({ ...n, aria: n.on ? 'page' : undefined, line: n.on ? '#14243A' : 'transparent' }));
+    const mobileNav = [{ label: 'Home', icon: 'ph-house', go: () => this.go('home'), on: onPage('home') }, ...nav, { label: 'Submit a resource', icon: 'ph-plus', go: () => this.go('submit'), on: onPage('submit') }].map(n => ({ ...n, aria: n.on ? 'page' : undefined, current: n.on }));
+
+    const forced = this.props.catalogState && this.props.catalogState !== 'live' && !s.forceClear ? this.props.catalogState : null;
+    const cs = forced || s.loadState;
+    const live = cs === 'live' && !!s.db;
+
+    const coll = s.coll ? db.collections.find(c => c.id === s.coll) : null;
+    const base = res.filter(r => (!s.cat || r.cat === s.cat) && (!coll || coll.ids.includes(r.id)));
+    let list = base.filter(r => (!s.prices.length || s.prices.includes(r.price)) && (!s.comms.length || s.comms.includes(r.commercial)) && (!s.plats.length || s.plats.some(p => r.tools.includes(p))));
+    const q = s.q.trim();
+    if (q) list = list.map(r => [r, this.score(r, q, cats)]).filter(x => x[1] > 0).sort((a, b) => b[1] - a[1]).map(x => x[0]);
+    if (s.sort === 'name') list = [...list].sort((a, b) => a.name.localeCompare(b.name));
+    if (s.sort === 'free') { const o = { Free: 0, Premium: 1, Paid: 2 }; list = [...list].sort((a, b) => o[a.price] - o[b.price]); }
+    const catObj = s.cat ? catOf(s.cat) : null;
+    const exTitle = coll ? coll.title : catObj ? catObj.label : 'All resources';
+    const exIntro = coll ? coll.desc : catObj ? catObj.blurb : 'The full index. Search by name, tag or creator, then narrow by category, pricing and the tools you use.';
+    const chips = [];
+    if (q) chips.push({ label: '\u201c' + q + '\u201d', aria: 'Clear search ' + q, remove: () => this.setState({ q: '' }) });
+    s.prices.forEach(p => chips.push({ label: p, aria: 'Remove filter ' + p, remove: () => this.toggleIn('prices', p) }));
+    s.comms.forEach(p => chips.push({ label: this.COM[p][2], aria: 'Remove filter ' + this.COM[p][2], remove: () => this.toggleIn('comms', p) }));
+    s.plats.forEach(p => chips.push({ label: p, aria: 'Remove filter ' + p, remove: () => this.toggleIn('plats', p) }));
+    const chipOpt = (key, v) => { const on = s[key].includes(v); return { label: v, aria: on ? 'true' : 'false', bg: on ? '#14243A' : '#FFFFFF', fg: on ? '#F7F6F2' : '#14243A', toggle: () => this.toggleIn(key, v) }; };
+    const catOptions = [{ id: null, label: 'All categories', icon: 'ph-squares-four', count: res.length }, ...cats.map(c => ({ id: c.id, label: c.label, icon: c.icon, count: countIn(c.id) }))]
+      .map(o => { const on = s.cat === o.id && !coll; return { ...o, aria: on ? 'true' : 'false', bg: on ? '#DCE5F2' : 'transparent', weight: on ? 700 : 400, toggle: () => this.setState({ cat: o.id, coll: null }) }; });
+
+    let d = {};
+    if (s.page === 'detail' && s.db) {
+      const r = byId(s.id) || res[0];
+      if (r) {
+        const rel = res.filter(x => x.cat === r.cat && x.id !== r.id).slice(0, 4);
+        d = { ...r, catLabel: catOf(r.cat).label, domain: this.domain(r.url), tools: r.tools.join(', ') || 'Not listed', formats: r.formats || 'Not listed', license: r.license || 'See source',
+          goCat: () => this.explore({ cat: r.cat }), tagBtns: r.tags.map(t => ({ label: t, go: () => this.explore({ q: t }) })),
+          related: rel.map(x => this.card(x)), hasRelated: rel.length > 0,
+          comLabel: (this.COM[r.commercial] || this.COM.check)[2], comIcon: (this.COM[r.commercial] || this.COM.check)[1],
+          checkLabel: this.checkInfo(r).label, checkColor: this.checkInfo(r).color,
+          ...(() => { const on = s.shortlist.includes(r.id); return { savedAria: on ? 'true' : 'false', saveText: on ? 'On your shortlist' : 'Add to shortlist', saveIcon: on ? 'ph-check' : 'ph-bookmark-simple', saveBg: on ? '#14243A' : '#FFFFFF', saveFg: on ? '#F7F6F2' : '#14243A', toggleSave: () => this.toggleSave(r.id, r.name) }; })() };
+      }
+    }
+
+    const sub = this.fieldKit('sub', ['name', 'url', 'cat', 'price', 'desc', 'email']);
+    const con = this.fieldKit('con', ['name', 'email', 'msg']);
+    const subErrN = Object.values(s.subErr).filter(Boolean).length;
+
+    const tiles = [['#14243A', '#F7F6F2', '#14243A'], ['#DCE5F2', '#14243A', '#DCE5F2'], ['#FFFFFF', '#14243A', '#DDD8CC']];
+    const dated = res.filter(r => r.added).sort((a, b) => b.added.localeCompare(a.added));
+    const latestSrc = [...dated, ...res.filter(r => !r.added).slice().reverse()].slice(0, 6);
+
+    // manage
+    const mq = s.mgQ.trim().toLowerCase();
+    const mgList = res.filter(r => (!s.mgCat || r.cat === s.mgCat) && (!s.mgCheck || this.checkInfo(r).due) && (!mq || r.name.toLowerCase().includes(mq) || r.creator.toLowerCase().includes(mq)));
+    const ed = this.fieldKit('ed', ['name', 'url', 'cat', 'price', 'creator', 'license', 'desc', 'tags', 'features', 'formats', 'commercial']);
+    const edV = s.ed || this.emptyEd;
+    const ce = this.fieldKit('ce', ['label', 'short', 'blurb']);
+    const ceV = s.ce || { label: '', short: '', blurb: '', icon: 'ph-folder' };
+    const draft = s.draftDb || db;
+    const savedTxt = s.savedAt ? ' at ' + s.savedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+    const tabs = [['res', 'Resources', 'ph-list-bullets', res.length], ['cats', 'Categories', 'ph-folders', cats.length], ['subs', 'Submissions', 'ph-tray', db.submissions.length], ['site', 'Site settings', 'ph-gear-six', ''], ['json', 'JSON editor', 'ph-brackets-curly', '']];
+    const toastKind = s.toast ? s.toast.kind : 'ok';
+
+    return {
+      wide, narrow: !wide, navItems, mobileNav,
+      menuOpen: s.menuOpen, menuAria: s.menuOpen ? 'true' : 'false', menuLabel: s.menuOpen ? 'Close menu' : 'Open menu', menuText: s.menuOpen ? 'Close' : 'Menu', menuIcon: s.menuOpen ? 'ph-x' : 'ph-list',
+      menuBtnBg: s.menuOpen ? '#14243A' : '#F7F6F2', menuBtnFg: s.menuOpen ? '#F7F6F2' : '#14243A',
+      menuFade: s.menuOpen ? 1 : 0, menuPE: s.menuOpen ? 'auto' : 'none', menuY: s.menuOpen ? '0' : '-12px', menuVis: s.menuOpen ? 'visible' : 'hidden',
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }), closeMenu: () => this.setState({ menuOpen: false }),
+      goHome: () => this.go('home'), goExplore: () => this.explore(), goSubmit: () => this.go('submit'),
+      isHome: s.page === 'home', isExplore: s.page === 'explore', isDetail: s.page === 'detail' && !!d.id, isSubmit: s.page === 'submit', isAbout: s.page === 'about', isLegal: s.page === 'privacy' || s.page === 'terms', isManage: s.page === 'manage' && !!s.db,
+
+      heroQ: s.heroQ, onHeroQ: e => this.setState({ heroQ: e.target.value }),
+      heroSubmit: e => { e.preventDefault(); this.explore({ q: s.heroQ.trim() }); },
+      quickSearches: ['dashboard', 'icons', 'accessibility', 'Figma', 'open source'].map(l => ({ label: l, go: () => this.explore({ q: l }) })),
+      heroTiles: cats.map((c, i) => {
+        const pat = [2, 3, 3, 2]; let k = i, r = 0; while (k >= pat[r % 4]) { k -= pat[r % 4]; r++; }
+        const n = pat[r % 4], col = k, row = r, on = i === s.heroActive % Math.max(1, cats.length), alt = (row + col) % 2 === 0;
+        const first = col === 0, last = col === n - 1;
+        return { label: c.label, icon: c.icon, aria: c.label + ', ' + entries(countIn(c.id)),
+          bg: on ? '#14243A' : alt ? '#DCE5F2' : '#FFFFFF', fg: on ? '#F7F6F2' : '#14243A', border: on ? '#14243A' : alt ? '#DCE5F2' : '#DDD8CC',
+          col: ((n === 2 ? 2 : 1) + col * 2) + ' / span 2', lift: (on ? -6 : 0) + 'px', scale: on ? 1.08 : 1, shadow: on ? '0 14px 28px rgba(20,36,58,.24)' : '0 0 0 rgba(20,36,58,0)', z: on ? 3 : 1,
+          tipOp: on ? 1 : 0, tipY: on ? '0' : '6px', tipLeft: first ? '0' : last ? '100%' : '50%', tipX: first ? '0' : last ? '-100%' : '-50%',
+          hover: () => this.setState({ heroActive: i }), go: () => this.explore({ cat: c.id }) };
+      }),
+      heroPause: () => this.setState({ heroPaused: true }), heroResume: () => this.setState({ heroPaused: false }),
+      homeLoading: cs === 'loading', homeError: cs === 'error',
+      indexSummary: s.db ? res.length + ' entries in ' + cats.length + ' categories' : '',
+      categoryIndex: cats.map(c => ({ ...c, countLabel: entries(countIn(c.id)), go: () => this.explore({ cat: c.id }) })),
+      featured: db.featured.map(byId).filter(Boolean).map(r => this.card(r)), hasFeatured: db.featured.length > 0 || !s.db,
+      collections: db.collections.map(c => ({ ...c, count: c.ids.length,
+        picks: c.ids.map(byId).filter(Boolean).map(r => ({ name: r.name, price: r.price, need: catOf(r.cat).short || catOf(r.cat).label, icon: catOf(r.cat).icon || 'ph-folder', open: () => this.go('detail', { id: r.id }) })),
+        go: () => this.explore({ coll: c.id }),
+        compare: () => { const add = c.ids.filter(id => byId(id) && !s.shortlist.includes(id)); this.setShortlist([...s.shortlist, ...add]); this.toast(add.length ? 'Added ' + add.length + ' to your shortlist' : 'This set is already on your shortlist'); this.go('shortlist'); } })),
+      latest: latestSrc.map(r => ({ ...this.card(r), dateOrCreator: r.added ? 'Added ' + r.added : r.creator })),
+      latestNoDates: !!s.db && dated.length === 0,
+      total: res.length,
+
+      exTitle, exIntro, exHasCrumb: !!(coll || catObj), exScopeLabel: coll || catObj ? exTitle : 'all resources',
+      exHasIcon: !!(catObj && catObj.icon) || !!coll, exIcon: catObj ? catObj.icon : 'ph-bookmarks-simple',
+      clearScope: () => this.setState({ cat: null, coll: null }),
+      q: s.q, onQ: e => { const v = e.target.value; this.setState({ q: v }); clearTimeout(this.qT); this.qT = setTimeout(() => this.replaceHash(this.hashFor('explore', { cat: this.state.cat, coll: this.state.coll, q: v.trim() })), 300); }, noSubmit: e => e.preventDefault(),
+      showFilters: wide || s.filtersOpen, toggleFilters: () => this.setState({ filtersOpen: !s.filtersOpen }),
+      filtersAria: s.filtersOpen ? 'true' : 'false', filtersLabel: (s.filtersOpen ? 'Hide filters' : 'Show filters') + (s.prices.length + s.plats.length + s.comms.length ? ' (' + (s.prices.length + s.plats.length + s.comms.length) + ' on)' : ''),
+      catOptions, priceOptions: ['Free', 'Premium', 'Paid'].map(p => chipOpt('prices', p)),
+      comOptions: ['yes', 'check', 'no'].map(k => ({ ...chipOpt('comms', k), label: this.COM[k][2], icon: this.COM[k][1] })), platOptions: this.TOOLS.map(p => chipOpt('plats', p)),
+      chips, hasChips: chips.length > 0, clearAll: () => this.setState({ q: '', prices: [], plats: [], comms: [] }),
+      sort: s.sort, onSort: e => this.setState({ sort: e.target.value }),
+      resultLabel: cs === 'loading' ? 'Loading resources' : cs === 'error' ? 'Resources unavailable' : list.length + ' of ' + base.length + (base.length === 1 ? ' resource' : ' resources'),
+      busyAria: cs === 'loading' ? 'true' : 'false',
+      isLoading: cs === 'loading', isError: cs === 'error', isEmpty: live && list.length === 0, hasResults: live && list.length > 0,
+      loadingSlots: [1, 2, 3, 4, 5, 6],
+      retry: () => { this.setState({ forceClear: true }); if (s.db) { this.setState({ loadState: 'loading' }); this.later(() => this.setState({ loadState: 'live' }), 600); } else this.loadFile(); },
+      results: live ? list.map(r => this.card(r)) : [],
+      emptyTitle: q ? 'Nothing matches \u201c' + q + '\u201d here' : 'No resources match these filters',
+      suggestCats: cats.filter(c => c.id !== s.cat).slice(0, 3).map(c => ({ label: c.label, icon: c.icon, go: () => this.explore({ cat: c.id }) })),
+
+      d, reportLink: () => { const n = d.name || ''; this.goAnchor('about', 'contact'); this.setState(st => ({ con: { ...st.con, msg: st.con.msg || 'Link issue on ' + n + ': ' } })); },
+
+      catSelect: cats,
+      sub: sub.vals, subErr: sub.errs, subOn: sub.on, subAria: sub.aria, subBorder: sub.border,
+      subSent: s.subStatus === 'sent', subShowForm: s.subStatus !== 'sent', subFailed: s.subStatus === 'failed', subInvalid: s.subStatus === 'invalid' && subErrN > 0,
+      subErrCount: subErrN === 1 ? '1 field needs attention.' : subErrN + ' fields need attention.',
+      subSending: s.subStatus === 'sending', subBtn: s.subStatus === 'sending' ? 'Sending\u2026' : s.subStatus === 'failed' ? 'Try sending again' : 'Send for review',
+      subSentMsg: '\u201c' + s.sub.name + '\u201d will be checked against the listing criteria.' + (s.sub.email ? ' The outcome goes to ' + s.sub.email + '.' : ''),
+      subDescCount: s.sub.desc.trim().length + ' of 280 characters, minimum 20',
+      subSubmit: e => { e.preventDefault(); this.send('sub'); },
+      subReset: () => this.setState({ sub: { name: '', url: '', cat: '', price: '', desc: '', email: '' }, subErr: {}, subStatus: 'idle' }),
+
+      faq: this.faqs.map(([q2, a], i) => ({ q: q2, a, open: s.faqOpen === i, aria: s.faqOpen === i ? 'true' : 'false', rot: s.faqOpen === i ? '180deg' : '0deg', toggle: () => this.setState({ faqOpen: s.faqOpen === i ? -1 : i }) })),
+      con: con.vals, conErr: con.errs, conOn: con.on, conAria: con.aria, conBorder: con.border,
+      conSent: s.conStatus === 'sent', conShowForm: s.conStatus !== 'sent', conFailed: s.conStatus === 'failed',
+      conSending: s.conStatus === 'sending', conBtn: s.conStatus === 'sending' ? 'Sending\u2026' : 'Send message',
+      conSubmit: e => { e.preventDefault(); this.send('con'); },
+      conReset: () => this.setState({ con: { name: '', email: '', msg: '' }, conErr: {}, conStatus: 'idle' }),
+
+      mgSummary: res.length + ' resources in ' + cats.length + ' categories \u00b7 ' + (s.source === 'file' ? 'Loaded from atlas-data.json, no local edits yet' : 'Saved in this browser' + savedTxt),
+      exportJson: () => this.exportFile(),
+      pickImport: () => { const el = document.getElementById('import-file'); if (el) { el.value = ''; el.click(); } },
+      importJson: e => this.importFile(e.target.files && e.target.files[0]),
+      askReset: () => this.setState({ confirmReset: true }), cancelReset: () => this.setState({ confirmReset: false }),
+      confirmReset: s.confirmReset,
+      doReset: () => { try { localStorage.removeItem(this.KEY); } catch (e) {} this.setState({ confirmReset: false, edit: null, ed: null, ce: null, ceId: null, savedAt: null }); this.loadFile(); this.toast('Reloaded atlas-data.json'); },
+      mgTabs: tabs.map(([id, label, icon, count]) => ({ label, icon, count, tabId: 'tab-' + id, aria: s.tab === id ? 'true' : 'false', bg: s.tab === id ? '#14243A' : 'transparent', fg: s.tab === id ? '#F7F6F2' : '#14243A', go: () => { this.setState({ tab: id }); this.replaceHash(this.hashFor('manage', { tab: id })); } })),
+      mgTabId: 'tab-' + s.tab,
+      tabRes: s.tab === 'res', tabCats: s.tab === 'cats', tabSubs: s.tab === 'subs', tabJson: s.tab === 'json', tabSite: s.tab === 'site',
+
+      mgQ: s.mgQ, onMgQ: e => this.setState({ mgQ: e.target.value }), mgCat: s.mgCat, onMgCat: e => this.setState({ mgCat: e.target.value }),
+      mgCountLabel: 'Showing ' + mgList.length + ' of ' + res.length, mgEmpty: !!s.db && mgList.length === 0,
+      newRes: () => this.openEditor(null),
+      mgRows: mgList.map(r => ({
+        name: r.name, icon: catOf(r.cat).icon || 'ph-folder', meta: (catOf(r.cat).label || '') + ' \u00b7 ' + r.price + ' \u00b7 ' + this.checkInfo(r).label + (db.featured.includes(r.id) ? ' \u00b7 Featured' : ''),
+        bg: s.edit === r.id ? '#E9EEF7' : 'transparent', confirming: s.confirmDel === r.id, idle: s.confirmDel !== r.id,
+        editAria: 'Edit ' + r.name, delAria: 'Delete ' + r.name,
+        edit: () => this.openEditor(r), askDel: () => this.setState({ confirmDel: r.id }), cancelDel: () => this.setState({ confirmDel: null }),
+        del: () => { this.commit(x => { x.resources = x.resources.filter(y => y.id !== r.id); x.featured = x.featured.filter(y => y !== r.id); x.collections.forEach(c => { c.ids = c.ids.filter(y => y !== r.id); }); return x; }, '\u201c' + r.name + '\u201d deleted'); this.setState(st => ({ confirmDel: null, edit: st.edit === r.id ? null : st.edit, ed: st.edit === r.id ? null : st.ed })); }
+      })),
+      hasEditor: !!s.ed, noEditor: !s.ed,
+      edTitle: s.edit === 'new' ? 'Add a resource' : 'Edit resource', edSaveLabel: s.edit === 'new' ? 'Add to hub' : 'Save changes', edFromSub: !!s.edSubId,
+      ed: edV, edErr: ed.errs, edOn: ed.on, edAria: ed.aria, edBorder: ed.border,
+      edTools: this.TOOLS.map(t => { const on = edV.tools.includes(t); return { label: t, aria: on ? 'true' : 'false', bg: on ? '#14243A' : '#FFFFFF', fg: on ? '#F7F6F2' : '#14243A', toggle: () => this.setState(st => ({ ed: { ...st.ed, tools: on ? st.ed.tools.filter(x => x !== t) : [...st.ed.tools, t] } })) }; }),
+      edToggleFeatured: () => this.setState(st => ({ ed: { ...st.ed, featured: !st.ed.featured } })),
+      edPreview: this.card({ name: edV.name || 'Resource name', cat: edV.cat, desc: edV.desc || 'Short description appears here.', price: edV.price, creator: edV.creator || 'Creator', tools: edV.tools, url: edV.url }, cats),
+      saveRes: e => { e.preventDefault(); this.saveRes(); }, closeEditor: () => this.setState({ edit: null, ed: null, edErr: {}, edSubId: null }),
+
+      newCat: () => { this.setState({ ce: { label: '', short: '', blurb: '', icon: 'ph-folder' }, ceId: 'new', ceErr: {} }); setTimeout(() => { const el = document.getElementById('ce-label'); if (el) el.focus(); }, 50); },
+      catRows: cats.map((c, i) => {
+        const n = countIn(c.id);
+        return { ...c, countLabel: entries(n), bg: s.ceId === c.id ? '#E9EEF7' : 'transparent', first: i === 0, last: i === cats.length - 1, upOp: i === 0 ? 0.4 : 1, downOp: i === cats.length - 1 ? 0.4 : 1,
+          upAria: 'Move ' + c.label + ' up', downAria: 'Move ' + c.label + ' down', delAria: 'Delete ' + c.label,
+          up: () => i > 0 && this.moveCat(i, -1), down: () => i < cats.length - 1 && this.moveCat(i, 1),
+          edit: () => { this.setState({ ce: { label: c.label, short: c.short, blurb: c.blurb, icon: c.icon }, ceId: c.id, ceErr: {}, catMsg: null }); setTimeout(() => { const el = document.getElementById('ce-label'); if (el) el.focus(); }, 50); },
+          del: () => n > 0 ? this.setState({ catMsg: { id: c.id, msg: 'Move or delete its ' + entries(n) + ' first, then delete the category.' }, catConfirm: null }) : this.setState({ catConfirm: c.id, catMsg: null }),
+          hasMsg: !!(s.catMsg && s.catMsg.id === c.id), msg: s.catMsg && s.catMsg.id === c.id ? s.catMsg.msg : '',
+          confirming: s.catConfirm === c.id, cancelDel: () => this.setState({ catConfirm: null }),
+          confirmDel: () => { this.commit(x => { x.categories = x.categories.filter(y => y.id !== c.id); return x; }, 'Category \u201c' + c.label + '\u201d deleted'); this.setState({ catConfirm: null, ce: s.ceId === c.id ? null : s.ce, ceId: s.ceId === c.id ? null : s.ceId }); }
+        };
+      }),
+      hasCatEditor: !!s.ce, noCatEditor: !s.ce, ceTitle: s.ceId === 'new' ? 'Add a category' : 'Edit category',
+      ce: ceV, ceErr: ce.errs, ceOn: ce.on, ceAria: ce.aria, ceBorder: ce.border, cePreviewLabel: ceV.label || 'Category name',
+      iconChoices: this.ICONS.map(name => { const on = ceV.icon === name; return { name, aria: on ? 'true' : 'false', bg: on ? '#14243A' : '#FFFFFF', fg: on ? '#F7F6F2' : '#14243A', border: on ? '#14243A' : '#DDD8CC', pick: () => this.setState(st => ({ ce: { ...st.ce, icon: name } })) }; }),
+      saveCat: e => { e.preventDefault(); this.saveCat(); }, closeCat: () => this.setState({ ce: null, ceId: null, ceErr: {} }),
+
+      subsEmpty: db.submissions.length === 0,
+      subRows: db.submissions.slice().reverse().map(x => ({
+        name: x.name, url: x.url, desc: x.desc, meta: [catOf(x.cat).label, x.price || 'Pricing not given', x.at, x.email].filter(Boolean).join(' \u00b7 '),
+        review: () => this.openEditor({ name: x.name, url: x.url, cat: x.cat, price: x.price || 'Free', desc: x.desc, tools: [], tags: [], features: [] }, x.id),
+        dismiss: () => this.commit(y => { y.submissions = y.submissions.filter(z => z.id !== x.id); return y; }, 'Submission dismissed')
+      })),
+
+      jsonDraft: s.jsonDraft, onJson: e => this.onJson(e.target.value),
+      jsonLive: s.jsonLive, toggleJsonLive: () => this.setState({ jsonLive: !s.jsonLive }), jsonManual: !s.jsonLive,
+      jsonInvalid: !!s.jsonErr, applyOp: s.jsonErr ? 0.5 : 1,
+      applyJson: () => { if (!s.jsonErr && s.draftDb) { this.setState({ db: s.draftDb }); this.persist(s.draftDb); this.toast('JSON applied to the site'); } },
+      formatJson: () => { const p = this.tryParse(s.jsonDraft); if (p.__err) this.toast('Fix the JSON error before formatting.', 'err'); else this.setState({ jsonDraft: JSON.stringify(p, null, 2) }); },
+      revertJson: () => this.setState({ jsonDraft: JSON.stringify(db, null, 2), jsonErr: '', draftDb: db }),
+      jsonBorder: s.jsonErr ? '#B42318' : '#9AA1AE', jsonStatusColor: s.jsonErr ? '#9A1C12' : '#1F5133',
+      jsonStatusIcon: s.jsonErr ? 'ph-warning-circle' : 'ph-check-circle',
+      jsonStatus: s.jsonErr ? s.jsonErr : (s.jsonLive ? 'Valid. The site is showing this version.' : 'Valid. Choose Apply to site to publish it.'),
+      pvSummary: draft.resources.length + ' resources \u00b7 ' + draft.categories.length + ' categories', pvInvalid: !!s.jsonErr,
+      pvCats: draft.categories.map(c => ({ label: c.label, icon: c.icon, count: draft.resources.filter(r => r.cat === c.id).length })),
+      pvCards: draft.resources.slice(-4).reverse().map(r => this.card(r, draft.categories)),
+
+      nl: s.nl, onNl: e => this.setState({ nl: e.target.value, nlErr: '' }),
+      nlAria: s.nlErr ? 'true' : 'false', nlBorder: s.nlErr ? '#B42318' : '#14243A', nlErr: s.nlErr,
+      nlSent: s.nlStatus === 'sent', nlShowForm: s.nlStatus !== 'sent', nlSending: s.nlStatus === 'sending',
+      nlBtn: s.nlStatus === 'sending' ? 'Subscribing\u2026' : 'Subscribe',
+      nlSubmit: e => {
+        e.preventDefault();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.nl.trim())) { this.setState({ nlErr: 'Enter an email like name@domain.com.' }); return; }
+        this.setState({ nlStatus: 'sending', nlErr: '' });
+        this.later(() => (this.props.formOutcome ?? 'success') === 'failure' ? this.setState({ nlStatus: 'idle', nlErr: 'Couldn\u2019t subscribe right now. Your email is kept, try again in a moment.' }) : this.setState({ nlStatus: 'sent' }), 900);
+      },
+      footerNav: [
+        { label: 'Home', go: () => this.go('home') },
+        { label: 'Explore', go: () => this.explore() },
+        { label: 'Submit a resource', go: () => this.go('submit') },
+        { label: 'About and FAQ', go: () => this.go('about') },
+        { label: 'Contact', go: () => this.goAnchor('about', 'contact') },
+        { label: 'Manage the hub', go: () => this.go('manage') }
+      ],
+
+      mgCheck: s.mgCheck, onMgCheck: e => this.setState({ mgCheck: e.target.value }),
+      mgDueLabel: 'Needs a check (' + res.filter(r => this.checkInfo(r).due).length + ')',
+      edCheckLabel: this.checkInfo(edV).label, edCheckColor: this.checkInfo(edV).color,
+      edMarkChecked: () => this.setState(st => ({ ed: { ...st.ed, checked: this.today() } })),
+
+      goShortlist: () => this.go('shortlist'), isShortlist: s.page === 'shortlist',
+      slCount: s.shortlist.length, slHasCount: s.shortlist.length > 0, slAria: 'Shortlist, ' + s.shortlist.length + ' saved',
+      ...(() => {
+        const items = s.shortlist.map(byId).filter(Boolean);
+        const val = (t, extra) => ({ isText: true, isLink: false, text: t || 'Not listed', hasIcon: false, color: '#14243A', weight: 400, ...(extra || {}) });
+        const rows = [
+          ['Pricing', 'ph-tag', r => val(r.price, { weight: 600 })],
+          ['Commercial use', 'ph-briefcase', r => { const c = this.COM[r.commercial] || this.COM.check; return val(c[2], { hasIcon: true, icon: c[1], weight: 600 }); }],
+          ['Licence', 'ph-scales', r => val(r.license)],
+          ['Works with', 'ph-plugs', r => val(r.tools.join(', '))],
+          ['Formats', 'ph-file', r => val(r.formats)],
+          ['Last checked', 'ph-calendar-check', r => { const ci = this.checkInfo(r); return val(ci.label, { color: ci.color }); }],
+          ['Source', 'ph-globe', r => ({ isText: false, isLink: true, text: this.domain(r.url), url: r.url })]
+        ];
+        return {
+          slHas: !!s.db && items.length > 0, slEmpty: !!s.db && items.length === 0,
+          slCountLabel: items.length + (items.length === 1 ? ' resource' : ' resources'), slMinW: (150 + items.length * 230) + 'px',
+          slCols: items.map(r => ({ name: r.name, creator: r.creator, catLabel: catOf(r.cat).label, icon: catOf(r.cat).icon || 'ph-folder', open: () => this.go('detail', { id: r.id }), removeAria: 'Remove ' + r.name + ' from shortlist', remove: () => this.setShortlist(s.shortlist.filter(x => x !== r.id)) })),
+          slRows: rows.map(([label, icon, fn], i) => ({ label, icon, bg: i % 2 ? '#FFFFFF' : '#FAF9F5', cells: items.map(fn) }))
+        };
+      })(),
+      slConfirm: s.slConfirm, slAskClear: () => this.setState({ slConfirm: true }), slCancelClear: () => this.setState({ slConfirm: false }),
+      slClear: () => { this.setShortlist([]); this.setState({ slConfirm: false }); this.toast('Shortlist cleared'); },
+
+      hasCrumbs: s.page !== 'home', crumbs: (() => {
+        const c = [{ label: 'Home', go: () => this.go('home') }];
+        const exGo = () => this.explore();
+        if (s.page === 'explore') { c.push({ label: 'Explore', go: exGo }); const co = s.coll && db.collections.find(x => x.id === s.coll); if (co) c.push({ label: co.title }); else if (s.cat) c.push({ label: catOf(s.cat).label || s.cat }); }
+        if (s.page === 'detail') { c.push({ label: 'Explore', go: exGo }); if (d.id) { c.push({ label: d.catLabel, go: d.goCat }); c.push({ label: d.name }); } }
+        if (s.page === 'submit') c.push({ label: 'Submit a resource' });
+        if (s.page === 'about') c.push({ label: 'About and FAQ' });
+        if (s.page === 'privacy') c.push({ label: 'Privacy policy' });
+        if (s.page === 'terms') c.push({ label: 'Terms and conditions' });
+        if (s.page === 'shortlist') c.push({ label: 'Shortlist' });
+        if (s.page === 'manage') { c.push({ label: 'Manage', go: () => { this.setState({ tab: 'res' }); this.replaceHash(this.hashFor('manage', { tab: 'res' })); } }); c.push({ label: this.TABNAMES[s.tab] }); }
+        return c.map((x, i) => ({ ...x, sep: i > 0, current: i === c.length - 1, link: i < c.length - 1 && !!x.go }));
+      })(),
+      navBack: () => { if (this.pos > 0) history.back(); }, navFwd: () => { if (this.pos < this.hist.length - 1) history.forward(); },
+      cantBack: this.pos <= 0, cantFwd: this.pos >= this.hist.length - 1, backOp: this.pos <= 0 ? 0.4 : 1, fwdOp: this.pos >= this.hist.length - 1 ? 0.4 : 1,
+
+      year: new Date().getFullYear(), copyName: site.copy || 'Design Atlas', addressText: site.address, hasAddress: !!site.address,
+      socials: this.SOCIALS.filter(([k]) => site.socials && site.socials[k]).map(([k, label, icon]) => ({ url: site.socials[k], icon, aria: 'Design Atlas on ' + label + ' (opens in a new tab)' })),
+      hasSocials: this.SOCIALS.some(([k]) => site.socials && site.socials[k]), noSocials: !!s.db && !this.SOCIALS.some(([k]) => site.socials && site.socials[k]),
+      footerGroups: [
+        { title: 'Browse', links: [{ label: 'Explore', go: () => this.explore() }, { label: 'Start a project', go: () => this.goAnchor('home', 'collections') }, { label: 'Shortlist', go: () => this.go('shortlist') }, { label: 'Recently added', go: () => this.goAnchor('home', 'new-h') }] },
+        { title: 'Contribute', links: [{ label: 'Submit a resource', go: () => this.go('submit') }, { label: 'Manage the hub', go: () => this.go('manage') }] },
+        { title: 'Help', links: [{ label: 'About Design Atlas', go: () => this.go('about') }, { label: 'FAQ', go: () => this.goAnchor('about', 'faq-h') }, { label: 'Contact', go: () => this.goAnchor('about', 'contact') }] }
+      ],
+      goPrivacy: () => this.go('privacy'), goTerms: () => this.go('terms'), goContact: () => this.goAnchor('about', 'contact'),
+      legal: s.page === 'terms' ? { title: 'Terms and conditions', updated: 'Draft, not yet published', sections: [
+        { h: 'What Design Atlas is', p: 'Design Atlas is an index that describes design resources made by other people and links to them. It doesn\u2019t host, sell or license any of those resources.' },
+        { h: 'Licences belong to the creators', p: 'Your use of a listed resource is governed by its creator\u2019s own licence and terms. The pricing and licence labels here are a summary, so check the source before you rely on them.' },
+        { h: 'Accuracy', p: 'Entries are checked when they\u2019re added, but sources change. The index is provided as is, without a guarantee that every detail is current.' },
+        { h: 'Submissions', p: 'When you submit a resource, you confirm the details are accurate as far as you know. Submissions can be edited for clarity or declined.' },
+        { h: 'Names and trademarks', p: 'Product names, logos and trademarks belong to their owners. Listing a resource doesn\u2019t imply endorsement either way.' },
+        { h: 'Changes to these terms', p: 'These terms may be updated. The date at the top of this page shows when they last changed.' }
+      ] } : { title: 'Privacy policy', updated: 'Draft, not yet published', sections: [
+        { h: 'What is stored on your device', p: 'Your shortlist, changes made in Manage, the submissions queue and your cookie choice are kept in your browser\u2019s local storage. They stay on your device and can be cleared from Cookie settings.' },
+        { h: 'Email addresses', p: 'Emails entered in the newsletter, contact or submission forms are used only for that purpose. In the current version, nothing is sent to a server.' },
+        { h: 'Analytics and advertising', p: 'There are no analytics or advertising cookies on the site. If analytics are added, they will follow the choice you set in Cookie settings.' },
+        { h: 'Third-party services', p: 'Fonts load from Google Fonts and icons from jsDelivr. Those services receive your IP address as part of each request, under their own privacy policies.' },
+        { h: 'Links to other sites', p: 'Resource links lead to other websites. Their privacy practices are their own, so check them when you visit.' }
+      ] },
+
+      cookieOpen: s.cookieOpen,
+      openCookies: () => { this.setState({ cookieOpen: true, ckDraft: !!s.consent.analytics, clearConfirm: false }); setTimeout(() => { const b = document.querySelector('#cookie-dialog button'); if (b) b.focus(); }, 40); },
+      closeCookies: () => this.setState({ cookieOpen: false }),
+      ckAria: s.ckDraft ? 'true' : 'false', ckTrack: s.ckDraft ? '#4169E1' : '#6B7280', ckKnob: s.ckDraft ? '25px' : '3px',
+      toggleAnalytics: () => this.setState({ ckDraft: !s.ckDraft }),
+      saveCookies: () => { const c = { analytics: s.ckDraft, at: new Date().toISOString() }; try { localStorage.setItem('designAtlas.consent', JSON.stringify(c)); } catch (e) {} this.setState({ consent: c, cookieOpen: false }); this.toast('Cookie choices saved'); },
+      clearConfirm: s.clearConfirm, askClear: () => this.setState({ clearConfirm: true }), cancelClear: () => this.setState({ clearConfirm: false }),
+      doClear: () => { try { localStorage.removeItem(this.KEY); localStorage.removeItem('designAtlas.consent'); localStorage.removeItem(this.SLKEY); } catch (e) {} this.setState({ cookieOpen: false, clearConfirm: false, consent: { analytics: false }, savedAt: null, shortlist: [] }); this.loadFile(); this.toast('Data on this device cleared'); },
+
+      st: s.st || { copy: site.copy, address: site.address, socials: { ...(site.socials || {}) } },
+      stOn: { copy: e => { const v = e.target.value; this.setState(st => ({ st: { ...(st.st || { copy: site.copy, address: site.address, socials: { ...site.socials } }), copy: v } })); }, address: e => { const v = e.target.value; this.setState(st => ({ st: { ...(st.st || { copy: site.copy, address: site.address, socials: { ...site.socials } }), address: v } })); } },
+      siteSocials: this.SOCIALS.map(([k, label, icon]) => { const cur = s.st || { socials: site.socials || {} }; const err = s.stErr[k]; return { id: 'st-' + k, label, icon, value: (cur.socials && cur.socials[k]) || '', hasErr: !!err, err: err || '', border: err ? '#B42318' : '#9AA1AE', on: e => { const v = e.target.value; this.setState(st => { const base = st.st || { copy: site.copy, address: site.address, socials: { ...site.socials } }; return { st: { ...base, socials: { ...base.socials, [k]: v } }, stErr: { ...st.stErr, [k]: undefined } }; }); } }; }),
+      saveSite: e => {
+        e.preventDefault();
+        const v = s.st || { copy: site.copy, address: site.address, socials: { ...site.socials } };
+        const errs = {};
+        this.SOCIALS.forEach(([k]) => { const u = (v.socials[k] || '').trim(); if (u && !/^https:\/\/[^\s.]+\.[^\s]+$/i.test(u)) errs[k] = 'Use a full link starting with https://'; });
+        if (Object.keys(errs).length) { this.setState({ stErr: errs }); return; }
+        this.commit(x => { x.site = { copy: v.copy.trim() || 'Design Atlas', address: v.address.trim(), socials: Object.fromEntries(this.SOCIALS.map(([k]) => [k, (v.socials[k] || '').trim()])) }; return x; }, 'Site details saved');
+        this.setState({ st: null, stErr: {} });
+      },
+
+      toTop: () => { const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; window.scrollTo({ top: 0, behavior: rm ? 'auto' : 'smooth' }); const m = document.getElementById('main'); if (m) m.focus({ preventScroll: true }); },
+      toTopBottom: s.topBottom + 'px', toTopOp: s.showTop && !s.menuOpen ? 1 : 0, toTopY: s.showTop && !s.menuOpen ? '0' : '12px',
+      toTopVis: s.showTop && !s.menuOpen ? 'visible' : 'hidden', toTopTab: s.showTop ? '0' : '-1',
+
+      toastMsg: s.toast ? s.toast.msg : '', toastOp: s.toast ? 1 : 0, toastY: s.toast ? '0' : '12px', toastVis: s.toast ? 'visible' : 'hidden',
+      toastBg: toastKind === 'err' ? '#9A1C12' : '#14243A', toastIcon: toastKind === 'err' ? 'ph-warning-circle' : 'ph-check-circle'
+    };
+  }
+}
+</script>
+</body>
+</html>

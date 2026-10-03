@@ -1,0 +1,2016 @@
+{
+  "version": 2,
+  "site": {
+    "copy": "Design Atlas",
+    "address": "",
+    "socials": {
+      "instagram": "",
+      "linkedin": "",
+      "x": "",
+      "dribbble": "",
+      "behance": "",
+      "youtube": "",
+      "github": ""
+    }
+  },
+  "featured": [
+    "carbon",
+    "penpot",
+    "lawsofux"
+  ],
+  "categories": [
+    {
+      "id": "uikits",
+      "label": "UI Kits and Templates",
+      "blurb": "Ready-made screens and components to start a layout from.",
+      "icon": "ph-layout",
+      "short": "UI kit"
+    },
+    {
+      "id": "systems",
+      "label": "Design Systems",
+      "blurb": "Documented components, tokens and guidelines from product teams.",
+      "icon": "ph-stack",
+      "short": "Design system"
+    },
+    {
+      "id": "wireframes",
+      "label": "Wireframes and Prototypes",
+      "blurb": "Tools for sketching structure and testing flows before visual design.",
+      "icon": "ph-pencil-simple-line",
+      "short": "Wireframing"
+    },
+    {
+      "id": "icons",
+      "label": "Icons and Illustrations",
+      "blurb": "Icon sets and illustration libraries you can ship, each with its licence.",
+      "icon": "ph-shapes",
+      "short": "Icons"
+    },
+    {
+      "id": "type",
+      "label": "Typography and Fonts",
+      "blurb": "Typefaces and type tools for interfaces and editorial work.",
+      "icon": "ph-text-aa",
+      "short": "Typeface"
+    },
+    {
+      "id": "color",
+      "label": "Color Palettes",
+      "blurb": "Palette builders, color scales and contrast checkers.",
+      "icon": "ph-palette",
+      "short": "Color"
+    },
+    {
+      "id": "tools",
+      "label": "Design Tools and Plugins",
+      "blurb": "Software and plugins that sit in a daily design workflow.",
+      "icon": "ph-wrench",
+      "short": "Tool"
+    },
+    {
+      "id": "research",
+      "label": "UX Research and Usability",
+      "blurb": "Methods, platforms and references for testing with real people.",
+      "icon": "ph-users-three",
+      "short": "Research"
+    },
+    {
+      "id": "inspiration",
+      "label": "Website and App Inspiration",
+      "blurb": "Galleries of shipped websites and app interfaces.",
+      "icon": "ph-compass",
+      "short": "Inspiration"
+    },
+    {
+      "id": "learning",
+      "label": "Tutorials and Learning",
+      "blurb": "Guidelines, courses and reading for building design skill.",
+      "icon": "ph-book-open",
+      "short": "Learning"
+    }
+  ],
+  "collections": [
+    {
+      "id": "saas",
+      "title": "A SaaS dashboard",
+      "desc": "Dense screens, data tables and a lot of states. One pick for each layer.",
+      "ids": [
+        "carbon",
+        "atlassian",
+        "ant",
+        "tabler",
+        "plex",
+        "radixcolors"
+      ]
+    },
+    {
+      "id": "a11y",
+      "title": "An accessible public service",
+      "desc": "Standards, a tested system, a legible typeface and checkers to prove it.",
+      "ids": [
+        "wcag",
+        "a11y",
+        "webaim",
+        "stark",
+        "govuk",
+        "atkinson",
+        "inclusive"
+      ]
+    },
+    {
+      "id": "open",
+      "title": "A project on open-source tools",
+      "desc": "Everything open-licence, from first sketch to final type.",
+      "ids": [
+        "penpot",
+        "excalidraw",
+        "phosphor",
+        "inter",
+        "sourceserif",
+        "leonardo"
+      ]
+    },
+    {
+      "id": "mobile",
+      "title": "An iOS or Android app",
+      "desc": "Platform rules, official kits, icons and a library of shipped apps.",
+      "ids": [
+        "hig",
+        "appleres",
+        "m3",
+        "m3kit",
+        "symbols",
+        "mobbin"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "appleres",
+      "name": "Apple Design Resources",
+      "cat": "uikits",
+      "creator": "Apple",
+      "url": "https://developer.apple.com/design/resources/",
+      "price": "Free",
+      "license": "Apple design resources licence",
+      "tools": [
+        "Figma",
+        "Sketch",
+        "iOS"
+      ],
+      "tags": [
+        "mobile",
+        "ios",
+        "official kit"
+      ],
+      "desc": "Official UI kits, templates and SF Symbols for Apple platforms.",
+      "features": [
+        "Platform UI kits with system components",
+        "Device bezels and production templates"
+      ],
+      "formats": "Figma, Sketch, PSD",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "untitled",
+      "name": "Untitled UI",
+      "cat": "uikits",
+      "creator": "Untitled UI",
+      "url": "https://www.untitledui.com/",
+      "price": "Premium",
+      "license": "Free tier, paid PRO licence",
+      "tools": [
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "ui kit",
+        "dashboard",
+        "components"
+      ],
+      "desc": "A large Figma UI kit and design system with a free version and a paid PRO edition.",
+      "features": [
+        "Component library with variants",
+        "Page examples for marketing and app screens"
+      ],
+      "formats": "Figma",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "m3kit",
+      "name": "Material 3 Design Kit",
+      "cat": "uikits",
+      "creator": "Google",
+      "url": "https://www.figma.com/@materialdesign",
+      "price": "Free",
+      "license": "See Figma Community listing",
+      "tools": [
+        "Figma",
+        "Android"
+      ],
+      "tags": [
+        "mobile",
+        "android",
+        "official kit"
+      ],
+      "desc": "Google's Figma kit of Material 3 components, styles and theming variables.",
+      "features": [
+        "Material 3 components as Figma variants",
+        "Color and type styles linked to theming"
+      ],
+      "formats": "Figma",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "cat": "uikits",
+      "creator": "shadcn",
+      "url": "https://ui.shadcn.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "components",
+        "open source",
+        "dashboard"
+      ],
+      "desc": "Accessible React components you copy into your own codebase and restyle freely.",
+      "features": [
+        "Built on Radix primitives and Tailwind CSS",
+        "Blocks for dashboards, auth and settings"
+      ],
+      "formats": "React, TypeScript",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "flowbite",
+      "name": "Flowbite",
+      "cat": "uikits",
+      "creator": "Themesberg",
+      "url": "https://flowbite.com/",
+      "price": "Premium",
+      "license": "MIT core, paid Pro",
+      "tools": [
+        "Figma",
+        "Web",
+        "React"
+      ],
+      "tags": [
+        "components",
+        "tailwind",
+        "landing page"
+      ],
+      "desc": "Tailwind CSS component library with a matching Figma kit.",
+      "features": [
+        "Open-source core components",
+        "Pro tier adds blocks and full Figma system"
+      ],
+      "formats": "HTML, React, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "daisyui",
+      "name": "daisyUI",
+      "cat": "uikits",
+      "creator": "Pouya Saadeghi",
+      "url": "https://daisyui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "components",
+        "tailwind",
+        "themes",
+        "open source"
+      ],
+      "desc": "A Tailwind CSS plugin that adds semantic component classes and ready themes.",
+      "features": [
+        "Class names like btn and card",
+        "Built-in theme switching"
+      ],
+      "formats": "CSS plugin",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "tailwindplus",
+      "name": "Tailwind Plus",
+      "cat": "uikits",
+      "creator": "Tailwind Labs",
+      "url": "https://tailwindcss.com/plus",
+      "price": "Paid",
+      "license": "Commercial licence",
+      "tools": [
+        "Web",
+        "React"
+      ],
+      "tags": [
+        "components",
+        "tailwind",
+        "landing page",
+        "templates"
+      ],
+      "desc": "Professionally designed UI blocks and full site templates from the Tailwind CSS team.",
+      "features": [
+        "Marketing and application UI blocks",
+        "Complete site templates"
+      ],
+      "formats": "HTML, React, Vue",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "m3",
+      "name": "Material Design 3",
+      "cat": "systems",
+      "creator": "Google",
+      "url": "https://m3.material.io/",
+      "price": "Free",
+      "license": "Apache 2.0 (component code)",
+      "tools": [
+        "Web",
+        "Android",
+        "Figma"
+      ],
+      "tags": [
+        "android",
+        "guidelines",
+        "theming"
+      ],
+      "desc": "Google's open design system: foundations, components and dynamic color guidance.",
+      "features": [
+        "Component specs with usage guidance",
+        "Dynamic color and theme builder"
+      ],
+      "formats": "Web docs, Figma kit, code libraries",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon Design System",
+      "cat": "systems",
+      "creator": "IBM",
+      "url": "https://carbondesignsystem.com/",
+      "price": "Free",
+      "license": "Apache 2.0",
+      "tools": [
+        "Figma",
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "dashboard",
+        "data",
+        "enterprise"
+      ],
+      "desc": "IBM's open-source system for product interfaces, strong on data tables and dense layouts.",
+      "features": [
+        "React and Web Component libraries",
+        "Data visualization guidance",
+        "Figma kits with themes"
+      ],
+      "formats": "Figma, React, Web Components",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "govuk",
+      "name": "GOV.UK Design System",
+      "cat": "systems",
+      "creator": "Government Digital Service",
+      "url": "https://design-system.service.gov.uk/",
+      "price": "Free",
+      "license": "MIT (code)",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "forms",
+        "public sector"
+      ],
+      "desc": "Styles, components and patterns for UK government services, backed by user research.",
+      "features": [
+        "Form patterns tested with real users",
+        "Accessible components with HTML and Nunjucks"
+      ],
+      "formats": "HTML, Nunjucks, Sass",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "uswds",
+      "name": "U.S. Web Design System",
+      "cat": "systems",
+      "creator": "U.S. General Services Administration",
+      "url": "https://designsystem.digital.gov/",
+      "price": "Free",
+      "license": "Public domain (CC0)",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "accessibility",
+        "public sector",
+        "forms"
+      ],
+      "desc": "Design principles, components and tokens for accessible U.S. federal websites.",
+      "features": [
+        "Design tokens and utility classes",
+        "Component guidance with accessibility tests"
+      ],
+      "formats": "HTML, Sass, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "atlassian",
+      "name": "Atlassian Design System",
+      "cat": "systems",
+      "creator": "Atlassian",
+      "url": "https://atlassian.design/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "dashboard",
+        "collaboration",
+        "tokens"
+      ],
+      "desc": "Foundations, tokens and components behind Jira, Confluence and other Atlassian products.",
+      "features": [
+        "Design tokens for color, space and type",
+        "React component documentation"
+      ],
+      "formats": "Web docs, Figma, React",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "ant",
+      "name": "Ant Design",
+      "cat": "systems",
+      "creator": "Ant Group",
+      "url": "https://ant.design/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Figma"
+      ],
+      "tags": [
+        "dashboard",
+        "enterprise",
+        "components"
+      ],
+      "desc": "An enterprise UI language and React library with a broad set of data components.",
+      "features": [
+        "Large React component set",
+        "Theme customization through tokens"
+      ],
+      "formats": "React, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "fluent",
+      "name": "Fluent 2",
+      "cat": "systems",
+      "creator": "Microsoft",
+      "url": "https://fluent2.microsoft.design/",
+      "price": "Free",
+      "license": "MIT (code)",
+      "tools": [
+        "Figma",
+        "React",
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "enterprise",
+        "cross-platform",
+        "tokens"
+      ],
+      "desc": "Microsoft's design system for Windows, web and mobile apps.",
+      "features": [
+        "Guidance per platform",
+        "Fluent UI React and Web Components"
+      ],
+      "formats": "Figma, React, Web Components",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "primer",
+      "name": "Primer",
+      "cat": "systems",
+      "creator": "GitHub",
+      "url": "https://primer.style/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "developer tools",
+        "accessibility",
+        "components"
+      ],
+      "desc": "GitHub's design system: foundations, React components and accessibility guidance.",
+      "features": [
+        "Primer React and ViewComponents",
+        "Accessibility guidance per component"
+      ],
+      "formats": "React, CSS, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "spectrum",
+      "name": "Spectrum",
+      "cat": "systems",
+      "creator": "Adobe",
+      "url": "https://spectrum.adobe.com/",
+      "price": "Free",
+      "license": "Apache 2.0 (code)",
+      "tools": [
+        "Web",
+        "React",
+        "Figma"
+      ],
+      "tags": [
+        "enterprise",
+        "creative tools",
+        "accessibility"
+      ],
+      "desc": "Adobe's design system for its creative apps, with React Spectrum and web components.",
+      "features": [
+        "React Spectrum and React Aria",
+        "Detailed interaction guidelines"
+      ],
+      "formats": "Web docs, React, Web Components",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "excalidraw",
+      "name": "Excalidraw",
+      "cat": "wireframes",
+      "creator": "Excalidraw",
+      "url": "https://excalidraw.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "sketching",
+        "whiteboard",
+        "open source"
+      ],
+      "desc": "A hand-drawn style whiteboard for quick wireframes and diagrams.",
+      "features": [
+        "Real-time collaboration",
+        "Export to PNG and SVG"
+      ],
+      "formats": "Web app, PNG, SVG",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "balsamiq",
+      "name": "Balsamiq",
+      "cat": "wireframes",
+      "creator": "Balsamiq",
+      "url": "https://balsamiq.com/",
+      "price": "Paid",
+      "license": "Commercial, free trial",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "low fidelity",
+        "wireframes"
+      ],
+      "desc": "Low-fidelity wireframing that keeps discussions on structure, not polish.",
+      "features": [
+        "Sketch-style UI controls",
+        "Clickable links between wireframes"
+      ],
+      "formats": "Web app, desktop app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "whimsical",
+      "name": "Whimsical",
+      "cat": "wireframes",
+      "creator": "Whimsical",
+      "url": "https://whimsical.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "wireframes",
+        "flowcharts",
+        "collaboration"
+      ],
+      "desc": "Wireframes, flowcharts and docs in one fast, shared workspace.",
+      "features": [
+        "Wireframe component library",
+        "Flowcharts and mind maps"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "tldraw",
+      "name": "tldraw",
+      "cat": "wireframes",
+      "creator": "tldraw",
+      "url": "https://www.tldraw.com/",
+      "price": "Free",
+      "license": "Free app, SDK has its own licence",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "sketching",
+        "whiteboard"
+      ],
+      "desc": "A quick, minimal canvas for sketching flows and layouts together.",
+      "features": [
+        "Multiplayer canvas",
+        "Developer SDK for custom canvases"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "protopie",
+      "name": "ProtoPie",
+      "cat": "wireframes",
+      "creator": "ProtoPie",
+      "url": "https://www.protopie.io/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Desktop",
+        "Figma",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "prototyping",
+        "interaction",
+        "mobile"
+      ],
+      "desc": "High-fidelity prototyping with sensors, variables and logic, no code needed.",
+      "features": [
+        "Import from Figma",
+        "Test on real devices"
+      ],
+      "formats": "Desktop app, mobile players",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "phosphor",
+      "name": "Phosphor Icons",
+      "cat": "icons",
+      "creator": "Helena Zhang and Tobias Fried",
+      "url": "https://phosphoricons.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Figma",
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "icons",
+        "open source"
+      ],
+      "desc": "A flexible icon family in six weights, from thin to fill and duotone.",
+      "features": [
+        "Six weights per icon",
+        "Packages for React, Vue and the web"
+      ],
+      "formats": "SVG, icon font, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "heroicons",
+      "name": "Heroicons",
+      "cat": "icons",
+      "creator": "Tailwind Labs",
+      "url": "https://heroicons.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Figma",
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "icons",
+        "open source"
+      ],
+      "desc": "Hand-crafted SVG icons in outline, solid and mini styles.",
+      "features": [
+        "Several sizes and styles",
+        "Copy SVG or JSX directly"
+      ],
+      "formats": "SVG, React, Vue",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "tabler",
+      "name": "Tabler Icons",
+      "cat": "icons",
+      "creator": "Tabler",
+      "url": "https://tabler.io/icons",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Figma",
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "icons",
+        "dashboard",
+        "open source"
+      ],
+      "desc": "Thousands of consistent stroke icons designed on a 24px grid.",
+      "features": [
+        "Adjustable stroke width",
+        "Large coverage for app UI"
+      ],
+      "formats": "SVG, icon font, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "symbols",
+      "name": "Material Symbols",
+      "cat": "icons",
+      "creator": "Google",
+      "url": "https://fonts.google.com/icons",
+      "price": "Free",
+      "license": "Apache 2.0",
+      "tools": [
+        "Web",
+        "Android",
+        "Figma"
+      ],
+      "tags": [
+        "icons",
+        "android",
+        "variable font"
+      ],
+      "desc": "Google's icon set as a variable font with fill, weight and optical size axes.",
+      "features": [
+        "Variable font axes",
+        "Outlined, rounded and sharp styles"
+      ],
+      "formats": "Variable font, SVG",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "iconoir",
+      "name": "Iconoir",
+      "cat": "icons",
+      "creator": "Luca Burgio",
+      "url": "https://iconoir.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Figma",
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "icons",
+        "open source"
+      ],
+      "desc": "A large open-source library of stroke icons, free for any project.",
+      "features": [
+        "Regular and solid variants",
+        "Framework packages"
+      ],
+      "formats": "SVG, React, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "iconify",
+      "name": "Iconify",
+      "cat": "icons",
+      "creator": "Iconify",
+      "url": "https://iconify.design/",
+      "price": "Free",
+      "license": "Open source framework; each icon set keeps its own licence",
+      "tools": [
+        "Figma",
+        "Web",
+        "React"
+      ],
+      "tags": [
+        "icons",
+        "search",
+        "aggregator"
+      ],
+      "desc": "One search across many open-source icon sets, with each set's licence shown.",
+      "features": [
+        "Search across icon sets",
+        "Figma plugin and code components"
+      ],
+      "formats": "SVG, web component, plugins",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "undraw",
+      "name": "unDraw",
+      "cat": "icons",
+      "creator": "Katerina Limpitsouni",
+      "url": "https://undraw.co/",
+      "price": "Free",
+      "license": "unDraw licence, see source",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "illustrations",
+        "recolor"
+      ],
+      "desc": "Flat illustrations you can recolor to your brand before downloading.",
+      "features": [
+        "Live recolor before download",
+        "SVG and PNG downloads"
+      ],
+      "formats": "SVG, PNG",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "openpeeps",
+      "name": "Open Peeps",
+      "cat": "icons",
+      "creator": "Pablo Stanley",
+      "url": "https://www.openpeeps.com/",
+      "price": "Free",
+      "license": "CC0",
+      "tools": [
+        "Figma",
+        "Sketch"
+      ],
+      "tags": [
+        "illustrations",
+        "people",
+        "hand-drawn"
+      ],
+      "desc": "A hand-drawn illustration library of mix-and-match people.",
+      "features": [
+        "Combine poses, faces and clothing",
+        "Public domain"
+      ],
+      "formats": "SVG, PNG, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "inter",
+      "name": "Inter",
+      "cat": "type",
+      "creator": "Rasmus Andersson",
+      "url": "https://rsms.me/inter/",
+      "price": "Free",
+      "license": "SIL Open Font License 1.1",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "ui type",
+        "variable font"
+      ],
+      "desc": "A typeface designed for screens, with a tall x-height and many OpenType features.",
+      "features": [
+        "Variable weight and optical size",
+        "Tabular numbers and alternates"
+      ],
+      "formats": "OTF, TTF, WOFF2",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "plex",
+      "name": "IBM Plex",
+      "cat": "type",
+      "creator": "IBM",
+      "url": "https://www.ibm.com/plex/",
+      "price": "Free",
+      "license": "SIL Open Font License 1.1",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "superfamily",
+        "mono",
+        "enterprise"
+      ],
+      "desc": "A superfamily with sans, serif, mono and condensed styles, plus wide script coverage.",
+      "features": [
+        "Sans, Serif, Mono and Condensed",
+        "Many non-Latin scripts"
+      ],
+      "formats": "OTF, TTF, WOFF2",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "sourceserif",
+      "name": "Source Serif 4",
+      "cat": "type",
+      "creator": "Adobe",
+      "url": "https://fonts.google.com/specimen/Source+Serif+4",
+      "price": "Free",
+      "license": "SIL Open Font License 1.1",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "editorial",
+        "serif",
+        "variable font"
+      ],
+      "desc": "A transitional serif with optical sizes, from caption text up to display headlines.",
+      "features": [
+        "Optical size axis",
+        "Pairs with Source Sans 3"
+      ],
+      "formats": "Variable TTF, WOFF2",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "atkinson",
+      "name": "Atkinson Hyperlegible",
+      "cat": "type",
+      "creator": "Braille Institute",
+      "url": "https://www.brailleinstitute.org/freefont/",
+      "price": "Free",
+      "license": "SIL Open Font License 1.1",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "accessibility",
+        "legibility",
+        "ui type"
+      ],
+      "desc": "A typeface built to improve character recognition for readers with low vision.",
+      "features": [
+        "Distinct letterforms for similar characters",
+        "Next and Mono versions"
+      ],
+      "formats": "OTF, TTF, WOFF2",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "googlefonts",
+      "name": "Google Fonts",
+      "cat": "type",
+      "creator": "Google",
+      "url": "https://fonts.google.com/",
+      "price": "Free",
+      "license": "Open licences per family (mostly OFL)",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "fonts",
+        "variable font",
+        "library"
+      ],
+      "desc": "A large library of open-licence typefaces, with filters for language and style.",
+      "features": [
+        "Filter by script, category and axes",
+        "Download or self-host"
+      ],
+      "formats": "TTF, WOFF2, CSS API",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "fontshare",
+      "name": "Fontshare",
+      "cat": "type",
+      "creator": "Indian Type Foundry",
+      "url": "https://www.fontshare.com/",
+      "price": "Free",
+      "license": "ITF Free Font License",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "fonts",
+        "display",
+        "library"
+      ],
+      "desc": "Quality typefaces from Indian Type Foundry, free for personal and commercial use.",
+      "features": [
+        "Curated display and text families",
+        "Pairing suggestions"
+      ],
+      "formats": "OTF, TTF, WOFF2",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "typewolf",
+      "name": "Typewolf",
+      "cat": "type",
+      "creator": "Jeremiah Shoaf",
+      "url": "https://www.typewolf.com/",
+      "price": "Premium",
+      "license": "Free site, paid guides",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "type pairing",
+        "inspiration"
+      ],
+      "desc": "Daily type inspiration from real websites, with notes on the fonts used.",
+      "features": [
+        "Site of the day with fonts named",
+        "Free font recommendations"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "coolors",
+      "name": "Coolors",
+      "cat": "color",
+      "creator": "Coolors",
+      "url": "https://coolors.co/",
+      "price": "Premium",
+      "license": "Free plan, paid Pro",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "palettes",
+        "generator"
+      ],
+      "desc": "A fast palette generator: lock the colors you like and regenerate the rest.",
+      "features": [
+        "Palette generator with locking",
+        "Export to CSS, SVG and more"
+      ],
+      "formats": "Web app, plugins",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "adobecolor",
+      "name": "Adobe Color",
+      "cat": "color",
+      "creator": "Adobe",
+      "url": "https://color.adobe.com/",
+      "price": "Free",
+      "license": "Adobe terms of use",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "palettes",
+        "accessibility"
+      ],
+      "desc": "Build palettes from harmony rules or images, with accessibility checks.",
+      "features": [
+        "Harmony rules and image extraction",
+        "Color blind safe checks"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "webaim",
+      "name": "WebAIM Contrast Checker",
+      "cat": "color",
+      "creator": "WebAIM",
+      "url": "https://webaim.org/resources/contrastchecker/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "contrast"
+      ],
+      "desc": "Check two colors against WCAG AA and AAA contrast thresholds.",
+      "features": [
+        "Results for text and UI components",
+        "Lightness sliders to find a passing color"
+      ],
+      "formats": "Web tool",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "leonardo",
+      "name": "Leonardo",
+      "cat": "color",
+      "creator": "Adobe",
+      "url": "https://leonardocolor.io/",
+      "price": "Free",
+      "license": "Apache 2.0",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "contrast",
+        "color scales",
+        "open source"
+      ],
+      "desc": "Generate color scales from target contrast ratios instead of fixed lightness steps.",
+      "features": [
+        "Contrast-based color generation",
+        "Exports tokens for themes"
+      ],
+      "formats": "Web app, JS library",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "radixcolors",
+      "name": "Radix Colors",
+      "cat": "color",
+      "creator": "WorkOS",
+      "url": "https://www.radix-ui.com/colors",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "color scales",
+        "dark mode",
+        "open source"
+      ],
+      "desc": "A 12-step color system with matching light and dark scales for UI.",
+      "features": [
+        "Steps mapped to UI roles",
+        "Light, dark and alpha variants"
+      ],
+      "formats": "CSS, JS",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "realtimecolors",
+      "name": "Realtime Colors",
+      "cat": "color",
+      "creator": "Juxtopposed",
+      "url": "https://www.realtimecolors.com/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "palettes",
+        "preview"
+      ],
+      "desc": "Try a palette and font pairing on a sample site layout as you edit it.",
+      "features": [
+        "Live site preview",
+        "Export as CSS or Tailwind"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "oklch",
+      "name": "OKLCH Color Picker",
+      "cat": "color",
+      "creator": "Evil Martians",
+      "url": "https://oklch.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "oklch",
+        "color spaces",
+        "open source"
+      ],
+      "desc": "A picker and converter for the OKLCH color space used in modern CSS.",
+      "features": [
+        "Shows gamut limits for sRGB and P3",
+        "Converts to hex, rgb and more"
+      ],
+      "formats": "Web app",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "penpot",
+      "name": "Penpot",
+      "cat": "tools",
+      "creator": "Kaleidos",
+      "url": "https://penpot.app/",
+      "price": "Free",
+      "license": "MPL 2.0 (open source)",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "open source",
+        "prototyping",
+        "design tool"
+      ],
+      "desc": "An open-source design and prototyping tool that runs in the browser and can be self-hosted.",
+      "features": [
+        "CSS Grid and Flex layouts",
+        "Self-hosting option"
+      ],
+      "formats": "Web app, self-hosted",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "cat": "tools",
+      "creator": "Figma",
+      "url": "https://www.figma.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "design tool",
+        "prototyping",
+        "collaboration"
+      ],
+      "desc": "Collaborative interface design, prototyping and dev handoff in the browser.",
+      "features": [
+        "Components and variables",
+        "Dev Mode for handoff"
+      ],
+      "formats": "Web app, desktop app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "cat": "tools",
+      "creator": "Framer",
+      "url": "https://www.framer.com/",
+      "price": "Premium",
+      "license": "Free plan, paid site plans",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "website builder",
+        "prototyping",
+        "interaction"
+      ],
+      "desc": "Design and publish responsive websites with interactions and a built-in CMS.",
+      "features": [
+        "Visual responsive layouts",
+        "CMS and hosting"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "sketch",
+      "name": "Sketch",
+      "cat": "tools",
+      "creator": "Sketch B.V.",
+      "url": "https://www.sketch.com/",
+      "price": "Paid",
+      "license": "Subscription, free trial",
+      "tools": [
+        "Desktop",
+        "Sketch"
+      ],
+      "tags": [
+        "design tool",
+        "macOS"
+      ],
+      "desc": "A native Mac app for interface design, with a web app for sharing and handoff.",
+      "features": [
+        "Symbols and shared libraries",
+        "Browser handoff for developers"
+      ],
+      "formats": "macOS app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "stark",
+      "name": "Stark",
+      "cat": "tools",
+      "creator": "Stark",
+      "url": "https://www.getstark.co/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Figma",
+        "Sketch",
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "plugin"
+      ],
+      "desc": "Accessibility plugin for design tools: contrast, vision simulation and focus order.",
+      "features": [
+        "Contrast and vision simulators",
+        "Annotations for handoff"
+      ],
+      "formats": "Figma plugin, Sketch plugin",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "tokensstudio",
+      "name": "Tokens Studio",
+      "cat": "tools",
+      "creator": "Tokens Studio",
+      "url": "https://tokens.studio/",
+      "price": "Premium",
+      "license": "Free plugin, paid Pro",
+      "tools": [
+        "Figma"
+      ],
+      "tags": [
+        "design tokens",
+        "plugin",
+        "design systems"
+      ],
+      "desc": "A Figma plugin for managing design tokens and syncing them with code.",
+      "features": [
+        "Token sets and themes",
+        "Sync with GitHub and other storage"
+      ],
+      "formats": "Figma plugin, JSON",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "rive",
+      "name": "Rive",
+      "cat": "tools",
+      "creator": "Rive",
+      "url": "https://rive.app/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Desktop",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "animation",
+        "interaction",
+        "motion"
+      ],
+      "desc": "Build interactive animations with state machines and ship them with small runtimes.",
+      "features": [
+        "State machines for interactive motion",
+        "Runtimes for web and mobile"
+      ],
+      "formats": ".riv, web and mobile runtimes",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "spline",
+      "name": "Spline",
+      "cat": "tools",
+      "creator": "Spline",
+      "url": "https://spline.design/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "3d",
+        "interaction"
+      ],
+      "desc": "Design interactive 3D scenes in the browser and embed them on the web.",
+      "features": [
+        "Collaborative 3D editor",
+        "Export for web embeds"
+      ],
+      "formats": "Web app, embeds",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "nngroup",
+      "name": "Nielsen Norman Group Articles",
+      "cat": "research",
+      "creator": "Nielsen Norman Group",
+      "url": "https://www.nngroup.com/articles/",
+      "price": "Free",
+      "license": "Free to read, copyrighted",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "usability",
+        "research methods"
+      ],
+      "desc": "Research-based articles on usability, interaction design and UX methods.",
+      "features": [
+        "Articles organized by topic",
+        "Method guides for testing"
+      ],
+      "formats": "Articles, videos",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "fieldguide",
+      "name": "UX Research Field Guide",
+      "cat": "research",
+      "creator": "User Interviews",
+      "url": "https://www.userinterviews.com/ux-research-field-guide",
+      "price": "Free",
+      "license": "Free to read",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "research methods",
+        "interviews"
+      ],
+      "desc": "A long-form guide to planning, running and sharing UX research.",
+      "features": [
+        "Chapters on each research method",
+        "Planning templates"
+      ],
+      "formats": "Web guide",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "baymard",
+      "name": "Baymard Institute",
+      "cat": "research",
+      "creator": "Baymard Institute",
+      "url": "https://baymard.com/blog",
+      "price": "Premium",
+      "license": "Free articles, paid research access",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ecommerce",
+        "usability",
+        "checkout"
+      ],
+      "desc": "Large-scale usability research on e-commerce and checkout design.",
+      "features": [
+        "Free articles from their research",
+        "Paid guideline database"
+      ],
+      "formats": "Articles, research database",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "maze",
+      "name": "Maze",
+      "cat": "research",
+      "creator": "Maze",
+      "url": "https://maze.co/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "usability testing",
+        "prototype testing",
+        "surveys"
+      ],
+      "desc": "Run unmoderated prototype tests, surveys and card sorts remotely.",
+      "features": [
+        "Test Figma prototypes",
+        "Card sorting and tree testing"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "optimalworkshop",
+      "name": "Optimal Workshop",
+      "cat": "research",
+      "creator": "Optimal Workshop",
+      "url": "https://www.optimalworkshop.com/",
+      "price": "Paid",
+      "license": "Subscription, free trial",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "information architecture",
+        "card sorting",
+        "tree testing"
+      ],
+      "desc": "Tools for card sorting, tree testing and first-click tests on information architecture.",
+      "features": [
+        "Card sorting and tree testing",
+        "First-click testing"
+      ],
+      "formats": "Web app",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "govukresearch",
+      "name": "GOV.UK Service Manual: User research",
+      "cat": "research",
+      "creator": "Government Digital Service",
+      "url": "https://www.gov.uk/service-manual/user-research",
+      "price": "Free",
+      "license": "Open Government Licence",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "research methods",
+        "accessibility",
+        "public sector"
+      ],
+      "desc": "Practical guidance on planning and running user research, including with disabled people.",
+      "features": [
+        "Guides per research activity",
+        "Advice on inclusive recruitment"
+      ],
+      "formats": "Web guide",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "mobbin",
+      "name": "Mobbin",
+      "cat": "inspiration",
+      "creator": "Mobbin",
+      "url": "https://mobbin.com/",
+      "price": "Premium",
+      "license": "Free tier, paid plans",
+      "tools": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "mobile",
+        "flows",
+        "patterns"
+      ],
+      "desc": "A library of screenshots and full flows from shipped mobile and web apps.",
+      "features": [
+        "Searchable by screen, element and flow",
+        "Copy screens to Figma on paid plans"
+      ],
+      "formats": "Web app",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "awwwards",
+      "name": "Awwwards",
+      "cat": "inspiration",
+      "creator": "Awwwards",
+      "url": "https://www.awwwards.com/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "websites",
+        "landing page"
+      ],
+      "desc": "Juried showcase of website design and development, browsable by category.",
+      "features": [
+        "Sites of the Day with jury scores",
+        "Collections by category"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "dribbble",
+      "name": "Dribbble",
+      "cat": "inspiration",
+      "creator": "Dribbble",
+      "url": "https://dribbble.com/",
+      "price": "Free",
+      "license": "Free to browse, work belongs to each designer",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "visual design",
+        "portfolios"
+      ],
+      "desc": "Designers share shots of work in progress and finished visual design.",
+      "features": [
+        "Search by tag and color",
+        "Designer profiles"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "behance",
+      "name": "Behance",
+      "cat": "inspiration",
+      "creator": "Adobe",
+      "url": "https://www.behance.net/",
+      "price": "Free",
+      "license": "Free to browse, work belongs to each creator",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "case studies",
+        "portfolios"
+      ],
+      "desc": "Full project case studies across UI, branding and illustration.",
+      "features": [
+        "Long-form project pages",
+        "Filter by creative field and tools"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "godly",
+      "name": "Godly",
+      "cat": "inspiration",
+      "creator": "Godly",
+      "url": "https://godly.website/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "websites",
+        "motion",
+        "landing page"
+      ],
+      "desc": "A gallery of web design with recordings that show scroll and motion.",
+      "features": [
+        "Video previews of live sites",
+        "Filter by type and style"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "landbook",
+      "name": "Land-book",
+      "cat": "inspiration",
+      "creator": "Land-book",
+      "url": "https://land-book.com/",
+      "price": "Premium",
+      "license": "Free to browse, paid features",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "landing page",
+        "websites"
+      ],
+      "desc": "A large gallery of landing pages and websites sorted by industry and style.",
+      "features": [
+        "Filter by industry and style",
+        "Collections for saved sites"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "pageflows",
+      "name": "Page Flows",
+      "cat": "inspiration",
+      "creator": "Page Flows",
+      "url": "https://pageflows.com/",
+      "price": "Paid",
+      "license": "Subscription",
+      "tools": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "flows",
+        "onboarding",
+        "mobile"
+      ],
+      "desc": "Recorded user flows from real products, such as onboarding and checkout.",
+      "features": [
+        "Video recordings of full flows",
+        "Grouped by task"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "lawsofux",
+      "name": "Laws of UX",
+      "cat": "learning",
+      "creator": "Jon Yablonski",
+      "url": "https://lawsofux.com/",
+      "price": "Free",
+      "license": "Free to read",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "psychology",
+        "principles"
+      ],
+      "desc": "Short, illustrated summaries of the psychology principles behind good interfaces.",
+      "features": [
+        "One page per principle with sources",
+        "Examples of each law in practice"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "hig",
+      "name": "Human Interface Guidelines",
+      "cat": "learning",
+      "creator": "Apple",
+      "url": "https://developer.apple.com/design/human-interface-guidelines",
+      "price": "Free",
+      "license": "Free to read",
+      "tools": [
+        "Web",
+        "iOS"
+      ],
+      "tags": [
+        "mobile",
+        "ios",
+        "guidelines"
+      ],
+      "desc": "Apple's guidance for designing apps across its platforms.",
+      "features": [
+        "Foundations, patterns and components",
+        "Platform-specific notes"
+      ],
+      "formats": "Web docs",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "wcag",
+      "name": "WCAG 2.2",
+      "cat": "learning",
+      "creator": "W3C",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "price": "Free",
+      "license": "W3C Document License",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "standard"
+      ],
+      "desc": "The Web Content Accessibility Guidelines, the standard behind most accessibility requirements.",
+      "features": [
+        "Success criteria by level",
+        "Linked understanding docs"
+      ],
+      "formats": "Web standard",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "a11y",
+      "name": "The A11Y Project",
+      "cat": "learning",
+      "creator": "The A11Y Project",
+      "url": "https://www.a11yproject.com/",
+      "price": "Free",
+      "license": "Free to read",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "checklist"
+      ],
+      "desc": "A community resource with a plain-language accessibility checklist.",
+      "features": [
+        "WCAG-based checklist",
+        "Posts on common patterns"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "inclusive",
+      "name": "Inclusive Components",
+      "cat": "learning",
+      "creator": "Heydon Pickering",
+      "url": "https://inclusive-components.design/",
+      "price": "Free",
+      "license": "Free to read online",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "accessibility",
+        "components"
+      ],
+      "desc": "Deep dives into building common components so they work for everyone.",
+      "features": [
+        "Toggles, menus, tabs and more",
+        "Code and reasoning for each"
+      ],
+      "formats": "Web articles",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "learndesign",
+      "name": "Learn Design",
+      "cat": "learning",
+      "creator": "Google (web.dev)",
+      "url": "https://web.dev/learn/design",
+      "price": "Free",
+      "license": "CC BY 4.0 (content)",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "responsive",
+        "css",
+        "layout"
+      ],
+      "desc": "A free course on responsive web design fundamentals, from layout to typography.",
+      "features": [
+        "Modules on layout, type and images",
+        "Interactive code examples"
+      ],
+      "formats": "Web course",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "refactoringui",
+      "name": "Refactoring UI",
+      "cat": "learning",
+      "creator": "Adam Wathan and Steve Schoger",
+      "url": "https://www.refactoringui.com/",
+      "price": "Paid",
+      "license": "Personal licence",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "visual design",
+        "developers"
+      ],
+      "desc": "A book of practical visual design tactics aimed at developers.",
+      "features": [
+        "Before and after examples",
+        "Tactics for hierarchy, spacing and color"
+      ],
+      "formats": "PDF book",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "idf",
+      "name": "Interaction Design Foundation",
+      "cat": "learning",
+      "creator": "Interaction Design Foundation",
+      "url": "https://www.interaction-design.org/",
+      "price": "Premium",
+      "license": "Free articles, paid membership",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "courses",
+        "ux fundamentals"
+      ],
+      "desc": "Online UX courses and a free library of articles on design topics.",
+      "features": [
+        "Self-paced courses",
+        "Free literature and articles"
+      ],
+      "formats": "Online courses",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "mdn",
+      "name": "MDN Web Docs",
+      "cat": "learning",
+      "creator": "Mozilla",
+      "url": "https://developer.mozilla.org/",
+      "price": "Free",
+      "license": "CC BY-SA 2.5 (content)",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "css",
+        "html",
+        "accessibility",
+        "developers"
+      ],
+      "desc": "The reference for HTML, CSS and web APIs, including accessibility guides.",
+      "features": [
+        "CSS and HTML reference",
+        "Browser support tables"
+      ],
+      "formats": "Web docs",
+      "commercial": "check",
+      "checked": ""
+    }
+  ]
+}
