@@ -8,6 +8,8 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="preconnect" href="https://wsrv.nl" crossorigin="">
+<link rel="dns-prefetch" href="https://image.thum.io">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Design Atlas, UI/UX resource hub</title>
 <meta name="description" content="A curated index of UI kits, design systems, icons, fonts, tools and learning resources, each listed with its creator and licence.">
@@ -56,7 +58,7 @@ input,select,textarea,button{font:inherit;color:inherit}
 
   <sc-if value="{{ narrow }}">
     <div onClick="{{ closeMenu }}" aria-hidden="true" style="position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(20,36,58,.45);opacity:{{ menuFade }};pointer-events:{{ menuPE }};transition:opacity .22s ease;z-index:35"></div>
-    <nav id="mobile-nav" aria-label="Primary" style="position:fixed;top:64px;left:0;right:0;max-height:calc(100dvh - 64px);overflow-y:auto;background:#F7F6F2;border-bottom:1px solid #D9D5CA;box-shadow:0 12px 24px rgba(20,36,58,.12);padding:8px clamp(16px,4vw,32px) 20px;display:flex;flex-direction:column;transform:translateY({{ menuY }});opacity:{{ menuFade }};visibility:{{ menuVis }};transition:transform .22s ease, opacity .22s ease, visibility .22s;z-index:36">
+    <nav id="mobile-nav" aria-label="Primary" style="position:fixed;top:64px;left:0;right:0;max-height:calc(100dvh - 64px);overflow-y:auto;background:#F7F6F2;border-bottom:1px solid #D9D5CA;box-shadow:0 4px 8px rgba(20,36,58,.06), 0 16px 32px -10px rgba(20,36,58,.22);padding:8px clamp(16px,4vw,32px) 20px;display:flex;flex-direction:column;transform:translateY({{ menuY }});opacity:{{ menuFade }};visibility:{{ menuVis }};transition:transform .22s ease, opacity .22s ease, visibility .22s;z-index:36">
       <sc-for list="{{ mobileNav }}" as="n">
         <button type="button" onClick="{{ n.go }}" aria-current="{{ n.aria }}" style="text-align:left;background:none;border:0;border-bottom:1px solid #E6E2D8;min-height:56px;font-size:18px;font-weight:600;cursor:pointer;color:#14243A;display:flex;align-items:center;gap:14px"><i class="ph {{ n.icon }}" aria-hidden="true" style="font-size:22px;color:#2F55C8"></i><span style="flex:1">{{ n.label }}</span><sc-if value="{{ n.current }}"><span style="font-size:13px;color:#565D6B;font-weight:600">Current</span></sc-if></button>
       </sc-for>
@@ -350,9 +352,19 @@ input,select,textarea,button{font:inherit;color:inherit}
             <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(38px,5.4vw,68px);line-height:1.02;letter-spacing:-.02em">{{ d.name }}</h1>
             <p style="margin:12px 0 0;font-size:17px;color:#3A4352">By {{ d.creator }}</p>
             <p style="margin:24px 0 0;max-width:60ch;font-size:clamp(18px,1.8vw,21px);line-height:1.5;text-wrap:pretty">{{ d.desc }}</p>
-            <div style="margin-top:32px;aspect-ratio:16/9;border-radius:10px;border:1px solid #DDD8CC;background:repeating-linear-gradient(135deg,#ECE8DE 0 12px,#F3F0E8 12px 24px);display:flex;align-items:center;justify-content:center;padding:16px">
-              <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#454C59;background:#F7F6F2;padding:6px 10px;border-radius:4px;text-align:center">preview image · screenshot from {{ d.domain }}, cleared with the creator</span>
-            </div>
+            <a href="{{ d.url }}" target="_blank" rel="noopener" style="margin-top:32px;position:relative;display:flex;aspect-ratio:16/10;border-radius:10px;border:1px solid #DDD8CC;overflow:hidden;box-shadow:0 1px 2px rgba(20,36,58,.06), 0 1px 1px rgba(20,36,58,.04);background:#14243A;color:#F7F6F2;align-items:stretch;justify-content:stretch;padding:0;text-decoration:none">
+              <span style="flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:clamp(20px,4vw,40px)">
+                <span style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;letter-spacing:.02em"><i class="ph {{ d.catIcon }}" aria-hidden="true" style="font-size:20px"></i>{{ d.catLabel }}</span>
+                <span style="display:flex;align-items:center;gap:clamp(16px,3vw,28px);flex-wrap:wrap">
+                  <span style="flex:0 0 auto;width:clamp(64px,10vw,104px);height:clamp(64px,10vw,104px);border-radius:16px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,.12), 0 12px 28px -10px rgba(0,0,0,.4)"><img src="{{ d.logo }}" alt="" width="64" height="64" loading="lazy" decoding="async" style="width:62%;height:62%;object-fit:contain"></span>
+                  <span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:-.01em;text-wrap:balance">{{ d.name }}</span><span style="font-size:15px;color:#C9D1DD;display:flex;align-items:center;gap:6px"><i class="ph ph-arrow-up-right" aria-hidden="true"></i>{{ d.domain }}</span></span>
+                </span>
+              </span>
+              <sc-if value="{{ d.shot }}">
+              <img src="{{ d.shot }}" srcSet="{{ d.shotSet }}" sizes="(min-width: 1240px) 760px, 100vw" width="1280" height="800" alt="{{ d.shotAlt }}" loading="lazy" decoding="async" crossOrigin="anonymous" data-raw="{{ d.shotRaw }}" onLoad="{{ d.shotLoad }}" onError="{{ d.shotErr }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;background:#FFFFFF">
+              <span aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,36,58,0) 45%,rgba(20,36,58,.16) 100%),rgba(20,36,58,.04);box-shadow:inset 0 0 0 1px rgba(20,36,58,.06)"></span>
+              </sc-if>
+            </a>
             <h2 style="margin:44px 0 12px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:26px">What's included</h2>
             <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;max-width:62ch">
               <sc-for list="{{ d.features }}" as="f">
@@ -1054,11 +1066,11 @@ input,select,textarea,button{font:inherit;color:inherit}
     </div>
   </footer>
 
-  <button type="button" onClick="{{ toTop }}" aria-label="Back to top" tabindex="{{ toTopTab }}" style="position:fixed;right:clamp(14px,3vw,28px);bottom:{{ toTopBottom }};width:clamp(46px,5vw,52px);height:clamp(46px,5vw,52px);border-radius:10px;border:1.5px solid #F7F6F2;background:#14243A;color:#F7F6F2;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(20,36,58,.25);opacity:{{ toTopOp }};transform:translateY({{ toTopY }});visibility:{{ toTopVis }};transition:opacity .2s ease, transform .2s ease, visibility .2s, bottom .08s linear;z-index:30" style-hover="background:#22385A"><i class="ph ph-arrow-up" aria-hidden="true" style="font-size:22px"></i></button>
+  <button type="button" onClick="{{ toTop }}" aria-label="Back to top" tabindex="{{ toTopTab }}" style="position:fixed;right:clamp(14px,3vw,28px);bottom:{{ toTopBottom }};width:clamp(46px,5vw,52px);height:clamp(46px,5vw,52px);border-radius:10px;border:1.5px solid #F7F6F2;background:#14243A;color:#F7F6F2;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(20,36,58,.06), 0 10px 24px -8px rgba(20,36,58,.18);opacity:{{ toTopOp }};transform:translateY({{ toTopY }});visibility:{{ toTopVis }};transition:opacity .2s ease, transform .2s ease, visibility .2s, bottom .08s linear;z-index:30" style-hover="background:#22385A"><i class="ph ph-arrow-up" aria-hidden="true" style="font-size:22px"></i></button>
 
   <sc-if value="{{ cookieOpen }}">
     <div onClick="{{ closeCookies }}" aria-hidden="true" style="position:fixed;inset:0;background:rgba(20,36,58,.5);z-index:90"></div>
-    <div role="dialog" aria-modal="true" aria-labelledby="ck-h" id="cookie-dialog" style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow-y:auto;background:#F7F6F2;color:#14243A;border-radius:12px;padding:clamp(20px,4vw,32px);z-index:91;box-shadow:0 20px 48px rgba(20,36,58,.3);display:flex;flex-direction:column;gap:18px">
+    <div role="dialog" aria-modal="true" aria-labelledby="ck-h" id="cookie-dialog" style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow-y:auto;background:#F7F6F2;color:#14243A;border-radius:12px;padding:clamp(20px,4vw,32px);z-index:91;box-shadow:0 8px 16px rgba(20,36,58,.08), 0 32px 64px -16px rgba(20,36,58,.32);display:flex;flex-direction:column;gap:18px">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
         <h2 id="ck-h" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:26px;display:flex;align-items:center;gap:10px"><i class="ph ph-cookie" aria-hidden="true"></i>Cookie settings</h2>
         <button type="button" onClick="{{ closeCookies }}" aria-label="Close cookie settings" style="width:44px;height:44px;border-radius:8px;border:0;background:#E9E5DA;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#14243A"><i class="ph ph-x" aria-hidden="true" style="font-size:20px"></i></button>
@@ -1085,10 +1097,10 @@ input,select,textarea,button{font:inherit;color:inherit}
     </div>
   </sc-if>
 
-  <div role="status" aria-live="polite" style="position:fixed;left:50%;bottom:24px;transform:translate(-50%,{{ toastY }});opacity:{{ toastOp }};visibility:{{ toastVis }};transition:opacity .2s ease, transform .2s ease, visibility .2s;z-index:70;max-width:calc(100vw - 32px);padding:12px 18px;border-radius:8px;background:{{ toastBg }};color:#FFFFFF;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(20,36,58,.25)"><i class="ph {{ toastIcon }}" aria-hidden="true" style="font-size:20px"></i><span>{{ toastMsg }}</span></div>
+  <div role="status" aria-live="polite" style="position:fixed;left:50%;bottom:24px;transform:translate(-50%,{{ toastY }});opacity:{{ toastOp }};visibility:{{ toastVis }};transition:opacity .2s ease, transform .2s ease, visibility .2s;z-index:70;max-width:calc(100vw - 32px);padding:12px 18px;border-radius:8px;background:{{ toastBg }};color:#FFFFFF;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 4px 8px rgba(20,36,58,.06), 0 16px 32px -10px rgba(20,36,58,.22)"><i class="ph {{ toastIcon }}" aria-hidden="true" style="font-size:20px"></i><span>{{ toastMsg }}</span></div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;catalogState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;live&quot;,&quot;loading&quot;,&quot;error&quot;],&quot;default&quot;:&quot;live&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype states&quot;},&quot;formOutcome&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;success&quot;,&quot;failure&quot;],&quot;default&quot;:&quot;success&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype states&quot;},&quot;coverStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;typographic&quot;,&quot;placeholder&quot;],&quot;default&quot;:&quot;typographic&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Cards&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;catalogState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;live&quot;,&quot;loading&quot;,&quot;error&quot;],&quot;default&quot;:&quot;live&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype states&quot;},&quot;formOutcome&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;success&quot;,&quot;failure&quot;],&quot;default&quot;:&quot;success&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype states&quot;},&quot;coverStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;screenshot&quot;,&quot;typographic&quot;,&quot;placeholder&quot;],&quot;default&quot;:&quot;screenshot&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Cards&quot;}}">
 class Component extends DCLogic {
   KEY = 'designAtlas.db.v1';
   TOOLS = ['Figma', 'Sketch', 'Web', 'React', 'iOS', 'Android', 'Desktop'];
@@ -1294,6 +1306,8 @@ class Component extends DCLogic {
       resources: j.resources.map(r => {
         const o = { id: String(r.id), name: String(r.name), cat: String(r.cat), creator: String(r.creator || ''), url: String(r.url), price: r.price === 'Freemium' ? 'Premium' : ['Free', 'Premium', 'Paid'].includes(r.price) ? r.price : 'Free', commercial: ['yes', 'check', 'no'].includes(r.commercial) ? r.commercial : 'check', checked: /^\d{4}-\d{2}-\d{2}$/.test(r.checked || '') ? r.checked : '', license: String(r.license || ''), tools: arr(r.tools), tags: arr(r.tags), desc: String(r.desc || ''), features: arr(r.features), formats: String(r.formats || '') };
         if (r.added) o.added = String(r.added);
+        if (r.image) o.image = String(r.image);
+        if (r.preview) o.preview = String(r.preview);
         return o;
       }),
       submissions: Array.isArray(j.submissions) ? j.submissions.filter(x => x && x.name) : [],
@@ -1310,6 +1324,25 @@ class Component extends DCLogic {
   goAnchor(page, id) { this.pendingAnchor = id; this.go(page); }
   explore(extra) { this.go('explore', extra || {}); }
 
+  logo(url) { return url ? 'https://www.google.com/s2/favicons?sz=128&domain_url=' + encodeURIComponent(url) : ''; }
+  shotSrc(r) { if (r.image) return r.image; if (!r.url || r.preview === 'logo') return ''; return 'https://image.thum.io/get/width/1280/crop/800/noanimate/' + r.url; }
+  shot(r, w) { const s = this.shotSrc(r); if (!s || /^data:/.test(s)) return s; return 'https://wsrv.nl/?url=' + encodeURIComponent(s) + '&w=' + (w || 640) + '&h=' + Math.round((w || 640) * .625) + '&fit=cover&a=' + (r.image ? 'center' : 'top') + '&output=webp&q=72&il'; }
+  shotSet(r, ws) { const s = this.shotSrc(r); if (!s || /^data:/.test(s)) return ''; return ws.map(w => this.shot(r, w) + ' ' + w + 'w').join(', '); }
+  shotErr = e => {
+    const img = e.currentTarget, raw = img.getAttribute('data-raw');
+    if (raw && img.src.indexOf('wsrv.nl') > -1) { img.removeAttribute('crossorigin'); img.removeAttribute('srcset'); img.src = raw; return; }
+    img.style.display = 'none'; const ov = img.nextElementSibling; if (ov) ov.style.display = 'none';
+  };
+  shotLoad = e => {
+    const img = e.currentTarget; if (img.src.indexOf('wsrv.nl') < 0) return;
+    try {
+      const c = document.createElement('canvas'); c.width = 16; c.height = 10;
+      const x = c.getContext('2d'); x.drawImage(img, 0, 0, 16, 10);
+      const p = x.getImageData(0, 0, 16, 10).data; let mn = 255, mx = 0;
+      for (let i = 0; i < p.length; i += 4) { const v = (p[i] + p[i + 1] + p[i + 2]) / 3; if (v < mn) mn = v; if (v > mx) mx = v; }
+      if (mx - mn < 10) { img.removeAttribute('data-raw'); this.shotErr({ currentTarget: img }); }
+    } catch (err) {}
+  };
   domain(url) { return String(url).replace(/^https?:\/\/(www\.)?/, '').split('/')[0]; }
   slug(t) { return String(t).toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/[\s_]+/g, '-').replace(/-+/g, '-').slice(0, 40) || 'item'; }
   uniqueId(base, list) { let id = base, n = 2; while (list.some(x => x.id === id)) id = base + '-' + n++; return id; }
@@ -1319,11 +1352,11 @@ class Component extends DCLogic {
     const covers = [['#14243A', '#F7F6F2'], ['#DCE5F2', '#14243A'], ['#E7E2D5', '#14243A']];
     const ci = Math.max(0, cats.findIndex(c => c.id === r.cat));
     const c = cats[ci] || {};
-    const ph = (this.props.coverStyle ?? 'typographic') === 'placeholder';
+    const cs = this.props.coverStyle ?? 'screenshot', ph = cs === 'placeholder';
     return {
       name: r.name || 'Untitled resource', desc: r.desc, price: r.price, creator: r.creator, catLabel: c.label || 'No category', icon: c.icon || 'ph-folder',
       tools: (r.tools || []).join(', '), domain: r.url ? this.domain(r.url) : 'source', coverBg: covers[ci % 3][0], coverFg: covers[ci % 3][1],
-      typographic: !ph, placeholder: ph, open: () => r.id && this.go('detail', { id: r.id }),
+      typographic: !ph, placeholder: ph, shot: cs === 'screenshot' ? this.shot(r, 480) : '', shotSet: cs === 'screenshot' ? this.shotSet(r, [480, 800]) : '', shotRaw: this.shotSrc(r), shotLoad: this.shotLoad, logo: this.logo(r.url), shotAlt: 'Preview of ' + (r.name || 'resource'), shotErr: this.shotErr, open: () => r.id && this.go('detail', { id: r.id }),
       comLabel: (this.COM[r.commercial] || this.COM.check)[0], comIcon: (this.COM[r.commercial] || this.COM.check)[1],
       ...(r.id ? (() => { const on = this.state.shortlist.includes(r.id); return { canSave: true, savedAria: on ? 'true' : 'false', saveLabel: on ? 'Remove ' + r.name + ' from shortlist' : 'Add ' + r.name + ' to shortlist', saveIcon: on ? 'ph-check' : 'ph-bookmark-simple', saveBg: on ? '#14243A' : '#FFFFFF', saveFg: on ? '#F7F6F2' : '#14243A', saveBorder: on ? '#F7F6F2' : '#14243A', toggleSave: () => this.toggleSave(r.id, r.name) }; })() : { canSave: false })
     };
@@ -1514,7 +1547,7 @@ class Component extends DCLogic {
       const r = byId(s.id) || res[0];
       if (r) {
         const rel = res.filter(x => x.cat === r.cat && x.id !== r.id).slice(0, 4);
-        d = { ...r, catLabel: catOf(r.cat).label, domain: this.domain(r.url), tools: r.tools.join(', ') || 'Not listed', formats: r.formats || 'Not listed', license: r.license || 'See source',
+        d = { ...r, catIcon: catOf(r.cat).icon || 'ph-folder', logo: this.logo(r.url), shot: this.shot(r, 1280), shotSet: this.shotSet(r, [640, 960, 1280]), shotRaw: this.shotSrc(r), shotLoad: this.shotLoad, logo: this.logo(r.url), shotAlt: 'Screenshot of ' + r.name + ' at ' + this.domain(r.url), shotErr: this.shotErr, catLabel: catOf(r.cat).label, domain: this.domain(r.url), tools: r.tools.join(', ') || 'Not listed', formats: r.formats || 'Not listed', license: r.license || 'See source',
           goCat: () => this.explore({ cat: r.cat }), tagBtns: r.tags.map(t => ({ label: t, go: () => this.explore({ q: t }) })),
           related: rel.map(x => this.card(x)), hasRelated: rel.length > 0,
           comLabel: (this.COM[r.commercial] || this.COM.check)[2], comIcon: (this.COM[r.commercial] || this.COM.check)[1],
@@ -1561,7 +1594,7 @@ class Component extends DCLogic {
         const first = col === 0, last = col === n - 1;
         return { label: c.label, icon: c.icon, aria: c.label + ', ' + entries(countIn(c.id)),
           bg: on ? '#14243A' : alt ? '#DCE5F2' : '#FFFFFF', fg: on ? '#F7F6F2' : '#14243A', border: on ? '#14243A' : alt ? '#DCE5F2' : '#DDD8CC',
-          col: ((n === 2 ? 2 : 1) + col * 2) + ' / span 2', lift: (on ? -6 : 0) + 'px', scale: on ? 1.08 : 1, shadow: on ? '0 14px 28px rgba(20,36,58,.24)' : '0 0 0 rgba(20,36,58,0)', z: on ? 3 : 1,
+          col: ((n === 2 ? 2 : 1) + col * 2) + ' / span 2', lift: (on ? -6 : 0) + 'px', scale: on ? 1.08 : 1, shadow: on ? '0 4px 8px rgba(20,36,58,.06), 0 16px 32px -10px rgba(20,36,58,.22)' : '0 1px 2px rgba(20,36,58,.06), 0 1px 1px rgba(20,36,58,.04)', z: on ? 3 : 1,
           tipOp: on ? 1 : 0, tipY: on ? '0' : '6px', tipLeft: first ? '0' : last ? '100%' : '50%', tipX: first ? '0' : last ? '-100%' : '-50%',
           hover: () => this.setState({ heroActive: i }), go: () => this.explore({ cat: c.id }) };
       }),

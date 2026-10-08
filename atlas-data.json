@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "site": {
     "copy": "Design Atlas",
     "address": "",
@@ -88,6 +88,20 @@
       "blurb": "Guidelines, courses and reading for building design skill.",
       "icon": "ph-book-open",
       "short": "Learning"
+    },
+    {
+      "id": "motion",
+      "label": "Animation and Motion",
+      "blurb": "Tools and libraries for interface animation, micro-interactions and motion design.",
+      "icon": "ph-film-strip",
+      "short": "Motion"
+    },
+    {
+      "id": "media",
+      "label": "Stock Media and Mockups",
+      "blurb": "Photos, video and device mockups for presenting work in context.",
+      "icon": "ph-image",
+      "short": "Media"
     }
   ],
   "collections": [
@@ -302,7 +316,8 @@
       ],
       "formats": "CSS plugin",
       "commercial": "yes",
-      "checked": ""
+      "checked": "",
+      "image": "https://img.daisyui.com/images/default.webp"
     },
     {
       "id": "tailwindplus",
@@ -329,7 +344,8 @@
       ],
       "formats": "HTML, React, Vue",
       "commercial": "yes",
-      "checked": ""
+      "checked": "",
+      "image": "https://tailwindcss.com/plus-assets/img/og/default.png"
     },
     {
       "id": "m3",
@@ -409,7 +425,8 @@
       ],
       "formats": "HTML, Nunjucks, Sass",
       "commercial": "yes",
-      "checked": ""
+      "checked": "",
+      "image": "https://design-system.service.gov.uk/assets/images/govuk-opengraph-image.png"
     },
     {
       "id": "uswds",
@@ -516,7 +533,8 @@
       ],
       "formats": "Figma, React, Web Components",
       "commercial": "yes",
-      "checked": ""
+      "checked": "",
+      "image": "https://fluent2websitecdn.azureedge.net/cdn/fluent-logo-metadata.Cwa-_8F7.png"
     },
     {
       "id": "primer",
@@ -669,7 +687,8 @@
       ],
       "formats": "Web app",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "image": "https://www.tldraw.com/social-og.png"
     },
     {
       "id": "protopie",
@@ -723,7 +742,8 @@
       ],
       "formats": "SVG, icon font, Figma",
       "commercial": "yes",
-      "checked": ""
+      "checked": "",
+      "image": "https://phosphoricons.com/phosphor-opengraph.png?v=2.0.2"
     },
     {
       "id": "heroicons",
@@ -1061,7 +1081,8 @@
       ],
       "formats": "OTF, TTF, WOFF2",
       "commercial": "yes",
-      "checked": ""
+      "checked": "",
+      "image": "https://www.fontshare.com/assets/images/share.f415a558.jpg"
     },
     {
       "id": "typewolf",
@@ -1085,7 +1106,8 @@
       ],
       "formats": "Web",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "image": "https://www.typewolf.com/assets/img/typewolf-og.png"
     },
     {
       "id": "coolors",
@@ -1310,7 +1332,8 @@
       ],
       "formats": "Web app, desktop app",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "preview": "logo"
     },
     {
       "id": "framer",
@@ -1387,7 +1410,8 @@
       ],
       "formats": "Figma plugin, Sketch plugin",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "image": "https://res.cloudinary.com/stark-lab/image/upload/v1761273066/marketing/meta/homepage_fzpkxd.png"
     },
     {
       "id": "tokensstudio",
@@ -1513,7 +1537,8 @@
       ],
       "formats": "Web guide",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "image": "https://cdn.prod.website-files.com/59ace8427353c50001765cbd/66bb9de0adfdcd229ffe60ce_fg-intro.jpg"
     },
     {
       "id": "baymard",
@@ -1564,7 +1589,8 @@
       ],
       "formats": "Web app",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "image": "https://www.datocms-assets.com/38511/1762727117-og-image-default.jpg?auto=format"
     },
     {
       "id": "optimalworkshop",
@@ -1738,7 +1764,8 @@
       ],
       "formats": "Web",
       "commercial": "no",
-      "checked": ""
+      "checked": "",
+      "preview": "logo"
     },
     {
       "id": "landbook",
@@ -1863,7 +1890,8 @@
       ],
       "formats": "Web standard",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "preview": "logo"
     },
     {
       "id": "a11y",
@@ -1887,7 +1915,8 @@
       ],
       "formats": "Web",
       "commercial": "check",
-      "checked": ""
+      "checked": "",
+      "image": "https://a11yproject.com/img/social/og-image-home.png"
     },
     {
       "id": "inclusive",
@@ -2009,6 +2038,3048 @@
         "Browser support tables"
       ],
       "formats": "Web docs",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "figjam",
+      "name": "FigJam",
+      "cat": "wireframes",
+      "creator": "Figma",
+      "url": "https://www.figma.com/figjam/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Figma",
+        "Desktop"
+      ],
+      "tags": [
+        "whiteboard",
+        "flowchart",
+        "workshop"
+      ],
+      "desc": "Figma's online whiteboard for brainstorms, flowcharts and workshops.",
+      "features": [
+        "Sticky notes, connectors and templates",
+        "Opens alongside Figma design files"
+      ],
+      "formats": "FigJam boards, PDF, PNG",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "uxpin",
+      "name": "UXPin",
+      "cat": "wireframes",
+      "creator": "UXPin",
+      "url": "https://www.uxpin.com/",
+      "price": "Premium",
+      "license": "Free trial, paid plans",
+      "tools": [
+        "Web",
+        "React"
+      ],
+      "tags": [
+        "prototyping",
+        "code components",
+        "handoff"
+      ],
+      "desc": "Prototyping that renders real React components, so prototypes behave like the product.",
+      "features": [
+        "Merge imports components from code",
+        "States, variables and conditional logic"
+      ],
+      "formats": "UXPin files, HTML preview",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "overflow",
+      "name": "Overflow",
+      "cat": "wireframes",
+      "creator": "Protoio",
+      "url": "https://overflow.io/",
+      "price": "Paid",
+      "license": "Subscription, free trial",
+      "tools": [
+        "Figma",
+        "Sketch",
+        "Desktop"
+      ],
+      "tags": [
+        "user flows",
+        "diagrams",
+        "presentation"
+      ],
+      "desc": "Turns static screens into user-flow diagrams you can present.",
+      "features": [
+        "Syncs screens from Figma and Sketch",
+        "Flow diagrams with connectors and notes"
+      ],
+      "formats": "Overflow files, PDF, PNG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://overflow.io/assets/images/social/homepage.png?v=1780121081819"
+    },
+    {
+      "id": "mews",
+      "name": "Mews Design",
+      "cat": "systems",
+      "creator": "Mews",
+      "url": "https://mews.design/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "hospitality",
+        "components",
+        "guidelines"
+      ],
+      "desc": "Mews' public design system, with components and guidance for product screens.",
+      "features": [
+        "Documented components and patterns",
+        "Foundations for type, color and layout"
+      ],
+      "formats": "Web docs, Figma",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "nordhealth",
+      "name": "Nordhealth Design",
+      "cat": "systems",
+      "creator": "Nordhealth",
+      "url": "https://nordhealth.design/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "healthcare",
+        "accessibility",
+        "web components"
+      ],
+      "desc": "An open healthcare design system, useful for accessible, data-dense product UI.",
+      "features": [
+        "Web components with documented usage",
+        "Accessibility guidance per component"
+      ],
+      "formats": "Web components, Figma",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "vibe",
+      "name": "Vibe",
+      "cat": "systems",
+      "creator": "monday.com",
+      "url": "https://vibe.monday.com/",
+      "price": "Free",
+      "license": "MIT (code)",
+      "tools": [
+        "React",
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "components",
+        "react",
+        "product"
+      ],
+      "desc": "monday.com's open design system and React component library.",
+      "features": [
+        "React components with Storybook docs",
+        "Matching Figma library"
+      ],
+      "formats": "React, Figma",
+      "commercial": "yes",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "skyscanner",
+      "name": "Skyscanner Design",
+      "cat": "systems",
+      "creator": "Skyscanner",
+      "url": "https://www.skyscanner.design/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "travel",
+        "tokens",
+        "color"
+      ],
+      "desc": "Skyscanner's public design system, including its color and token guidance.",
+      "features": [
+        "Token and color documentation",
+        "Components across web and native apps"
+      ],
+      "formats": "Web docs",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://studio-assets.supernova.io/design-systems/8384/bafe64e9-1d92-4c27-875b-a8fe689045fc.jpg"
+    },
+    {
+      "id": "figcomponents",
+      "name": "Fig Components",
+      "cat": "uikits",
+      "creator": "Fig Components",
+      "url": "https://figcomponents.com/",
+      "price": "Free",
+      "license": "See each listing's terms",
+      "tools": [
+        "Figma"
+      ],
+      "tags": [
+        "figma",
+        "directory",
+        "free kits"
+      ],
+      "desc": "A directory of free Figma component kits and UI files, searchable by category.",
+      "features": [
+        "Kits sorted by category",
+        "Links to each original file"
+      ],
+      "formats": "Figma",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://www.figcomponents.com/_nuxt/img/og-main-figma.a716b7e.png"
+    },
+    {
+      "id": "uiverse",
+      "name": "Uiverse",
+      "cat": "uikits",
+      "creator": "Uiverse community",
+      "url": "https://uiverse.io/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "css",
+        "buttons",
+        "community"
+      ],
+      "desc": "Community-made CSS and Tailwind elements such as buttons, toggles and cards, free to copy.",
+      "features": [
+        "Copy HTML and CSS or Tailwind",
+        "Searchable by element type"
+      ],
+      "formats": "HTML, CSS, Tailwind",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "kokonut",
+      "name": "Kokonut UI",
+      "cat": "uikits",
+      "creator": "Kokonut UI",
+      "url": "https://kokonutui.com/",
+      "price": "Premium",
+      "license": "MIT core, paid Pro",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "react",
+        "tailwind",
+        "animated components"
+      ],
+      "desc": "React and Tailwind components with animation and transitions built in.",
+      "features": [
+        "Copy-and-paste component code",
+        "Motion included by default"
+      ],
+      "formats": "React, Tailwind",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "blkit",
+      "name": "Blkit UI",
+      "cat": "uikits",
+      "creator": "Blkit",
+      "url": "https://blkit.ui/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "charts",
+        "dashboard",
+        "data visualization"
+      ],
+      "desc": "Chart and data-visualization blocks for dashboards.",
+      "features": [
+        "Ready-made chart blocks",
+        "Built for dashboard layouts"
+      ],
+      "formats": "Code blocks",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "mui",
+      "name": "Material UI",
+      "cat": "uikits",
+      "creator": "MUI",
+      "url": "https://mui.com/",
+      "price": "Free",
+      "license": "MIT core, paid Pro",
+      "tools": [
+        "React",
+        "Figma"
+      ],
+      "tags": [
+        "react",
+        "material design",
+        "production"
+      ],
+      "desc": "A complete React component library implementing Material Design, for production apps.",
+      "features": [
+        "Large set of themeable components",
+        "Paid data grid and date pickers"
+      ],
+      "formats": "React, Figma kit",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "chakra",
+      "name": "Chakra UI",
+      "cat": "uikits",
+      "creator": "Chakra UI",
+      "url": "https://chakra-ui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React"
+      ],
+      "tags": [
+        "react",
+        "accessibility",
+        "style props"
+      ],
+      "desc": "Accessible React components styled through props, suited to custom products.",
+      "features": [
+        "Theme tokens and style props",
+        "Accessible by default"
+      ],
+      "formats": "React",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "radixui",
+      "name": "Radix UI",
+      "cat": "uikits",
+      "creator": "WorkOS",
+      "url": "https://www.radix-ui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React"
+      ],
+      "tags": [
+        "headless",
+        "accessibility",
+        "primitives"
+      ],
+      "desc": "Unstyled, accessible primitives for building your own components.",
+      "features": [
+        "Keyboard and focus handling built in",
+        "Bring any styling approach"
+      ],
+      "formats": "React",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "headlessui",
+      "name": "Headless UI",
+      "cat": "uikits",
+      "creator": "Tailwind Labs",
+      "url": "https://headlessui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "headless",
+        "tailwind",
+        "vue"
+      ],
+      "desc": "Unstyled, accessible components for Tailwind projects in React or Vue.",
+      "features": [
+        "Menus, dialogs, listboxes and more",
+        "Designed to pair with Tailwind"
+      ],
+      "formats": "React, Vue",
+      "commercial": "yes",
+      "checked": "",
+      "image": "https://headlessui.com/_next/static/media/social-card.46834755.jpg"
+    },
+    {
+      "id": "mantine",
+      "name": "Mantine",
+      "cat": "uikits",
+      "creator": "Mantine",
+      "url": "https://mantine.dev/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React"
+      ],
+      "tags": [
+        "react",
+        "hooks",
+        "forms"
+      ],
+      "desc": "A full React toolkit with components, hooks and form handling.",
+      "features": [
+        "100+ components and hooks",
+        "Built-in form and date packages"
+      ],
+      "formats": "React",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "heroui",
+      "name": "HeroUI",
+      "cat": "uikits",
+      "creator": "HeroUI",
+      "url": "https://www.heroui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Figma"
+      ],
+      "tags": [
+        "react",
+        "tailwind",
+        "styled"
+      ],
+      "desc": "Styled React components on Tailwind for polished modern products.",
+      "features": [
+        "Light and dark themes included",
+        "Figma kit available"
+      ],
+      "formats": "React, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "primereact",
+      "name": "PrimeReact",
+      "cat": "uikits",
+      "creator": "PrimeTek",
+      "url": "https://primereact.org/",
+      "price": "Free",
+      "license": "MIT, paid templates",
+      "tools": [
+        "React"
+      ],
+      "tags": [
+        "react",
+        "data table",
+        "forms"
+      ],
+      "desc": "A React suite with data tables, forms and charts for data-heavy apps.",
+      "features": [
+        "Advanced data table and tree table",
+        "Styled or unstyled modes"
+      ],
+      "formats": "React",
+      "commercial": "yes",
+      "checked": "",
+      "image": "https://fqjltiegiezfetthbags.supabase.co/storage/v1/object/public/common.images/meta/primereact-meta.png"
+    },
+    {
+      "id": "reactbootstrap",
+      "name": "React Bootstrap",
+      "cat": "uikits",
+      "creator": "React Bootstrap",
+      "url": "https://react-bootstrap.github.io/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React"
+      ],
+      "tags": [
+        "bootstrap",
+        "react",
+        "responsive"
+      ],
+      "desc": "Bootstrap components rebuilt for React, for familiar responsive interfaces.",
+      "features": [
+        "Works with Bootstrap themes",
+        "No jQuery dependency"
+      ],
+      "formats": "React",
+      "commercial": "yes",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "arkui",
+      "name": "Ark UI",
+      "cat": "uikits",
+      "creator": "Chakra Systems",
+      "url": "https://ark-ui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "headless",
+        "state machines",
+        "multi-framework"
+      ],
+      "desc": "Headless components for React, Vue, Solid and Svelte, suited to multi-framework systems.",
+      "features": [
+        "One API across frameworks",
+        "Accessible, unstyled parts"
+      ],
+      "formats": "React, Vue, Solid, Svelte",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "animateui",
+      "name": "Animate UI",
+      "cat": "motion",
+      "creator": "Animate UI",
+      "url": "https://animate-ui.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "animated components",
+        "tailwind",
+        "motion"
+      ],
+      "desc": "Animated components built on Tailwind and Motion, copied into your own code.",
+      "features": [
+        "Copy-and-own component source",
+        "Motion-based transitions"
+      ],
+      "formats": "React, Tailwind",
+      "commercial": "yes",
+      "checked": "",
+      "image": "https://animate-ui.com/og-image.png"
+    },
+    {
+      "id": "animos",
+      "name": "Animos",
+      "cat": "motion",
+      "creator": "Animos",
+      "url": "https://animos.dev/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "presets",
+        "micro-interactions",
+        "css"
+      ],
+      "desc": "Prebuilt UI animation presets you can apply without writing keyframes.",
+      "features": [
+        "Drop-in animation presets",
+        "Tuned for interface elements"
+      ],
+      "formats": "CSS",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "shadergradient",
+      "name": "ShaderGradient",
+      "cat": "motion",
+      "creator": "ShaderGradient",
+      "url": "https://www.shadergradient.co/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web",
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "gradients",
+        "3d",
+        "backgrounds"
+      ],
+      "desc": "Builds animated 3D shader gradients and exports them for the web or Figma.",
+      "features": [
+        "Live controls for color and motion",
+        "Figma plugin and React package"
+      ],
+      "formats": "React, Figma, video",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://framerusercontent.com/images/ha9u6Qtcp2kivmMTouWYSaaXZ9g.png"
+    },
+    {
+      "id": "lottiefiles",
+      "name": "LottieFiles",
+      "cat": "motion",
+      "creator": "LottieFiles",
+      "url": "https://lottiefiles.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Figma",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "lottie",
+        "animation library",
+        "editor"
+      ],
+      "desc": "A library and editor for lightweight Lottie animations used in apps and sites.",
+      "features": [
+        "Large free animation library",
+        "Edit and preview in the browser"
+      ],
+      "formats": "Lottie JSON, dotLottie, GIF, MP4",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://stp-v4-cdn.lottiefiles.com/ogimage_Homepage_b5840ac00c.png"
+    },
+    {
+      "id": "jitter",
+      "name": "Jitter",
+      "cat": "motion",
+      "creator": "Jitter",
+      "url": "https://jitter.video/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "motion design",
+        "social",
+        "ui animation"
+      ],
+      "desc": "A browser motion design tool for UI and social animation.",
+      "features": [
+        "Imports frames from Figma",
+        "Exports video, GIF and Lottie"
+      ],
+      "formats": "MP4, GIF, Lottie",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "principle",
+      "name": "Principle",
+      "cat": "motion",
+      "creator": "Principle",
+      "url": "https://principleformac.com/",
+      "price": "Paid",
+      "license": "Commercial licence",
+      "tools": [
+        "Desktop",
+        "Sketch",
+        "Figma"
+      ],
+      "tags": [
+        "prototyping",
+        "mac",
+        "timeline"
+      ],
+      "desc": "A Mac app for timeline- and interaction-driven animated prototypes.",
+      "features": [
+        "Imports from Sketch and Figma",
+        "Preview on iPhone with the companion app"
+      ],
+      "formats": "Principle files, video",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "animista",
+      "name": "Animista",
+      "cat": "motion",
+      "creator": "Ana Travas",
+      "url": "https://animista.net/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "css",
+        "keyframes",
+        "generator"
+      ],
+      "desc": "Ready-made CSS animations you can adjust and copy.",
+      "features": [
+        "Tweak timing and easing live",
+        "Copy generated keyframes"
+      ],
+      "formats": "CSS",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://animista.net/animista-media-img.gif"
+    },
+    {
+      "id": "loadingio",
+      "name": "Loading.io",
+      "cat": "motion",
+      "creator": "Loading.io",
+      "url": "https://loading.io/",
+      "price": "Premium",
+      "license": "Free tier, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "spinners",
+        "loaders",
+        "svg"
+      ],
+      "desc": "A generator for loading spinners, progress bars and simple SVG animations.",
+      "features": [
+        "Customizable color and speed",
+        "Exports several formats"
+      ],
+      "formats": "SVG, CSS, GIF, PNG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://loading.io/assets/img/thumbnail.jpg"
+    },
+    {
+      "id": "keyshape",
+      "name": "Keyshape",
+      "cat": "motion",
+      "creator": "Pixofield",
+      "url": "https://www.keyshapeapp.com/",
+      "price": "Paid",
+      "license": "Commercial licence",
+      "tools": [
+        "Desktop"
+      ],
+      "tags": [
+        "svg animation",
+        "lottie",
+        "mac"
+      ],
+      "desc": "A Mac vector animation editor that exports to SVG and Lottie.",
+      "features": [
+        "Timeline with easing curves",
+        "Direct SVG and Lottie export"
+      ],
+      "formats": "SVG, Lottie, video",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "motion",
+      "name": "Motion",
+      "cat": "motion",
+      "creator": "Motion",
+      "url": "https://motion.dev/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "react",
+        "javascript",
+        "animation library"
+      ],
+      "desc": "An animation library, formerly Framer Motion, for building motion into React and JavaScript interfaces.",
+      "features": [
+        "Gestures, layout and scroll animation",
+        "React and vanilla JS APIs"
+      ],
+      "formats": "React, JavaScript",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "svgator",
+      "name": "SVGator",
+      "cat": "motion",
+      "creator": "SVGator",
+      "url": "https://www.svgator.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "svg animation",
+        "no code",
+        "lottie"
+      ],
+      "desc": "A browser tool for animating SVGs without writing code.",
+      "features": [
+        "Imports from Figma",
+        "Exports SVG, Lottie and video"
+      ],
+      "formats": "SVG, Lottie, MP4",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "itshover",
+      "name": "It's Hover",
+      "cat": "icons",
+      "creator": "It's Hover",
+      "url": "https://itshover.com/icons",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web",
+        "React"
+      ],
+      "tags": [
+        "animated icons",
+        "hover",
+        "interaction"
+      ],
+      "desc": "Icons that animate on hover.",
+      "features": [
+        "Hover-triggered motion",
+        "Copy into a component"
+      ],
+      "formats": "SVG, React",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "shapesgallery",
+      "name": "Shapes Gallery",
+      "cat": "icons",
+      "creator": "Shapes Gallery",
+      "url": "https://shapes.gallery/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "shapes",
+        "blobs",
+        "backgrounds"
+      ],
+      "desc": "Abstract shapes and blobs for backgrounds and composition accents.",
+      "features": [
+        "Large shape library",
+        "Vector downloads"
+      ],
+      "formats": "SVG, Figma",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://framerusercontent.com/images/MH0UKXtlzQanSSX5IHDcTM2gkI.jpg"
+    },
+    {
+      "id": "iconsax",
+      "name": "Iconsax",
+      "cat": "icons",
+      "creator": "Vuesax",
+      "url": "https://iconsax.io/",
+      "price": "Premium",
+      "license": "Free set, paid Pro",
+      "tools": [
+        "Figma",
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "icons",
+        "multiple styles",
+        "product ui"
+      ],
+      "desc": "An icon library with several styles for consistent product interfaces.",
+      "features": [
+        "Linear, bold, bulk and more styles",
+        "Figma file and code packages"
+      ],
+      "formats": "SVG, Figma, React",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://iconsax.io/hero.png"
+    },
+    {
+      "id": "potlab",
+      "name": "Potlab Icons",
+      "cat": "icons",
+      "creator": "Potlab",
+      "url": "https://potlabicons.com/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "icons",
+        "stroke",
+        "interface"
+      ],
+      "desc": "Free icons with a clean, uniform stroke for interface work.",
+      "features": [
+        "Consistent stroke style",
+        "SVG downloads"
+      ],
+      "formats": "SVG",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "lordicon",
+      "name": "Lordicon",
+      "cat": "icons",
+      "creator": "Lordicon",
+      "url": "https://lordicon.com/",
+      "price": "Premium",
+      "license": "Free tier, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "animated icons",
+        "lottie",
+        "motion"
+      ],
+      "desc": "Animated icons with Lottie and SVG exports and per-icon motion controls.",
+      "features": [
+        "Adjustable color and stroke",
+        "Lottie, GIF and SVG export"
+      ],
+      "formats": "Lottie, SVG, GIF",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://media.lordicon.com/assets/pictures/lordicon.gif"
+    },
+    {
+      "id": "lucideanimated",
+      "name": "Lucide Animated",
+      "cat": "icons",
+      "creator": "Lucide Animated",
+      "url": "https://lucide-animated.com/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "React",
+        "Web"
+      ],
+      "tags": [
+        "animated icons",
+        "lucide",
+        "react"
+      ],
+      "desc": "Animated versions of Lucide icons, ready to drop into a UI.",
+      "features": [
+        "Based on the Lucide set",
+        "Copy into React"
+      ],
+      "formats": "React, SVG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://lucide-animated.com/og.png"
+    },
+    {
+      "id": "untitledicons",
+      "name": "Untitled UI Icons",
+      "cat": "icons",
+      "creator": "Untitled UI",
+      "url": "https://www.untitledui.com/icons",
+      "price": "Premium",
+      "license": "Free set, paid PRO licence",
+      "tools": [
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "icons",
+        "product ui",
+        "neutral"
+      ],
+      "desc": "A large neutral icon set designed for product UI at small sizes.",
+      "features": [
+        "Line, duocolor and solid styles",
+        "Figma and React packages"
+      ],
+      "formats": "SVG, Figma, React",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://cdn.prod.website-files.com/636496d3f0ebfdaba9784655/69aba353c7dd69a0b503276b_untitled-ui-icons-open-graph.jpg"
+    },
+    {
+      "id": "3dicons",
+      "name": "3dicons",
+      "cat": "icons",
+      "creator": "Vijay Verma",
+      "url": "https://3dicons.co/",
+      "price": "Free",
+      "license": "CC0",
+      "tools": [
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "3d",
+        "icons",
+        "marketing"
+      ],
+      "desc": "Free 3D-rendered icons for marketing pages and feature illustrations.",
+      "features": [
+        "Several angles and color styles",
+        "PNG and source files"
+      ],
+      "formats": "PNG, Blender, Figma",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "thesvg",
+      "name": "The SVG",
+      "cat": "icons",
+      "creator": "The SVG",
+      "url": "https://thesvg.org/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "logos",
+        "vector",
+        "brand marks"
+      ],
+      "desc": "An open collection of SVG logos and brand marks.",
+      "features": [
+        "Searchable logo collection",
+        "SVG downloads"
+      ],
+      "formats": "SVG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://thesvg.org/og-image.png"
+    },
+    {
+      "id": "indevlogos",
+      "name": "Indev Logos",
+      "cat": "icons",
+      "creator": "Indev",
+      "url": "https://logos.indev.me/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "logos",
+        "brands",
+        "svg"
+      ],
+      "desc": "Brand and product logos in SVG for decks, tables and case studies.",
+      "features": [
+        "Searchable by brand",
+        "SVG downloads"
+      ],
+      "formats": "SVG",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "flaticon",
+      "name": "Flaticon",
+      "cat": "icons",
+      "creator": "Freepik Company",
+      "url": "https://www.flaticon.com/",
+      "price": "Premium",
+      "license": "Free with attribution, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "icons",
+        "large library",
+        "stickers"
+      ],
+      "desc": "One of the largest searchable icon libraries, in many styles.",
+      "features": [
+        "Icon packs grouped by style",
+        "Figma plugin"
+      ],
+      "formats": "SVG, PNG, EPS",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "icons8",
+      "name": "Icons8",
+      "cat": "icons",
+      "creator": "Icons8",
+      "url": "https://icons8.com/",
+      "price": "Premium",
+      "license": "Free with link, paid plans",
+      "tools": [
+        "Web",
+        "Figma",
+        "Desktop"
+      ],
+      "tags": [
+        "icons",
+        "illustrations",
+        "photos"
+      ],
+      "desc": "An icon, illustration and photo library with consistent styles.",
+      "features": [
+        "Many matching icon styles",
+        "Desktop app and plugins"
+      ],
+      "formats": "SVG, PNG, PDF",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://icons8.com/vue-static/landings/primary-landings/preview_icons8.png"
+    },
+    {
+      "id": "feather",
+      "name": "Feather",
+      "cat": "icons",
+      "creator": "Cole Bemis",
+      "url": "https://feathericons.com/",
+      "price": "Free",
+      "license": "MIT",
+      "tools": [
+        "Web",
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "icons",
+        "open source",
+        "24px grid"
+      ],
+      "desc": "Simple open-source icons on a consistent 24px grid.",
+      "features": [
+        "Adjustable size and stroke",
+        "Packages for common frameworks"
+      ],
+      "formats": "SVG",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "remixicon",
+      "name": "Remix Icon",
+      "cat": "icons",
+      "creator": "Remix Design",
+      "url": "https://remixicon.com/",
+      "price": "Free",
+      "license": "Remix Icon licence, see source",
+      "tools": [
+        "Web",
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "icons",
+        "line and fill",
+        "neutral"
+      ],
+      "desc": "A neutral open-source icon library with line and fill versions.",
+      "features": [
+        "Every icon in line and fill",
+        "Icon font and SVG"
+      ],
+      "formats": "SVG, icon font",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "lucide",
+      "name": "Lucide",
+      "cat": "icons",
+      "creator": "Lucide contributors",
+      "url": "https://lucide.dev/",
+      "price": "Free",
+      "license": "ISC",
+      "tools": [
+        "Web",
+        "Figma",
+        "React"
+      ],
+      "tags": [
+        "icons",
+        "open source",
+        "feather fork"
+      ],
+      "desc": "A community fork of Feather with a larger, consistent icon set.",
+      "features": [
+        "Packages for React, Vue and more",
+        "Figma plugin"
+      ],
+      "formats": "SVG",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "svgrepo",
+      "name": "SVG Repo",
+      "cat": "icons",
+      "creator": "SVG Repo",
+      "url": "https://www.svgrepo.com/",
+      "price": "Free",
+      "license": "Licence varies per icon",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "vectors",
+        "icons",
+        "search"
+      ],
+      "desc": "A large searchable repository of free vector icons and graphics.",
+      "features": [
+        "Licence shown on each icon",
+        "SVG editor in the browser"
+      ],
+      "formats": "SVG",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "nounproject",
+      "name": "Noun Project",
+      "cat": "icons",
+      "creator": "Noun Project",
+      "url": "https://thenounproject.com/",
+      "price": "Premium",
+      "license": "Free with attribution, paid plans",
+      "tools": [
+        "Web",
+        "Figma",
+        "Desktop"
+      ],
+      "tags": [
+        "symbols",
+        "icons",
+        "concepts"
+      ],
+      "desc": "A long-running library of simple symbolic icons for almost any concept.",
+      "features": [
+        "Huge range of concepts",
+        "Plugins for design apps"
+      ],
+      "formats": "SVG, PNG",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "storyset",
+      "name": "Storyset",
+      "cat": "icons",
+      "creator": "Freepik Company",
+      "url": "https://storyset.com/",
+      "price": "Free",
+      "license": "Free with attribution",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "illustrations",
+        "animated",
+        "customizable"
+      ],
+      "desc": "Recolorable illustration sets with optional animation.",
+      "features": [
+        "Change colors and hide elements",
+        "Animated versions"
+      ],
+      "formats": "SVG, PNG, GIF, MP4",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "drawkit",
+      "name": "DrawKit",
+      "cat": "icons",
+      "creator": "DrawKit",
+      "url": "https://www.drawkit.com/",
+      "price": "Premium",
+      "license": "Free packs, paid packs",
+      "tools": [
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "illustrations",
+        "packs",
+        "styles"
+      ],
+      "desc": "Illustration packs in several distinct art styles.",
+      "features": [
+        "Free and paid packs",
+        "Figma and vector files"
+      ],
+      "formats": "SVG, PNG, Figma",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "manypixels",
+      "name": "ManyPixels Gallery",
+      "cat": "icons",
+      "creator": "ManyPixels",
+      "url": "https://www.manypixels.co/gallery",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "flat illustrations",
+        "customizer",
+        "free"
+      ],
+      "desc": "A large library of flat illustrations with a color customizer.",
+      "features": [
+        "Pick a brand color before download",
+        "Several styles"
+      ],
+      "formats": "SVG, PNG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://cdn.prod.website-files.com/69b15b68fb5a0ea0e6ef48b2/69e989cc3a64404ba3e43ff3_Free%20illustrations%20-%20V2.jpg"
+    },
+    {
+      "id": "ouch",
+      "name": "Ouch!",
+      "cat": "icons",
+      "creator": "Icons8",
+      "url": "https://icons8.com/illustrations",
+      "price": "Premium",
+      "license": "Free with link, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "illustrations",
+        "styles",
+        "scenes"
+      ],
+      "desc": "Icons8's illustration library across many consistent styles.",
+      "features": [
+        "Grouped by style",
+        "Figma plugin"
+      ],
+      "formats": "PNG, SVG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://maxst.icons8.com/vue-static/illustrations/seo/opengraph.png"
+    },
+    {
+      "id": "iradesign",
+      "name": "IRA Design",
+      "cat": "icons",
+      "creator": "Creative Tim",
+      "url": "https://iradesign.io/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web",
+        "Sketch",
+        "Figma"
+      ],
+      "tags": [
+        "characters",
+        "gradients",
+        "illustrations"
+      ],
+      "desc": "Colorful character illustrations for product and marketing pages.",
+      "features": [
+        "Mix characters and objects",
+        "Gradient color options"
+      ],
+      "formats": "SVG, PNG, Sketch, Figma",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://raw.githack.com/ira-design/ira-design.github.io/master/assets/img/iradesign.jpg"
+    },
+    {
+      "id": "humaans",
+      "name": "Humaans",
+      "cat": "icons",
+      "creator": "Pablo Stanley",
+      "url": "https://www.humaans.com/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Figma",
+        "Sketch"
+      ],
+      "tags": [
+        "people",
+        "mix and match",
+        "illustrations"
+      ],
+      "desc": "A mix-and-match library of illustrated people for custom scenes.",
+      "features": [
+        "Swap poses, outfits and hair",
+        "Design-app libraries"
+      ],
+      "formats": "Figma, Sketch, SVG",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "opendoodles",
+      "name": "Open Doodles",
+      "cat": "icons",
+      "creator": "Pablo Stanley",
+      "url": "https://www.opendoodles.com/",
+      "price": "Free",
+      "license": "CC0",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "hand drawn",
+        "characters",
+        "open"
+      ],
+      "desc": "Free, loose hand-drawn character sketches.",
+      "features": [
+        "Public domain use",
+        "Recolor before download"
+      ],
+      "formats": "SVG, PNG, GIF",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "blush",
+      "name": "Blush",
+      "cat": "icons",
+      "creator": "Blush",
+      "url": "https://blush.design/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "illustrations",
+        "artists",
+        "customizable"
+      ],
+      "desc": "Customizable illustrations from independent artists, edited in the browser.",
+      "features": [
+        "Mix elements within a collection",
+        "Figma plugin"
+      ],
+      "formats": "SVG, PNG",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "sapiens",
+      "name": "Sapiens",
+      "cat": "icons",
+      "creator": "UI8",
+      "url": "https://sapiens.ui8.com/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Figma",
+        "Web"
+      ],
+      "tags": [
+        "3d",
+        "characters",
+        "illustrations"
+      ],
+      "desc": "Mix-and-match character illustrations for product and marketing scenes.",
+      "features": [
+        "Combine poses and parts",
+        "Customizable colors"
+      ],
+      "formats": "PNG, Figma",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "fontpair",
+      "name": "Fontpair",
+      "cat": "type",
+      "creator": "Fontpair",
+      "url": "https://www.fontpair.co/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "pairing",
+        "google fonts",
+        "heading and body"
+      ],
+      "desc": "Tested heading-and-body pairings using Google Fonts.",
+      "features": [
+        "Pairings shown in context",
+        "Links to each font"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "pangram",
+      "name": "Pangram Pangram",
+      "cat": "type",
+      "creator": "Pangram Pangram Foundry",
+      "url": "https://pangrampangram.com/",
+      "price": "Premium",
+      "license": "Free trial fonts, paid licences",
+      "tools": [
+        "Desktop",
+        "Web"
+      ],
+      "tags": [
+        "foundry",
+        "display",
+        "contemporary"
+      ],
+      "desc": "An independent foundry known for contemporary display and text faces.",
+      "features": [
+        "Free trial downloads",
+        "Desktop and web licences"
+      ],
+      "formats": "OTF, WOFF2",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "velvetyne",
+      "name": "Velvetyne",
+      "cat": "type",
+      "creator": "Velvetyne Type Foundry",
+      "url": "https://velvetyne.fr/",
+      "price": "Free",
+      "license": "SIL Open Font License 1.1",
+      "tools": [
+        "Desktop",
+        "Web"
+      ],
+      "tags": [
+        "open source",
+        "experimental",
+        "foundry"
+      ],
+      "desc": "A free and open-source foundry with experimental, distinctive typefaces.",
+      "features": [
+        "Libre fonts with source files",
+        "Distinctive display faces"
+      ],
+      "formats": "OTF, TTF, WOFF",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "adobefonts",
+      "name": "Adobe Fonts",
+      "cat": "type",
+      "creator": "Adobe",
+      "url": "https://fonts.adobe.com/",
+      "price": "Paid",
+      "license": "Included with Creative Cloud",
+      "tools": [
+        "Desktop",
+        "Web"
+      ],
+      "tags": [
+        "font library",
+        "creative cloud",
+        "sync"
+      ],
+      "desc": "A large font library included with Creative Cloud, synced to your apps.",
+      "features": [
+        "Activate fonts in desktop apps",
+        "Web projects for sites"
+      ],
+      "formats": "Synced desktop fonts, web embed",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "whatfont",
+      "name": "WhatFont",
+      "cat": "type",
+      "creator": "Chengyin Liu",
+      "url": "https://chengyinliu.com/whatfont.html",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "identify fonts",
+        "browser extension",
+        "inspect"
+      ],
+      "desc": "A browser extension that identifies fonts on any live webpage.",
+      "features": [
+        "Hover to see font details",
+        "Works on any site"
+      ],
+      "formats": "Browser extension",
+      "commercial": "yes",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "fontbrief",
+      "name": "FontBrief",
+      "cat": "type",
+      "creator": "FontBrief",
+      "url": "https://fontbrief.com/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "font choice",
+        "use cases",
+        "discovery"
+      ],
+      "desc": "Browse fonts by real use, from posters to app interfaces.",
+      "features": [
+        "Fonts grouped by use case",
+        "Links to sources"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "typescale",
+      "name": "Type Scale",
+      "cat": "type",
+      "creator": "Jeremy Church",
+      "url": "https://typescale.com/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "type scale",
+        "ratio",
+        "css"
+      ],
+      "desc": "Generates a heading-to-body type scale from a base size and ratio.",
+      "features": [
+        "Preview with your font",
+        "Copy CSS"
+      ],
+      "formats": "CSS",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "kigen",
+      "name": "Kigen Color",
+      "cat": "color",
+      "creator": "Kigen",
+      "url": "https://kigen.design/color",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "color system",
+        "ramps",
+        "accessibility"
+      ],
+      "desc": "Generates accessible UI color ramps from a base color.",
+      "features": [
+        "Ramps from one input",
+        "Contrast-aware steps"
+      ],
+      "formats": "CSS, tokens",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "tints",
+      "name": "Tints.dev",
+      "cat": "color",
+      "creator": "Tints.dev",
+      "url": "https://www.tints.dev/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "tailwind",
+        "ramps",
+        "css variables"
+      ],
+      "desc": "Generates a full 50 to 950 color ramp from one base color.",
+      "features": [
+        "Export to Tailwind config",
+        "Export CSS variables"
+      ],
+      "formats": "Tailwind config, CSS",
+      "commercial": "yes",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "colorhunt",
+      "name": "Color Hunt",
+      "cat": "color",
+      "creator": "Gal Shir",
+      "url": "https://colorhunt.co/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "palettes",
+        "community",
+        "trending"
+      ],
+      "desc": "A community gallery of four-color palettes.",
+      "features": [
+        "Sort by popular or new",
+        "Copy hex codes"
+      ],
+      "formats": "Hex",
+      "commercial": "yes",
+      "checked": "",
+      "image": "https://colorhunt.co/img/color-hunt-og.png"
+    },
+    {
+      "id": "khroma",
+      "name": "Khroma",
+      "cat": "color",
+      "creator": "George Hastings",
+      "url": "https://www.khroma.co/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ai",
+        "palettes",
+        "preferences"
+      ],
+      "desc": "Learns which colors you like and generates palettes from them.",
+      "features": [
+        "Train on your picks",
+        "Preview as type, posters and gradients"
+      ],
+      "formats": "Hex",
+      "commercial": "yes",
+      "checked": "",
+      "image": "https://www.khroma.co/assets/images/social.png"
+    },
+    {
+      "id": "happyhues",
+      "name": "Happy Hues",
+      "cat": "color",
+      "creator": "Mackenzie Child",
+      "url": "https://www.happyhues.co/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "palettes",
+        "ui preview",
+        "examples"
+      ],
+      "desc": "Shows each palette applied to a real page, not only as swatches.",
+      "features": [
+        "Whole-site color preview",
+        "Role names for each color"
+      ],
+      "formats": "Hex",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "colormind",
+      "name": "Colormind",
+      "cat": "color",
+      "creator": "Jack Qiao",
+      "url": "http://colormind.io/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ai",
+        "palettes",
+        "generator"
+      ],
+      "desc": "A deep-learning palette generator trained on photos, art and film.",
+      "features": [
+        "Lock colors and regenerate",
+        "API available"
+      ],
+      "formats": "Hex",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "brandcolors",
+      "name": "BrandColors",
+      "cat": "color",
+      "creator": "Galen Gidman",
+      "url": "https://brandcolors.net/",
+      "price": "Free",
+      "license": "Free to browse, brands own their colors",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "brand colors",
+        "reference",
+        "hex"
+      ],
+      "desc": "Official color codes of well-known brands.",
+      "features": [
+        "Search by brand",
+        "Copy or download codes"
+      ],
+      "formats": "Hex, CSS, ASE",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "colorspace",
+      "name": "ColorSpace",
+      "cat": "color",
+      "creator": "ColorSpace",
+      "url": "https://mycolor.space/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "gradients",
+        "palettes",
+        "generator"
+      ],
+      "desc": "Generates palettes and gradients from one or two starting colors.",
+      "features": [
+        "Many palette types per color",
+        "Gradient CSS output"
+      ],
+      "formats": "Hex, CSS",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "huemint",
+      "name": "Huemint",
+      "cat": "color",
+      "creator": "Huemint",
+      "url": "https://huemint.com/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ai",
+        "brand palettes",
+        "preview"
+      ],
+      "desc": "Generates brand palettes with live previews on logos and pages.",
+      "features": [
+        "Previews on mock layouts",
+        "Adjust randomness"
+      ],
+      "formats": "Hex",
+      "commercial": "yes",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "designspells",
+      "name": "Design Spells",
+      "cat": "inspiration",
+      "creator": "Design Spells",
+      "url": "https://www.designspells.com/",
+      "price": "Free",
+      "license": "Free to browse, work belongs to each creator",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "micro-interactions",
+        "details",
+        "delight"
+      ],
+      "desc": "A collection of small delightful interaction details from real products.",
+      "features": [
+        "Video clips of each detail",
+        "Tagged by interaction type"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "uilive",
+      "name": "UI Live",
+      "cat": "inspiration",
+      "creator": "UI Live",
+      "url": "https://ui.live/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "patterns",
+        "components",
+        "gallery"
+      ],
+      "desc": "A gallery of interface patterns and components to browse for direction.",
+      "features": [
+        "Browse by pattern",
+        "Live examples"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "goodcomponents",
+      "name": "Good Components",
+      "cat": "inspiration",
+      "creator": "Good Components",
+      "url": "https://goodcomponents.io/",
+      "price": "Free",
+      "license": "Free to browse",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "components",
+        "patterns",
+        "reference"
+      ],
+      "desc": "Curated component examples that show how well-built UI pieces fit together.",
+      "features": [
+        "Organized by component",
+        "Real product examples"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": "",
+      "image": "https://media.beehiiv.com/cdn-cgi/image/format=auto,fit=scale-down,onerror=redirect/uploads/asset/file/ea7e1900-5b1b-4258-970a-fe5bf9b43af2/test.png"
+    },
+    {
+      "id": "vibeui",
+      "name": "Vibe UI",
+      "cat": "inspiration",
+      "creator": "Vibe UI",
+      "url": "https://vibeui.online/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "inspiration",
+        "components",
+        "direction"
+      ],
+      "desc": "UI inspiration and component references for setting a visual direction.",
+      "features": [
+        "Browse by style",
+        "Quick visual references"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "minimalgallery",
+      "name": "Minimal Gallery",
+      "cat": "inspiration",
+      "creator": "Minimal Gallery",
+      "url": "https://minimal.gallery/",
+      "price": "Free",
+      "license": "Free to browse, work belongs to each designer",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "minimal",
+        "websites",
+        "gallery"
+      ],
+      "desc": "A gallery of minimal websites and clean layouts.",
+      "features": [
+        "Curated minimal sites",
+        "Browse by category"
+      ],
+      "formats": "Web",
+      "commercial": "no",
+      "checked": ""
+    },
+    {
+      "id": "miro",
+      "name": "Miro",
+      "cat": "research",
+      "creator": "Miro",
+      "url": "https://miro.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web",
+        "Desktop"
+      ],
+      "tags": [
+        "whiteboard",
+        "journey mapping",
+        "workshops"
+      ],
+      "desc": "An infinite whiteboard for journey maps, workshops and research synthesis.",
+      "features": [
+        "Templates for maps and workshops",
+        "Real-time collaboration"
+      ],
+      "formats": "Miro boards, PDF, CSV",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "hotjar",
+      "name": "Hotjar",
+      "cat": "research",
+      "creator": "Contentsquare",
+      "url": "https://www.hotjar.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "heatmaps",
+        "recordings",
+        "surveys"
+      ],
+      "desc": "Heatmaps, session recordings and surveys showing how people use a site.",
+      "features": [
+        "Click and scroll heatmaps",
+        "On-site feedback widgets"
+      ],
+      "formats": "Web reports, CSV",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "usertesting",
+      "name": "UserTesting",
+      "cat": "research",
+      "creator": "UserTesting",
+      "url": "https://www.usertesting.com/",
+      "price": "Paid",
+      "license": "Subscription",
+      "tools": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "tags": [
+        "usability testing",
+        "video",
+        "participants"
+      ],
+      "desc": "Recruits participants and records them using your product while thinking aloud.",
+      "features": [
+        "Participant panel and screeners",
+        "Video clips with transcripts"
+      ],
+      "formats": "Video, reports",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://www.usertesting.com/sites/default/files/usertestingv3/2024-10/IMAGE-meta-social-global-usertesting-1600x900.png?width=1200&height=628"
+    },
+    {
+      "id": "dovetail",
+      "name": "Dovetail",
+      "cat": "research",
+      "creator": "Dovetail",
+      "url": "https://dovetail.com/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "repository",
+        "synthesis",
+        "tagging"
+      ],
+      "desc": "A research repository for tagging, synthesizing and sharing qualitative findings.",
+      "features": [
+        "Transcription and tagging",
+        "Shareable insight reports"
+      ],
+      "formats": "Web, CSV",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "googleforms",
+      "name": "Google Forms",
+      "cat": "research",
+      "creator": "Google",
+      "url": "https://forms.google.com/",
+      "price": "Free",
+      "license": "Google terms of service",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "surveys",
+        "screeners",
+        "quantitative"
+      ],
+      "desc": "A free survey tool for screeners and quick quantitative studies.",
+      "features": [
+        "Results straight to Sheets",
+        "Branching logic"
+      ],
+      "formats": "Sheets, CSV",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "manus",
+      "name": "Manus",
+      "cat": "tools",
+      "creator": "Manus",
+      "url": "https://manus.im/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ai",
+        "app builder",
+        "websites"
+      ],
+      "desc": "An AI agent that builds working apps and sites, with SEO and analytics included.",
+      "features": [
+        "Builds from a written brief",
+        "Publishes live sites"
+      ],
+      "formats": "Hosted sites, code",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://files.manuscdn.com/webapp/media/ogBanner.png"
+    },
+    {
+      "id": "flectory",
+      "name": "Flectory",
+      "cat": "tools",
+      "creator": "Flecto",
+      "url": "https://flectory.flecto.io/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "svg",
+        "vector",
+        "generator"
+      ],
+      "desc": "A tool for generating and editing SVG graphics for interfaces.",
+      "features": [
+        "Vector generation in the browser",
+        "SVG export"
+      ],
+      "formats": "SVG",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "seostudios",
+      "name": "SEO Studios Tools",
+      "cat": "tools",
+      "creator": "SEO Studios",
+      "url": "https://seostudios.tools/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "seo",
+        "metadata",
+        "handoff"
+      ],
+      "desc": "Free SEO utilities for metadata, schema and on-page checks before handoff.",
+      "features": [
+        "Meta tag and schema helpers",
+        "On-page checks"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "freetts",
+      "name": "FreeTTS",
+      "cat": "tools",
+      "creator": "FreeTTS",
+      "url": "https://freetts.ai/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "text to speech",
+        "voice over",
+        "prototypes"
+      ],
+      "desc": "Text-to-speech for prototype voice-overs and walkthrough narration.",
+      "features": [
+        "Several voices and languages",
+        "Audio download"
+      ],
+      "formats": "MP3",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "tasteskill",
+      "name": "Tasteskill",
+      "cat": "tools",
+      "creator": "Tasteskill",
+      "url": "https://tasteskill.dev/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ai",
+        "layout",
+        "direction"
+      ],
+      "desc": "Generates layout directions from a prompt to break out of a default composition.",
+      "features": [
+        "Prompt-based layout ideas",
+        "Several directions per prompt"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://www.tasteskill.dev/og-image.jpg"
+    },
+    {
+      "id": "opendesign",
+      "name": "Open Design",
+      "cat": "tools",
+      "creator": "Open Design",
+      "url": "https://open-design.ai/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "ai",
+        "layouts",
+        "exploration"
+      ],
+      "desc": "AI-generated page and app layouts to iterate on before choosing a direction.",
+      "features": [
+        "Generate page layouts",
+        "Iterate on variations"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "artdirector",
+      "name": "Art Director",
+      "cat": "tools",
+      "creator": "Art Director",
+      "url": "https://artdirector.it.com/",
+      "price": "Free",
+      "license": "See source for terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "review",
+        "critique",
+        "art direction"
+      ],
+      "desc": "Reviews a live URL and flags weak type, spacing, hierarchy and composition.",
+      "features": [
+        "Paste a URL for feedback",
+        "Notes on visual hierarchy"
+      ],
+      "formats": "Web report",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "careerfoundry",
+      "name": "CareerFoundry",
+      "cat": "learning",
+      "creator": "CareerFoundry",
+      "url": "https://careerfoundry.com/",
+      "price": "Paid",
+      "license": "Paid courses",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "bootcamp",
+        "mentoring",
+        "portfolio"
+      ],
+      "desc": "A mentored UX and UI bootcamp built around a portfolio.",
+      "features": [
+        "One-to-one mentor and tutor",
+        "Job preparation track"
+      ],
+      "formats": "Online course",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "gymnasium",
+      "name": "The Gymnasium",
+      "cat": "learning",
+      "creator": "Aquent",
+      "url": "https://thegymnasium.com/",
+      "price": "Free",
+      "license": "Free courses",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "courses",
+        "ux",
+        "front end"
+      ],
+      "desc": "Free courses on UX, visual design and front-end basics, taught by practitioners.",
+      "features": [
+        "Self-paced lessons",
+        "Certificates on completion"
+      ],
+      "formats": "Online course",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "designlab",
+      "name": "Designlab",
+      "cat": "learning",
+      "creator": "Designlab",
+      "url": "https://designlab.com/",
+      "price": "Paid",
+      "license": "Paid courses",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "courses",
+        "bootcamp",
+        "mentor critique"
+      ],
+      "desc": "Short courses and a UX bootcamp with weekly one-to-one mentor critique.",
+      "features": [
+        "Weekly mentor sessions",
+        "Portfolio projects"
+      ],
+      "formats": "Online course",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "uxdi",
+      "name": "UX Design Institute",
+      "cat": "learning",
+      "creator": "UX Design Institute",
+      "url": "https://www.uxdesigninstitute.com/",
+      "price": "Paid",
+      "license": "Paid courses",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "diploma",
+        "certification",
+        "ux"
+      ],
+      "desc": "A UX diploma with university credit, for when a formal qualification matters.",
+      "features": [
+        "Accredited certificate",
+        "Mentor feedback on projects"
+      ],
+      "formats": "Online course",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://framerusercontent.com/images/vZpPXxdGxtoHguYaknxHi3vprg.jpg"
+    },
+    {
+      "id": "devdocs",
+      "name": "DevDocs",
+      "cat": "learning",
+      "creator": "freeCodeCamp",
+      "url": "https://devdocs.io/",
+      "price": "Free",
+      "license": "MPL 2.0 (open source)",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "documentation",
+        "api",
+        "offline"
+      ],
+      "desc": "API documentation for many languages and frameworks in one fast, offline-capable browser.",
+      "features": [
+        "Search across docs at once",
+        "Works offline"
+      ],
+      "formats": "Web",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "pexels",
+      "name": "Pexels",
+      "cat": "media",
+      "creator": "Canva",
+      "url": "https://www.pexels.com/",
+      "price": "Free",
+      "license": "Pexels licence",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "photos",
+        "video",
+        "stock"
+      ],
+      "desc": "Free stock photos and video with a consistently strong catalog.",
+      "features": [
+        "Free to use without attribution",
+        "API available"
+      ],
+      "formats": "JPG, MP4",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "unsplash",
+      "name": "Unsplash",
+      "cat": "media",
+      "creator": "Unsplash",
+      "url": "https://unsplash.com/",
+      "price": "Free",
+      "license": "Unsplash licence, paid Unsplash+",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "photos",
+        "high resolution",
+        "api"
+      ],
+      "desc": "A free high-resolution photo community with an API and Figma plugin.",
+      "features": [
+        "Free licence for most photos",
+        "Figma plugin and API"
+      ],
+      "formats": "JPG",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "pixabay",
+      "name": "Pixabay",
+      "cat": "media",
+      "creator": "Canva",
+      "url": "https://pixabay.com/",
+      "price": "Free",
+      "license": "Pixabay content licence",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "photos",
+        "illustrations",
+        "video"
+      ],
+      "desc": "Free photos, illustrations and video under a broad licence.",
+      "features": [
+        "Photos, vectors, video and music",
+        "No attribution required"
+      ],
+      "formats": "JPG, PNG, SVG, MP4",
+      "commercial": "yes",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "mixkit",
+      "name": "Mixkit",
+      "cat": "media",
+      "creator": "Envato",
+      "url": "https://mixkit.co/",
+      "price": "Free",
+      "license": "Mixkit licence, see source",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "video",
+        "music",
+        "sound effects"
+      ],
+      "desc": "Free stock video clips, music and sound effects.",
+      "features": [
+        "Video, audio and templates",
+        "Free licence per item type"
+      ],
+      "formats": "MP4, MP3",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "coverr",
+      "name": "Coverr",
+      "cat": "media",
+      "creator": "Coverr",
+      "url": "https://coverr.co/",
+      "price": "Free",
+      "license": "Coverr licence, see source",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "video",
+        "backgrounds",
+        "hero"
+      ],
+      "desc": "Free background and hero video clips for websites.",
+      "features": [
+        "Clips sized for the web",
+        "Free to download"
+      ],
+      "formats": "MP4",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "freepik",
+      "name": "Freepik",
+      "cat": "media",
+      "creator": "Freepik Company",
+      "url": "https://www.freepik.com/",
+      "price": "Premium",
+      "license": "Free with attribution, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "vectors",
+        "photos",
+        "templates"
+      ],
+      "desc": "A vast library of vectors, photos, PSDs and templates.",
+      "features": [
+        "Free and premium assets",
+        "AI image tools"
+      ],
+      "formats": "JPG, PNG, AI, EPS, PSD",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "videvo",
+      "name": "Videvo",
+      "cat": "media",
+      "creator": "Videvo",
+      "url": "https://www.videvo.net/",
+      "price": "Premium",
+      "license": "Free and premium licences",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "stock footage",
+        "motion graphics",
+        "video"
+      ],
+      "desc": "Free and premium stock footage and motion graphics.",
+      "features": [
+        "Licence shown per clip",
+        "Motion graphics and music"
+      ],
+      "formats": "MP4, MOV",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "burst",
+      "name": "Burst",
+      "cat": "media",
+      "creator": "Shopify",
+      "url": "https://www.shopify.com/stock-photos",
+      "price": "Free",
+      "license": "Free to use, see source",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "photos",
+        "commerce",
+        "product"
+      ],
+      "desc": "Shopify's free stock photos, strong for product and commerce imagery.",
+      "features": [
+        "Business and product themes",
+        "Free high-resolution downloads"
+      ],
+      "formats": "JPG",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "stocksnap",
+      "name": "StockSnap",
+      "cat": "media",
+      "creator": "StockSnap",
+      "url": "https://stocksnap.io/",
+      "price": "Free",
+      "license": "CC0",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "photos",
+        "cc0",
+        "high resolution"
+      ],
+      "desc": "Free high-resolution photos released under CC0.",
+      "features": [
+        "Public domain licence",
+        "Search and trending lists"
+      ],
+      "formats": "JPG",
+      "commercial": "yes",
+      "checked": "",
+      "image": "https://stocksnap.io/img/stocksnap_og.png"
+    },
+    {
+      "id": "reshot",
+      "name": "Reshot",
+      "cat": "media",
+      "creator": "Envato",
+      "url": "https://www.reshot.com/",
+      "price": "Free",
+      "license": "Reshot licence, see source",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "photos",
+        "icons",
+        "illustrations"
+      ],
+      "desc": "Free photos, icons and illustrations chosen to avoid the generic stock look.",
+      "features": [
+        "Free licence for commercial work",
+        "Icons and illustrations too"
+      ],
+      "formats": "JPG, SVG, PNG",
+      "commercial": "check",
+      "checked": "",
+      "preview": "logo"
+    },
+    {
+      "id": "unblast",
+      "name": "Unblast",
+      "cat": "media",
+      "creator": "Unblast",
+      "url": "https://unblast.com/",
+      "price": "Free",
+      "license": "Licence varies per item",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "freebies",
+        "mockups",
+        "ui kits"
+      ],
+      "desc": "Free mockups, fonts, icons and UI kits gathered from designers.",
+      "features": [
+        "New freebies added weekly",
+        "Licence noted on each item"
+      ],
+      "formats": "PSD, Figma, AI",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "freemockup",
+      "name": "Free Mockup",
+      "cat": "media",
+      "creator": "Free Mockup",
+      "url": "https://free-mockup.com/",
+      "price": "Free",
+      "license": "See each item's terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "mockups",
+        "devices",
+        "print"
+      ],
+      "desc": "Free device and print mockups for showing work in context.",
+      "features": [
+        "Device, print and packaging",
+        "PSD smart objects"
+      ],
+      "formats": "PSD",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "mockrocket",
+      "name": "MockRocket",
+      "cat": "media",
+      "creator": "MockRocket",
+      "url": "https://mockrocket.io/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "3d mockups",
+        "video",
+        "devices"
+      ],
+      "desc": "Generates 3D device mockups and short product videos from a screenshot.",
+      "features": [
+        "Animated 3D scenes",
+        "Video and image export"
+      ],
+      "formats": "PNG, MP4",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "mockupworld",
+      "name": "Mockup World",
+      "cat": "media",
+      "creator": "Mockup World",
+      "url": "https://www.mockupworld.co/",
+      "price": "Free",
+      "license": "See each item's terms",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "mockups",
+        "psd",
+        "directory"
+      ],
+      "desc": "A large free directory of PSD mockups for devices, print and packaging.",
+      "features": [
+        "Sorted by category",
+        "Links to original sources"
+      ],
+      "formats": "PSD",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "lsgraphics",
+      "name": "LS Graphics",
+      "cat": "media",
+      "creator": "LS Graphics",
+      "url": "https://www.ls.graphics/",
+      "price": "Premium",
+      "license": "Free items, paid licences",
+      "tools": [
+        "Web",
+        "Figma"
+      ],
+      "tags": [
+        "mockups",
+        "photorealistic",
+        "devices"
+      ],
+      "desc": "Premium photorealistic device and product mockups.",
+      "features": [
+        "Free and paid bundles",
+        "Figma and PSD versions"
+      ],
+      "formats": "PSD, Figma",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "angle",
+      "name": "Angle",
+      "cat": "media",
+      "creator": "Design Code",
+      "url": "https://angle.sh/",
+      "price": "Paid",
+      "license": "Commercial licence",
+      "tools": [
+        "Figma",
+        "Sketch"
+      ],
+      "tags": [
+        "device mockups",
+        "3d",
+        "figma"
+      ],
+      "desc": "Clean 3D device mockups for Figma and Sketch.",
+      "features": [
+        "Many devices and angles",
+        "Drop screens into frames"
+      ],
+      "formats": "Figma, Sketch",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "artboardstudio",
+      "name": "Artboard Studio",
+      "cat": "media",
+      "creator": "Artboard Studio",
+      "url": "https://artboard.studio/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "mockups",
+        "scenes",
+        "editor"
+      ],
+      "desc": "A drag-and-drop mockup editor with a large scene and device library.",
+      "features": [
+        "Edit scenes in the browser",
+        "Animated mockups"
+      ],
+      "formats": "PNG, JPG, MP4",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "previewed",
+      "name": "Previewed",
+      "cat": "media",
+      "creator": "Previewed",
+      "url": "https://previewed.app/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "device frames",
+        "app store",
+        "mockups"
+      ],
+      "desc": "Drops screenshots into device frames in the browser.",
+      "features": [
+        "2D and 3D frames",
+        "App store screenshot templates"
+      ],
+      "formats": "PNG, MP4",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "shots",
+      "name": "Shots",
+      "cat": "media",
+      "creator": "Shots",
+      "url": "https://shots.so/",
+      "price": "Premium",
+      "license": "Free plan, paid plans",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "screenshots",
+        "marketing",
+        "backgrounds"
+      ],
+      "desc": "Turns screenshots into polished marketing images with frames and backgrounds.",
+      "features": [
+        "Device frames and backgrounds",
+        "Quick layout templates"
+      ],
+      "formats": "PNG, JPG",
+      "commercial": "check",
+      "checked": "",
+      "image": "https://shots.so/image/og-new.jpg?v=2"
+    },
+    {
+      "id": "rotato",
+      "name": "Rotato",
+      "cat": "media",
+      "creator": "Rotato",
+      "url": "https://rotato.app/",
+      "price": "Paid",
+      "license": "Commercial licence",
+      "tools": [
+        "Desktop"
+      ],
+      "tags": [
+        "3d mockups",
+        "video",
+        "mac"
+      ],
+      "desc": "A desktop app for animated 3D device mockup videos.",
+      "features": [
+        "Camera moves and transitions",
+        "High-resolution video export"
+      ],
+      "formats": "MP4, MOV, PNG",
+      "commercial": "check",
+      "checked": ""
+    },
+    {
+      "id": "screely",
+      "name": "Screely",
+      "cat": "media",
+      "creator": "Screely",
+      "url": "https://screely.com/",
+      "price": "Free",
+      "license": "Free web tool",
+      "tools": [
+        "Web"
+      ],
+      "tags": [
+        "browser frame",
+        "screenshots",
+        "quick"
+      ],
+      "desc": "Wraps a screenshot in a clean browser frame with one click.",
+      "features": [
+        "Choose window style and background",
+        "Instant download"
+      ],
+      "formats": "PNG",
+      "commercial": "yes",
+      "checked": ""
+    },
+    {
+      "id": "figmamockups",
+      "name": "Figma Community mockups",
+      "cat": "media",
+      "creator": "Figma Community",
+      "url": "https://www.figma.com/community/mockups",
+      "price": "Free",
+      "license": "See Figma Community listing",
+      "tools": [
+        "Figma"
+      ],
+      "tags": [
+        "mockups",
+        "device frames",
+        "figma"
+      ],
+      "desc": "Community files and plugins for placing designs into device frames inside Figma.",
+      "features": [
+        "Many free device files",
+        "Plugins for quick framing"
+      ],
+      "formats": "Figma",
       "commercial": "check",
       "checked": ""
     }

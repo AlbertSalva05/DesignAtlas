@@ -8,12 +8,22 @@
 <body>
 <x-dc>
 <div style="position:relative;height:100%">
-  <button type="button" onClick="{{ r.open }}" style="display:flex;flex-direction:column;width:100%;height:100%;text-align:left;background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:0;overflow:hidden;cursor:pointer;color:#14243A;font:inherit;transition:border-color .15s ease, box-shadow .15s ease" style-hover="border-color:#14243A;box-shadow:0 3px 0 #14243A">
+  <button type="button" onClick="{{ r.open }}" style="display:flex;flex-direction:column;width:100%;height:100%;text-align:left;background:#FFFFFF;border:1px solid #DDD8CC;border-radius:10px;padding:0;overflow:hidden;cursor:pointer;color:#14243A;font:inherit;box-shadow:0 1px 2px rgba(20,36,58,.06), 0 1px 1px rgba(20,36,58,.04);transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease" style-hover="border-color:#9AA1AE;box-shadow:0 2px 4px rgba(20,36,58,.06), 0 10px 24px -8px rgba(20,36,58,.18);transform:translateY(-2px)" style-active="box-shadow:0 1px 2px rgba(20,36,58,.06), 0 1px 1px rgba(20,36,58,.04);transform:translateY(0)">
     <sc-if value="{{ r.typographic }}" hint-placeholder-val="{{ true }}">
-      <div style="aspect-ratio:16/10;width:100%;background:{{ r.coverBg }};color:{{ r.coverFg }};padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between">
+      <div style="position:relative;aspect-ratio:16/10;width:100%;background:{{ r.coverBg }};color:{{ r.coverFg }};padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-bottom:1px solid #DDD8CC">
         <span style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;padding-right:48px"><i class="ph {{ r.icon }}" aria-hidden="true" style="font-size:18px"></i><span>{{ r.catLabel }}</span></span>
-        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:28px;line-height:1.08;letter-spacing:-.01em;text-wrap:balance">{{ r.name }}</span>
+        <span style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:26px;line-height:1.08;letter-spacing:-.01em;text-wrap:balance;min-width:0">{{ r.name }}</span>
+          <span style="flex:0 0 auto;width:52px;height:52px;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(20,36,58,.12), 0 6px 14px -6px rgba(20,36,58,.3)"><img src="{{ r.logo }}" alt="" width="32" height="32" loading="lazy" decoding="async" style="width:32px;height:32px;object-fit:contain"></span>
+        </span>
+        <sc-if value="{{ r.shot }}"><img src="{{ r.shot }}" srcSet="{{ r.shotSet }}" sizes="(min-width: 640px) 320px, 100vw" width="480" height="300" alt="{{ r.shotAlt }}" loading="lazy" decoding="async" fetchPriority="low" crossOrigin="anonymous" data-raw="{{ r.shotRaw }}" onLoad="{{ r.shotLoad }}" onError="{{ r.shotErr }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;background:#FFFFFF"><span aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,36,58,0) 45%,rgba(20,36,58,.16) 100%),rgba(20,36,58,.04);box-shadow:inset 0 0 0 1px rgba(20,36,58,.06)"></span></sc-if>
       </div>
+      <sc-if value="{{ r.shot }}">
+        <div style="padding:16px 20px 0;display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:13px;font-weight:600;color:#565D6B">{{ r.catLabel }}</span>
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;line-height:1.15">{{ r.name }}</span>
+        </div>
+      </sc-if>
     </sc-if>
     <sc-if value="{{ r.placeholder }}">
       <div style="aspect-ratio:16/10;width:100%;background:repeating-linear-gradient(135deg,#ECE8DE 0 10px,#F3F0E8 10px 20px);display:flex;align-items:center;justify-content:center">
