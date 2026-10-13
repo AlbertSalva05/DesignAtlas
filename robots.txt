@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://design-atlas.onrender.com/sitemap.xml
