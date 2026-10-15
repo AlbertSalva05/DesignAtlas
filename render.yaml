@@ -23,6 +23,15 @@ services:
       - path: /data/*
         name: Cache-Control
         value: no-cache
+      - path: /site.webmanifest
+        name: Content-Type
+        value: application/manifest+json
+      - path: /site.webmanifest
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /favicon.ico
+        name: Cache-Control
+        value: public, max-age=2592000
       - path: /support.js
         name: Cache-Control
         value: public, max-age=86400
