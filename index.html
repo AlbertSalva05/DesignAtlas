@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -112,10 +112,10 @@ input,select,textarea,button{font:inherit;color:inherit}
           <nav aria-label="Breadcrumb" style="flex:1;min-width:0">
             <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:15px">
               <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="3">
-                <li style="display:flex;align-items:center;gap:8px;min-width:0">
+                <li style="display:flex;align-items:center;gap:8px;flex:{{ c.flex }};min-width:0;max-width:100%">
                   <sc-if value="{{ c.sep }}"><i class="ph ph-caret-right" aria-hidden="true" style="font-size:12px;color:var(--muted)"></i></sc-if>
                   <sc-if value="{{ c.link }}"><button type="button" onClick="{{ c.go }}" style="background:none;border:0;padding:0;min-height:36px;color:var(--link);cursor:pointer;text-decoration:underline;text-underline-offset:3px;white-space:nowrap" style-hover="color:var(--ink)">{{ c.label }}</button></sc-if>
-                  <sc-if value="{{ c.current }}"><span aria-current="page" style="font-weight:600;max-width:40ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.label }}</span></sc-if>
+                  <sc-if value="{{ c.current }}"><span aria-current="page" style="display:block;font-weight:600;max-width:40ch;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.label }}</span></sc-if>
                 </li>
               </sc-for>
             </ol>
@@ -193,7 +193,7 @@ input,select,textarea,button{font:inherit;color:inherit}
       <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ true }}">
         <section aria-labelledby="feat-h" style="max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,32px) clamp(64px,8vw,112px)">
           <h2 id="feat-h" style="margin:0 0 24px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:28px">Worth starting with</h2>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:20px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px">
             <sc-for list="{{ featured }}" as="item" hint-placeholder-count="3">
               <dc-import name="ResourceCard" r="{{ item }}" hint-size="100%,360px"></dc-import>
             </sc-for>
@@ -277,7 +277,7 @@ input,select,textarea,button{font:inherit;color:inherit}
 
         <div style="max-width:1240px;margin:0 auto;padding:28px clamp(16px,4vw,32px) 96px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
           <sc-if value="{{ narrow }}">
-            <button type="button" onClick="{{ toggleFilters }}" aria-expanded="{{ filtersAria }}" aria-controls="filters" style="flex:1 1 100%;min-height:48px;border-radius:8px;border:1.5px solid var(--ink);background:var(--surface);font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><i class="ph ph-funnel" aria-hidden="true" style="font-size:18px"></i>{{ filtersLabel }}</button>
+            <button type="button" onClick="{{ toggleFilters }}" aria-expanded="{{ filtersAria }}" aria-controls="filters" style="flex:1 1 100%;min-height:48px;border-radius:8px;border:1.5px solid var(--ink);background:var(--surface);font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px"><i class="ph ph-funnel" aria-hidden="true" style="font-size:18px"></i><span style="white-space:nowrap">{{ filtersLabel }}</span></button>
           </sc-if>
           <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ true }}">
             <aside id="filters" aria-label="Filters" style="flex:1 1 240px;max-width:100%;display:flex;flex-direction:column;gap:28px">
@@ -319,7 +319,7 @@ input,select,textarea,button{font:inherit;color:inherit}
 
           <section aria-labelledby="res-h" aria-busy="{{ busyAria }}" style="flex:999 1 520px;min-width:0">
             <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
-              <h2 id="res-h" aria-live="polite" style="margin:0;font-size:17px;font-weight:600;display:flex;align-items:center;gap:8px"><sc-if value="{{ showSpin }}"><i class="ph ph-circle-notch" aria-hidden="true" style="font-size:18px;color:#4169E1;animation:daSpin .8s linear infinite"></i></sc-if>{{ resultLabel }}</h2>
+              <h2 id="res-h" aria-live="polite" style="margin:0;font-size:17px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:8px"><sc-if value="{{ showSpin }}"><i class="ph ph-circle-notch" aria-hidden="true" style="font-size:18px;color:#4169E1;animation:daSpin .8s linear infinite"></i></sc-if>{{ resultLabel }}</h2>
               <div style="display:flex;align-items:center;gap:8px">
                 <label for="sort" style="font-size:15px;color:var(--body2)">Sort</label>
                 <select id="sort" value="{{ sort }}" onChange="{{ onSort }}" style="min-height:44px;padding:0 12px;border:1.5px solid var(--ink);border-radius:6px;background:var(--surface);font-size:15px">
@@ -386,6 +386,12 @@ input,select,textarea,button{font:inherit;color:inherit}
                   <dc-import name="ResourceCard" r="{{ item }}" hint-size="100%,360px"></dc-import>
                 </sc-for>
               </div>
+              <sc-if value="{{ hasMore }}">
+                <div ref="{{ moreRef }}" style="margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:10px">
+                  <span style="font-size:15px;color:var(--muted)">{{ shownLabel }}</span>
+                  <button type="button" onClick="{{ showMore }}" style="min-height:48px;padding:0 22px;border-radius:8px;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);font-weight:600;white-space:nowrap;cursor:pointer;transition:background .15s ease" style-hover="background:var(--sunk)">{{ moreLabel }}</button>
+                </div>
+              </sc-if>
             </sc-if>
           </section>
         </div>
@@ -404,8 +410,8 @@ input,select,textarea,button{font:inherit;color:inherit}
               <i class="ph {{ d.catIcon }}" aria-hidden="true" style="position:absolute;right:-3%;bottom:-16%;font-size:clamp(220px,34vw,420px);color:rgba(220,229,242,.07);pointer-events:none"></i>
               <span style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(28px,4.5vw,52px)">
                 <span style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#C5CEDC">
-                  <span style="display:flex;align-items:center;gap:8px"><i class="ph {{ d.catIcon }}" aria-hidden="true" style="font-size:18px;color:#F7F6F2"></i>{{ d.catLabel }}</span>
-                  <span style="font-variant-numeric:tabular-nums">Plate {{ d.plateNo }} / {{ d.plateOf }}</span>
+                  <span style="display:flex;align-items:center;gap:8px;white-space:nowrap"><i class="ph {{ d.catIcon }}" aria-hidden="true" style="font-size:18px;color:#F7F6F2"></i>{{ d.catLabel }}</span>
+                  <span style="font-variant-numeric:tabular-nums;white-space:nowrap">Plate {{ d.plateNo }} / {{ d.plateOf }}</span>
                 </span>
                 <span style="display:flex;align-items:center;gap:clamp(16px,3vw,28px);min-width:0">
                   <span style="flex:0 0 auto;width:clamp(60px,8vw,88px);height:clamp(60px,8vw,88px);border-radius:14px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,.12), 0 12px 28px -10px rgba(0,0,0,.45)"><img src="{{ d.logo }}" alt="" width="64" height="64" loading="lazy" decoding="async" style="width:60%;height:60%;object-fit:contain"></span>
@@ -464,6 +470,17 @@ input,select,textarea,button{font:inherit;color:inherit}
           </section>
         </sc-if>
       </article>
+    </sc-if>
+
+    <sc-if value="{{ detailMissing }}">
+      <section data-screen-label="Resource not found" style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(16px,4vw,32px) 96px">
+        <div style="max-width:640px;display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+          <i class="ph ph-map-trifold" aria-hidden="true" style="font-size:36px;color:var(--muted)"></i>
+          <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4.6vw,52px);line-height:1.05">This entry isn't in the index</h1>
+          <p style="margin:0;color:var(--body2);font-size:18px">It may have been renamed or removed after a recheck. Search for it, or browse the full index.</p>
+          <button type="button" onClick="{{ goExplore }}" style="margin-top:8px;min-height:48px;padding:0 20px;border-radius:8px;border:0;background:var(--ink);color:var(--paper);font-weight:600;white-space:nowrap;cursor:pointer">Browse all {{ total }} entries</button>
+        </div>
+      </section>
     </sc-if>
 
     <sc-if value="{{ isSubmit }}">
@@ -697,6 +714,9 @@ input,select,textarea,button{font:inherit;color:inherit}
                       </sc-if>
                     </li>
                   </sc-for>
+                  <sc-if value="{{ mgMore }}">
+                    <li style="padding:12px 8px;display:flex;justify-content:center"><button type="button" onClick="{{ mgShowMore }}" style="min-height:44px;padding:0 18px;border-radius:8px;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);font-weight:600;white-space:nowrap;cursor:pointer" style-hover="background:var(--sunk)">{{ mgMoreLabel }}</button></li>
+                  </sc-if>
                 </ul>
               </div>
 
@@ -1233,9 +1253,10 @@ class Component extends DCLogic {
     sub: { name: '', url: '', cat: '', price: '', desc: '', email: '' }, subErr: {}, subStatus: 'idle',
     con: { name: '', email: '', msg: '' }, conErr: {}, conStatus: 'idle',
     nl: '', nlErr: '', nlStatus: 'idle',
-    tab: 'res', mgQ: '', mgCat: '', edit: null, ed: null, edErr: {}, edSubId: null, confirmDel: null, confirmReset: false,
+    tab: 'res', mgQ: '', mgCat: '', mgLim: 40, edit: null, ed: null, edErr: {}, edSubId: null, confirmDel: null, confirmReset: false,
     ce: null, ceId: null, ceErr: {}, catMsg: null, catConfirm: null,
     jsonDraft: '', jsonErr: '', jsonLive: true, draftDb: null,
+    lim: { key: '', n: 24 },
     heroActive: 0, heroPaused: false, shortlist: [], slConfirm: false, comms: [], mgCheck: '', cookieOpen: false, clearConfirm: false, consent: { analytics: false }, ckDraft: false, st: null, stErr: {}
   };
   SOCIALS = [['instagram', 'Instagram', 'ph-instagram-logo'], ['linkedin', 'LinkedIn', 'ph-linkedin-logo'], ['x', 'X', 'ph-x-logo'], ['dribbble', 'Dribbble', 'ph-dribbble-logo'], ['behance', 'Behance', 'ph-behance-logo'], ['youtube', 'YouTube', 'ph-youtube-logo'], ['github', 'GitHub', 'ph-github-logo']];
@@ -1246,6 +1267,16 @@ class Component extends DCLogic {
   setTheme(theme) { this.applyPrefs(theme, this.state.text, true); this.setState({ theme }); }
   setText(text) { this.applyPrefs(this.state.theme, text, true); this.setState({ text }); }
   hist = []; pos = 0;
+  PAGE = 24;
+  moreRef = el => {
+    if (this.io) { this.io.disconnect(); this.io = null; }
+    this.moreEl = el;
+    if (el && 'IntersectionObserver' in window) {
+      this.io = new IntersectionObserver(es => { if (es[0] && es[0].isIntersecting && this.showMoreFn) this.showMoreFn(); }, { rootMargin: '400px 0px' });
+      this.io.observe(el);
+    }
+  };
+  exKey(x) { return [x.cat || '', x.coll || '', (x.q || '').trim(), (x.prices || []).join(','), (x.plats || []).join(','), (x.comms || []).join(','), x.sort || 'relevance'].join('|'); }
 
   routeFromHash() {
     const raw = (window.location.hash || '').replace(/^#\/?/, '');
@@ -1276,12 +1307,16 @@ class Component extends DCLogic {
     else if (this.hist[this.pos + 1] === hs) this.pos++;
     else if (this.hist[this.pos] !== hs) { this.hist = this.hist.slice(0, this.pos + 1); this.hist.push(hs); this.pos = this.hist.length - 1; }
     const s = this.state;
-    const resetFilters = r.page === 'explore' && (s.page !== 'explore' || s.cat !== r.cat || s.coll !== r.coll);
+    if (s.page === 'explore' && r.page !== 'explore') this.exMem = { cat: s.cat, coll: s.coll, q: s.q, prices: s.prices, plats: s.plats, comms: s.comms, sort: s.sort, lim: s.lim, y: window.scrollY };
+    const mem = this.exMem, back = r.page === 'explore' && s.page !== 'explore' && mem && mem.cat === r.cat && mem.coll === r.coll && (mem.q || '').trim() === (r.q || '').trim();
+    const resetFilters = !back && r.page === 'explore' && (s.page !== 'explore' || s.cat !== r.cat || s.coll !== r.coll);
+    const restoreY = back ? mem.y : null;
     const moved = r.page !== s.page || r.id !== s.id || r.cat !== s.cat || r.coll !== s.coll;
     if (moved) { clearTimeout(this.nbT); this.nbT = setTimeout(() => this.setState({ navBusy: false }), 420); }
-    this.setState({ ...r, ...(moved ? { navBusy: true, fadeKey: s.fadeKey + 1 } : {}), menuOpen: false, cookieOpen: false, slConfirm: false, ...(resetFilters ? { prices: [], plats: [], comms: [] } : {}), ...(r.page === 'manage' && !r.tab ? {} : {}) });
+    this.setState({ ...r, ...(moved ? { navBusy: true, fadeKey: s.fadeKey + 1 } : {}), menuOpen: false, cookieOpen: false, slConfirm: false, ...(resetFilters ? { prices: [], plats: [], comms: [] } : {}), ...(back ? { prices: mem.prices, plats: mem.plats, comms: mem.comms, sort: mem.sort, lim: mem.lim, q: mem.q } : {}) });
     const anchor = this.pendingAnchor; this.pendingAnchor = null;
     setTimeout(() => {
+      if (restoreY != null) { requestAnimationFrame(() => window.scrollTo({ top: restoreY, behavior: 'auto' })); return; }
       const el = anchor && document.getElementById(anchor);
       if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
       else window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1294,7 +1329,7 @@ class Component extends DCLogic {
     this.onResize = () => { const wide = window.innerWidth >= 960, navWide = window.innerWidth >= 1100; this.setState(s => ({ wide, navWide, menuOpen: navWide ? false : s.menuOpen })); this.onScroll(); };
     let pr = null; try { pr = JSON.parse(localStorage.getItem(this.PREFKEY) || 'null'); } catch (e) {}
     document.documentElement.lang = 'en';
-    const th = (pr && pr.theme) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), tx = (pr && pr.text) || 'md';
+    const th = (pr && ['light', 'dark', 'contrast'].includes(pr.theme) && pr.theme) || 'light', tx = (pr && pr.text) || 'md';
     this.applyPrefs(th, tx, false); this.setState({ theme: th, text: tx });
     this.onScroll = () => {
       if (this.raf) return;
@@ -1349,7 +1384,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('keydown', this.onKey); window.removeEventListener('storage', this.onStorage);
-    window.removeEventListener('hashchange', this.onHash); clearInterval(this.heroT);
+    window.removeEventListener('hashchange', this.onHash); clearInterval(this.heroT); if (this.io) this.io.disconnect();
     this.timers.forEach(clearTimeout); document.body.style.overflow = '';
   }
   componentDidUpdate(prev) {
@@ -1562,13 +1597,13 @@ class Component extends DCLogic {
 
   fieldKit(kind, fields) {
     const vals = this.state[kind] || {}, errs = this.state[kind + 'Err'] || {};
-    const on = {}, aria = {}, border = {};
+    const on = {}, aria = {}, border = {}, shown = {};
     for (const k of fields) {
       on[k] = e => { const v = e.target.value; this.setState(s => ({ [kind]: { ...s[kind], [k]: v }, [kind + 'Err']: { ...s[kind + 'Err'], [k]: undefined } })); };
-      aria[k] = errs[k] ? 'true' : 'false';
+      aria[k] = errs[k] ? 'true' : 'false'; shown[k] = errs[k] || '';
       border[k] = errs[k] ? 'var(--err)' : 'var(--strong)';
     }
-    return { vals, errs, on, aria, border };
+    return { vals, errs: shown, on, aria, border };
   }
 
   openEditor(r, subId) {
@@ -1678,7 +1713,7 @@ class Component extends DCLogic {
 
     let d = {};
     if (s.page === 'detail' && s.db) {
-      const r = byId(s.id) || res[0];
+      const r = byId(s.id);
       if (r) {
         const rel = res.filter(x => x.cat === r.cat && x.id !== r.id).slice(0, 4);
         d = { ...r, catIcon: catOf(r.cat).icon || 'ph-folder', logo: this.logo(r.url), shot: this.shot(r, 1280), shotSet: this.shotSet(r, [640, 960, 1280]), shotRaw: this.shotSrc(r), shotLoad: this.shotLoad, logo: this.logo(r.url), shotAlt: 'Screenshot of ' + r.name + ' at ' + this.domain(r.url), shotErr: this.shotErr, catLabel: catOf(r.cat).label, domain: this.domain(r.url), tools: r.tools.join(', ') || 'Not listed', plateNo: String(res.indexOf(r) + 1).padStart(3, '0'), plateOf: String(res.length).padStart(3, '0'), plateCom: (this.COM[r.commercial] || this.COM.check)[2], plateComIcon: (this.COM[r.commercial] || this.COM.check)[1], plateAria: 'Visit ' + r.name + ' at ' + this.domain(r.url) + ' (opens in a new tab)', formats: r.formats || 'Not listed', license: r.license || 'See source',
@@ -1727,7 +1762,7 @@ class Component extends DCLogic {
       menuFade: s.menuOpen ? 1 : 0, menuPE: s.menuOpen ? 'auto' : 'none', menuY: s.menuOpen ? '0' : '-12px', menuVis: s.menuOpen ? 'visible' : 'hidden',
       toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }), closeMenu: () => this.setState({ menuOpen: false }),
       goHome: () => this.go('home'), goExplore: () => this.explore(), goSubmit: () => this.go('submit'),
-      isHome: s.page === 'home', isExplore: s.page === 'explore', isDetail: s.page === 'detail' && !!d.id, isSubmit: s.page === 'submit', isAbout: s.page === 'about', isLegal: s.page === 'privacy' || s.page === 'terms', isManage: s.page === 'manage' && !!s.db,
+      isHome: s.page === 'home', isExplore: s.page === 'explore', isDetail: s.page === 'detail' && !!d.id, detailMissing: s.page === 'detail' && !!s.db && !d.id, isSubmit: s.page === 'submit', isAbout: s.page === 'about', isLegal: s.page === 'privacy' || s.page === 'terms', isManage: s.page === 'manage' && !!s.db,
 
       heroQ: s.heroQ, onHeroQ: e => this.setState({ heroQ: e.target.value }),
       heroSubmit: e => { e.preventDefault(); this.explore({ q: s.heroQ.trim() }); },
@@ -1773,7 +1808,14 @@ class Component extends DCLogic {
       isLoading: cs === 'loading', isError: cs === 'error', isEmpty: live && list.length === 0, hasResults: live && list.length > 0,
       loadingSlots: [1, 2, 3, 4, 5, 6],
       retry: () => { this.setState({ forceClear: true }); if (s.db) { this.setState({ loadState: 'loading' }); this.later(() => this.setState({ loadState: 'live' }), 600); } else this.loadFile(); },
-      results: live ? list.map(r => this.card(r)) : [],
+      ...(() => {
+        const key = this.exKey({ cat: s.cat, coll: s.coll, q, prices: s.prices, plats: s.plats, comms: s.comms, sort: s.sort });
+        const n = s.lim && s.lim.key === key ? s.lim.n : this.PAGE;
+        const shown = Math.min(n, list.length), left = list.length - shown;
+        const showMore = () => { if (this.state.lim.key === key && this.state.lim.n > n) return; this.setState({ lim: { key, n: n + this.PAGE } }, () => { if (this.io && this.moreEl) { this.io.unobserve(this.moreEl); this.io.observe(this.moreEl); } }); };
+        this.showMoreFn = live && s.page === 'explore' && left > 0 ? showMore : null;
+        return { results: live && s.page === 'explore' ? list.slice(0, shown).map(r => this.card(r)) : [], hasMore: live && left > 0, showMore, shownLabel: 'Showing ' + shown + ' of ' + list.length, moreLabel: 'Show ' + Math.min(this.PAGE, left) + ' more' };
+      })(),
       emptyTitle: q ? 'Nothing matches \u201c' + q + '\u201d here' : 'No resources match these filters',
       suggestCats: cats.filter(c => c.id !== s.cat).slice(0, 3).map(c => ({ label: c.label, icon: c.icon, go: () => this.explore({ cat: c.id }) })),
 
@@ -1807,10 +1849,11 @@ class Component extends DCLogic {
       mgTabId: 'tab-' + s.tab,
       tabRes: s.tab === 'res', tabCats: s.tab === 'cats', tabSubs: s.tab === 'subs', tabJson: s.tab === 'json', tabSite: s.tab === 'site',
 
-      mgQ: s.mgQ, onMgQ: e => this.setState({ mgQ: e.target.value }), mgCat: s.mgCat, onMgCat: e => this.setState({ mgCat: e.target.value }),
-      mgCountLabel: 'Showing ' + mgList.length + ' of ' + res.length, mgEmpty: !!s.db && mgList.length === 0,
+      mgQ: s.mgQ, onMgQ: e => this.setState({ mgQ: e.target.value, mgLim: 40 }), mgCat: s.mgCat, onMgCat: e => this.setState({ mgCat: e.target.value, mgLim: 40 }),
+      mgCountLabel: 'Showing ' + Math.min(mgList.length, s.mgLim) + ' of ' + mgList.length + (mgList.length < res.length ? ' (' + res.length + ' in total)' : ''), mgEmpty: !!s.db && mgList.length === 0,
       newRes: () => this.openEditor(null),
-      mgRows: mgList.map(r => ({
+      mgMore: s.page === 'manage' && mgList.length > s.mgLim, mgMoreLabel: 'Show ' + Math.min(40, mgList.length - s.mgLim) + ' more', mgShowMore: () => this.setState({ mgLim: s.mgLim + 40 }),
+      mgRows: (s.page === 'manage' ? mgList.slice(0, s.mgLim) : []).map(r => ({
         name: r.name, icon: catOf(r.cat).icon || 'ph-folder', meta: (catOf(r.cat).label || '') + ' \u00b7 ' + r.price + ' \u00b7 ' + this.checkInfo(r).label + (db.featured.includes(r.id) ? ' \u00b7 Featured' : ''),
         bg: s.edit === r.id ? 'var(--sel)' : 'transparent', confirming: s.confirmDel === r.id, idle: s.confirmDel !== r.id,
         editAria: 'Edit ' + r.name, delAria: 'Delete ' + r.name,
@@ -1861,7 +1904,7 @@ class Component extends DCLogic {
       jsonStatus: s.jsonErr ? s.jsonErr : (s.jsonLive ? 'Valid. The site is showing this version.' : 'Valid. Choose Apply to site to publish it.'),
       pvSummary: draft.resources.length + ' resources \u00b7 ' + draft.categories.length + ' categories', pvInvalid: !!s.jsonErr,
       pvCats: draft.categories.map(c => ({ label: c.label, icon: c.icon, count: draft.resources.filter(r => r.cat === c.id).length })),
-      pvCards: draft.resources.slice(-4).reverse().map(r => this.card(r, draft.categories)),
+      pvCards: s.page === 'manage' && s.tab === 'json' ? draft.resources.slice(-4).reverse().map(r => this.card(r, draft.categories)) : [],
 
       nl: s.nl, onNl: e => this.setState({ nl: e.target.value, nlErr: '' }),
       nlAria: s.nlErr ? 'true' : 'false', nlBorder: s.nlErr ? 'var(--err)' : 'var(--ink)', nlErr: s.nlErr,
@@ -1882,7 +1925,7 @@ class Component extends DCLogic {
         { label: 'Manage the hub', go: () => this.go('manage') }
       ],
 
-      mgCheck: s.mgCheck, onMgCheck: e => this.setState({ mgCheck: e.target.value }),
+      mgCheck: s.mgCheck, onMgCheck: e => this.setState({ mgCheck: e.target.value, mgLim: 40 }),
       mgDueLabel: 'Needs a check (' + res.filter(r => this.checkInfo(r).due).length + ')',
       edCheckLabel: this.checkInfo(edV).label, edCheckColor: this.checkInfo(edV).color,
       edMarkChecked: () => this.setState(st => ({ ed: { ...st.ed, checked: this.today() } })),
@@ -1915,7 +1958,7 @@ class Component extends DCLogic {
         const c = [{ label: 'Home', go: () => this.go('home') }];
         const exGo = () => this.explore();
         if (s.page === 'explore') { c.push({ label: 'Explore', go: exGo }); const co = s.coll && db.collections.find(x => x.id === s.coll); if (co) c.push({ label: co.title }); else if (s.cat) c.push({ label: catOf(s.cat).label || s.cat }); }
-        if (s.page === 'detail') { c.push({ label: 'Explore', go: exGo }); if (d.id) { c.push({ label: d.catLabel, go: d.goCat }); c.push({ label: d.name }); } }
+        if (s.page === 'detail') { c.push({ label: 'Explore', go: exGo }); if (d.id) { c.push({ label: d.catLabel, go: d.goCat }); c.push({ label: d.name }); } else if (s.db) c.push({ label: 'Not found' }); }
         if (s.page === 'submit') c.push({ label: 'Submit a resource' });
         if (s.page === 'about') c.push({ label: 'About and FAQ' });
         if (s.page === 'privacy') c.push({ label: 'Privacy policy' });
@@ -1923,7 +1966,7 @@ class Component extends DCLogic {
         if (s.page === 'shortlist') c.push({ label: 'Shortlist' });
         if (s.page === 'settings') c.push({ label: 'Settings' });
         if (s.page === 'manage') { c.push({ label: 'Manage', go: () => { this.setState({ tab: 'res' }); this.replaceHash(this.hashFor('manage', { tab: 'res' })); } }); c.push({ label: this.TABNAMES[s.tab] }); }
-        return c.map((x, i) => ({ ...x, sep: i > 0, current: i === c.length - 1, link: i < c.length - 1 && !!x.go }));
+        return c.map((x, i) => ({ ...x, sep: i > 0, current: i === c.length - 1, link: i < c.length - 1 && !!x.go, flex: i === c.length - 1 ? '0 1 auto' : 'none' }));
       })(),
       navBack: () => { if (this.pos > 0) history.back(); }, navFwd: () => { if (this.pos < this.hist.length - 1) history.forward(); },
       cantBack: this.pos <= 0, cantFwd: this.pos >= this.hist.length - 1, backOp: this.pos <= 0 ? 0.4 : 1, fwdOp: this.pos >= this.hist.length - 1 ? 0.4 : 1,
