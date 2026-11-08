@@ -1,0 +1,7 @@
+/* Design Atlas 404 page */
+body{display:grid;place-items:center;box-sizing:border-box;min-height:100vh;margin:0;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#14243A;text-align:center;background:#F7F6F2}
+h1{margin:0;font-size:40px;font-weight:600;line-height:1.2}
+main{display:grid;gap:16px}
+p{margin:0;font-size:18px;color:#3A4352}
+a{font-weight:600;color:#2F55C8}
+a:hover{color:#14243A}
